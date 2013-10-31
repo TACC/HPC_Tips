@@ -1,0 +1,10 @@
+Two files we are concerned with:
+* proposed_tips
+* approved_tips
+
+
+proposed_tips:
+Place new tips you would like included
+
+approved_tips:
+Contains all tips approved by some Master Overlord.
