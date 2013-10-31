@@ -54,7 +54,7 @@ An alias to display your $PATH with each directory on its own line: alias pretty
 ##----
 Want a robust approach to backup, transfer, and version control? Give git a try -- you’ll be glad you did.
 ##----
-Tired of all that typing? Did you know you can type "ml" instead of “module load”
+Tired of all that typing? Did you know you can type "ml" instead of “module list” and "ml git" instead of "module load git"
 ##----
 Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
 ##----
