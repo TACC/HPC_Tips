@@ -7,6 +7,67 @@ import warnings
 import random
 warnings.filterwarnings("ignore", "Unknown table.*")
 
+def getTerminalSize():
+  """
+  returns (lines:int, cols:int)
+  """
+  import os, struct
+  def ioctl_GWINSZ(fd):
+      import fcntl, termios
+      return struct.unpack("hh", fcntl.ioctl(fd, termios.TIOCGWINSZ, "1234"))
+  # try stdin, stdout, stderr
+  if (not sys.stdout.isatty()):
+    return (25, 80)
+
+  fd = 1
+  try:
+    return ioctl_GWINSZ(fd)
+  except:
+    pass
+  # try os.ctermid()
+  try:
+    fd = os.open(os.ctermid(), os.O_RDONLY)
+    try:
+      return ioctl_GWINSZ(fd)
+    finally:
+      os.close(fd)
+  except:
+    pass
+  # try `stty size`
+  try:
+    return tuple(int(x) for x in os.popen("stty size", "r").read().split())
+  except:
+    pass
+  # try environment variables
+  try:
+    return tuple(int(os.getenv(var)) for var in ("LINES", "COLUMNS"))
+  except:
+    pass
+  # i give up. return default.
+  return (25, 80)
+
+def fillWords(indent, txt, twidth):
+  lineA = txt:split("\n")
+  
+  sA    = []
+  sA.append(indent)
+  myLen = len(indent)
+  for line in lineA:
+    wordA = line:split("\s+")
+    for word in wordA:
+      wlen  = len(word)
+      if (wlen + myLen > width):
+        sA[-1] = "\n"
+        sA.append(indent)
+        myLen = len(indent)
+      sA.append(word)
+      sA.append(" ")
+      myLen += wlen+1
+
+  sA[-1] = ""
+  return "".join(sA)
+
+
 class TIPSdb(object):
   def __init__(self, host, user, passwd, db):
     self.__conn   = None
@@ -21,6 +82,10 @@ class TIPSdb(object):
     
 
   def randomTip(self):
+    r, twidth = getTerminalSize()
+
+
+
     cur = self.__conn.cursor()
     cur.execute("select count(*) from tips")
     rows  = cur.fetchall()
@@ -34,7 +99,7 @@ class TIPSdb(object):
     print("----------")
     print("Tip %d:" % idx)
     print("----------\n")
-    print( rows[0][0],"\n")
+    print( fillWords("",rows[0][0],twidth),"\n")
 
 
 
