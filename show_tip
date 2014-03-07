@@ -56,7 +56,7 @@ def fillWords(indent, txt, twidth):
     wordA = line.split("\s+")
     for word in wordA:
       wlen  = len(word)
-      if (wlen + myLen > width):
+      if (wlen + myLen > twidth):
         sA[-1] = "\n"
         sA.append(indent)
         myLen = len(indent)
