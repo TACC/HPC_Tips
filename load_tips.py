@@ -30,6 +30,8 @@ class LD_TIPS(object):
 
     with self.__conn:
       cur = self.__conn.cursor()
+      txt = txt.replace("'",r"\'")
+
       cur.execute("INSERT INTO tips(msg) VALUES('%s')" % txt)
 
 
@@ -40,7 +42,7 @@ class LD_TIPS(object):
 def main():
 
   host   = "localhost"
-  user   = "testuser"
+  user   = "tipBuilder"
   passwd = "test623"
   db     = "HPCTips"
 

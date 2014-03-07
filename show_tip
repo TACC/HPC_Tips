@@ -67,8 +67,10 @@ def fillWords(indent, txt, twidth):
     sA.append(indent)
     myLen = len(indent)
 
-  sA[-1] = ""
-  sA[-2] = ""
+  if (sA): 
+    sA[-1] = ""
+    sA[-2] = ""
+
   return "".join(sA)
 
 
