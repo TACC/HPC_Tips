@@ -47,13 +47,13 @@ def getTerminalSize():
   return (25, 80)
 
 def fillWords(indent, txt, twidth):
-  lineA = txt:split("\n")
+  lineA = txt.split("\n")
   
   sA    = []
   sA.append(indent)
   myLen = len(indent)
   for line in lineA:
-    wordA = line:split("\s+")
+    wordA = line.split("\s+")
     for word in wordA:
       wlen  = len(word)
       if (wlen + myLen > width):
