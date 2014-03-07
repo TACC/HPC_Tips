@@ -114,8 +114,8 @@ class TIPSdb(object):
 def main():
 
   host   = "localhost"
-  user   = "testuser"
-  passwd = "test623"
+  user   = "tipReader"
+  passwd = "tipReader123"
   db     = "HPCTips"
   
   tips   = TIPSdb(host, user, passwd, db)
