@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+# -*- python -*-
+from __future__ import print_function
+import os, sys, re
+import MySQLdb as mdb
+import warnings
+import random
+warnings.filterwarnings("ignore", "Unknown table.*")
+
+class TIPSdb(object):
+  def __init__(self, host, user, passwd, db):
+    self.__conn   = None
+    self.__host   = host
+    self.__user   = user
+    self.__passwd = passwd
+    self.__db     = db
+
+  def db_connect(self):
+    self.__conn = mdb.connect(self.__host, self.__user,
+                              self.__passwd, self.__db)
+    
+
+  def randomTip(self):
+    cur = self.__conn.cursor()
+    cur.execute("select count(*) from tips")
+    rows  = cur.fetchall()
+    num   = rows[0][0]
+    idx   = random.randint(1,num)
+
+    cur.execute("select msg from tips where tips_id = %d" % idx)
+
+    rows  = cur.fetchall()
+
+    print("----------")
+    print("Tip %d:" % idx)
+    print("----------\n")
+    print( rows[0][0],"\n")
+
+
+
+  def db_disconnect(self):
+    self.__conn.close()
+
+def main():
+
+  host   = "localhost"
+  user   = "testuser"
+  passwd = "test623"
+  db     = "HPCTips"
+  
+  tips   = TIPSdb(host, user, passwd, db)
+
+  tips.db_connect()
+
+  tips.randomTip()
+  
+  tips.db_disconnect()
+
+if ( __name__ == '__main__'): main()

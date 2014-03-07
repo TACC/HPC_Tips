@@ -1,0 +1,22 @@
+##----
+Run "dos2unix" command to convert files from DOS format to Unix format when you transfer them to TACC resources. 
+##----
+To remove the extra ^M character from files transferred to Unix system from Windows:
+1) Press Esc and type ":"
+2) %s/(ctrl-v)(ctrl-m)//g
+##----
+Use the command "du -sh" for finding out the total disk usage.
+##----
+Use the command "du -h --max-depth=1" to find out which directory has the largest file size.
+##----
+Use "!!" to repeat the most recent command.
+##----
+Use the command "cat -e -t -v Makefile" to check if you have proper usage of tabs in the Makefile.
+##----
+Add the following include statements in your Makefile for compiling PETSc code:
+
+include ${PETSC_DIR}/conf/variables
+include ${PETSC_DIR}/conf/rules
+##----
+To restrict the memory that a JVM can use on a login node on Stampede, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G"
+##----
