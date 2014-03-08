@@ -45,11 +45,11 @@ void printwrap(const char *s, int lineSize, const char *prefix)
             printf("%c", *head++); 
           printf("\n");
 
-          if (isLf)
-            head++;  // jump the line feed
+          //if (isLf)
+          //  head++;  // jump the line feed
 
-          while (*head!=0 && *head==' ')
-             head++; // clear the leading space
+          //while (*head!=0 && *head==' ')
+          //   head++; // clear the leading space
 
           lastSpace = pos = 0;
 
