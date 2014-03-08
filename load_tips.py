@@ -6,7 +6,7 @@ import MySQLdb as mdb
 import warnings
 warnings.filterwarnings("ignore", "Unknown table.*")
 
-dividerPat = re.compile(r'^##\-\-\-')
+dividerPat = re.compile(r'^##\-\-*$')
 
 class LD_TIPS(object):
   def __init__(self, host, user, passwd, db):
@@ -71,7 +71,7 @@ def main():
 
       tips.insertTip(txt)
       sA  = []
-    else:
+    elif (not m)
       sA.append(s)
   
   tips.db_disconnect()
