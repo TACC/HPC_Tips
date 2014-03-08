@@ -52,10 +52,9 @@ Execute "du -sch *" to see your disk usage by directory.
 ##----
 An alias to display your $PATH with each directory on its own line: alias prettypath="echo \$PATH | sed 's/:/\n/g'"
 ##----
-Want a robust approach to backup, transfer, and version control? Give git a try --q you'll be glad you did.
+Want a robust approach to backup, transfer, and version control? Give git a try, you'll be glad you did.
 ##----
-Tired of all that typing? Did you know you can type "ml" instead of
-"module list" and  "ml git" instead of "module load git"
+Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"
 ##----
 Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
 ##----
@@ -64,27 +63,33 @@ A newer version of Perl is available by running the command "module load perl"
 HPC Python? Yes! We have the Enthought distribution "module load python"
 ##----
 Did you know that you can find all the bio codes installed on our system by doing:
+
        $ module keyword bio
 ##----
-You can have many named collection of modules: Do "module save collectionA"
-to create and "module restore collectionA" to restore.
+You can have many named collection of modules: Do "module save collectionA" to create and "module restore collectionA" to restore.
 ##----
 To find out more about a particular module do: "module help <name>"
 ##----
 Type "module help" to know more about the Lmod module system.
 ##----
 Did you know that you can only have one version a module loaded at a time:
+
     $ module load foo/1.2; module load foo/1.4
+
 only foo/1.4 will be loaded.
 ##----
-Did you know that:  "ml -foo -bar baz qux"
-is the same as:     "module rm foo bar; module load baz qux"
+Did you know that:
+
+    $ ml -foo -bar baz qux
+
+is the same as:
+
+    $ module rm foo bar; module load baz qux
+
 ##----
-Did you know that the "settarg" module provides TARG that dynamically
-changes as modules are changed.  See "module help settarg" for more info.
+Did you know that the "settarg" module provides TARG that dynamically changes as modules are changed.  See "module help settarg" for more info.
 ##----
 Type "module spider XXXXX" to find all the version of module XXXXX.
 ##----
-Chapters 2 thru 5 to the Gnu Make Manual provide a great introduction for
-any one wishing to understand this powerful tool. See "info make".
+Chapters 2 thru 5 to the Gnu Make Manual provide a great introduction for any one wishing to understand this powerful tool. See "info make".
 ##----
