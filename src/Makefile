@@ -1,4 +1,5 @@
 export CPATH=/usr/include/mysql
+export LIBRARY_PATH=/usr/lib64/mysql
 CFLAGS := -g -O0
 
 CC := gcc

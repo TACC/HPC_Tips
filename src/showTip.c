@@ -136,6 +136,7 @@ int main(int argc, char **argv)
              "Tip : %d\n"
              "-------------\n\n",idx);
       printwrap(row[0], twidth, NULL);
+      printf("\n");
       break;
     }
   
