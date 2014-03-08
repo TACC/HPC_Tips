@@ -132,9 +132,9 @@ int main(int argc, char **argv)
 
   while ((row = mysql_fetch_row(result))) 
     {
-      printf("-------------\n"
-             "Tip : %d\n"
-             "-------------\n\n",idx);
+      printf("\n-------------\n"
+             "Tip : %d"
+             "\n-------------\n\n",idx);
       printwrap(row[0], twidth, NULL);
       printf("\n");
       break;
