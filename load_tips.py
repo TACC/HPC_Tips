@@ -71,7 +71,7 @@ def main():
 
       tips.insertTip(txt)
       sA  = []
-    elif (not m)
+    elif (not m):
       sA.append(s)
   
   tips.db_disconnect()
