@@ -50,7 +50,7 @@ def main():
 
   tips.db_connect()
 
-  fn     = "atips.txt"
+  fn     = "approved_tips.txt"
   f      = open (fn,"r")
   lines  = f.readlines()
   f.close()
@@ -64,10 +64,6 @@ def main():
     if (m and sA):
       txt = "\n".join(sA)
       idx = idx + 1
-      
-      print(idx, ":")
-      print(txt,"\n")
-      
 
       tips.insertTip(txt)
       sA  = []
