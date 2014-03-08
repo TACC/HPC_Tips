@@ -9,10 +9,15 @@
 
 #define BUFSIZE 256
 
+int issueWarning = 1;
+
 void finish_with_error(MYSQL *con)
 {
-  fprintf(stderr, "%s\n", mysql_error(con));
-  mysql_close(con);
+  if (issueWarning)
+    {
+      fprintf(stderr, "%s\n", mysql_error(con));
+      mysql_close(con);
+    }
   exit(1);        
 }
 
@@ -70,6 +75,8 @@ int main(int argc, char **argv)
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
   
+  if (argc > 0 && argv[1] == "--nowarn")
+    issueWarning = 0;
 
   MYSQL *con = mysql_init(NULL);
   
@@ -93,7 +100,6 @@ int main(int argc, char **argv)
   
   if (result == NULL) 
     finish_with_error(con);
-
 
   int num_fields = mysql_num_fields(result);
 
