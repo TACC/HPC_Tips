@@ -75,7 +75,7 @@ int main(int argc, char **argv)
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
   
-  if (argc > 0 && argv[1] == "--nowarn")
+  if (argc > 0 && strcmp(argv[1], "--nowarn") == 0)
     issueWarning = 0;
 
   MYSQL *con = mysql_init(NULL);
