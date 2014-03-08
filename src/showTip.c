@@ -140,6 +140,12 @@ int main(int argc, char **argv)
       break;
     }
   
+  printf("\n--------------------------------------------------------\n"
+	 "  Please send any tips you have to tips@tacc.utexas.edu\n\n"
+	 "  To stop do: touch ~/.no.tips"
+	 "\n--------------------------------------------------------\n"
+  printf("\n"
+
   mysql_free_result(result);
   mysql_close(con);
   
