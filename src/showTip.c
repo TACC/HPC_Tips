@@ -147,7 +147,7 @@ int main(int argc, char **argv)
     }
   
   
-  if (idx < 0 or idx > numE)
+  if (idx < 0 || idx > numE)
     {
       /* (3) Pick random tip: idx */
       srand(time(NULL));
