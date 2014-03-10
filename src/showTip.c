@@ -9,10 +9,15 @@
 
 #define BUFSIZE 256
 
+int issueWarning = 1;
+
 void finish_with_error(MYSQL *con)
 {
-  fprintf(stderr, "%s\n", mysql_error(con));
-  mysql_close(con);
+  if (issueWarning)
+    {
+      fprintf(stderr, "%s\n", mysql_error(con));
+      mysql_close(con);
+    }
   exit(1);        
 }
 
@@ -43,8 +48,8 @@ void printwrap(const char *s, int lineSize, const char *prefix)
           if (isLf)
             head++;  // jump the line feed
 
-          while (*head!=0 && *head==' ')
-            head++; // clear the leading space
+          //while (*head!=0 && *head==' ')
+          //   head++; // clear the leading space
 
           lastSpace = pos = 0;
 
@@ -58,18 +63,55 @@ void printwrap(const char *s, int lineSize, const char *prefix)
   printf("%s\n", head);
 }
  
+void printUsage(const char* cmd)
+{
+  printf("%s [options]\n\n"
+	 "Options:\n"
+	 " -h -?            : Print usage\n"
+	 " -w               : do not print warnings\n"
+	 " -n num           : print tip num\n",
+	 cmd);
+}
 
 int main(int argc, char **argv)
 {      
   struct winsize w;
   char           cmd[BUFSIZE];
-  int            i, twidth;
+  int            i, twidth, opt;
   int            numE = 0;
+  int            idx  = -1;
+  int            help = 0;
   const char*    host = "rios.tacc.utexas.edu";
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
   
+  while ( (opt = getopt(argc, argv, "n:wh?")) != -1)
+    {
+      switch (opt)
+	{
+	case 'n':
+	  idx = strtol(optarg, (char **) NULL, 10);
+	  break;
+	case 'w':
+	  issueWarning = 0;
+	  break;
+	case 'h':
+	case '?':
+	  help = 1;
+	  break;
+	}
+    }
+	  
+
+
+  if (help)
+    {
+      printUsage(argv[0]);
+      return 0;
+    }
+
+
 
   MYSQL *con = mysql_init(NULL);
   
@@ -94,7 +136,6 @@ int main(int argc, char **argv)
   if (result == NULL) 
     finish_with_error(con);
 
-
   int num_fields = mysql_num_fields(result);
 
   MYSQL_ROW row;
@@ -106,9 +147,12 @@ int main(int argc, char **argv)
     }
   
   
-  /* (3) Pick random tip: idx */
-  srand(time(NULL));
-  int idx = rand() % (numE - 1) + 1;
+  if (idx < 0 || idx > numE)
+    {
+      /* (3) Pick random tip: idx */
+      srand(time(NULL));
+      int idx = rand() % (numE - 1) + 1;
+    }
 
   /* (4) get term width */
   
@@ -140,6 +184,12 @@ int main(int argc, char **argv)
       break;
     }
   
+  printf("\n--------------------------------------------------------\n"
+	 "  Please send any tips you have to tips@tacc.utexas.edu\n\n"
+	 "  To stop do: touch ~/.no.tips"
+	 "\n--------------------------------------------------------\n");
+
+
   mysql_free_result(result);
   mysql_close(con);
   
