@@ -20,7 +20,7 @@ include ${PETSC_DIR}/conf/rules
 ##----
 To restrict the memory that a JVM can use on a login node on Stampede, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G"
 ##----
-Don't get caught flat-footed by scheduled maintenance - subscribe to announcements at xxxxxxx.
+Don't get caught flat-footed by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe
 ##----
 Windows user looking for robust approach to accessing Linux resources? Try running Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare player running on your desktop.
 ##----
@@ -93,3 +93,29 @@ Type "module spider XXXXX" to find all the version of module XXXXX.
 ##----
 Chapters 2 thru 5 to the Gnu Make Manual provide a great introduction for any one wishing to understand this powerful tool. See "info make".
 ##----
+If you want to see just the available default modules do:
+
+   $ module -d avail
+##----
+If you want to see all the available module that contain the string "abc" do:
+
+   $ module avail abc
+
+This works for spider and list as well.
+##----
+You can do simple regular expression searches:
+
+   $ module -r spider '^p'
+
+This will list all the modules that start with the letter p.
+##----
+You can save more than one collection of modules, just give it a name:
+
+   $ module save projectA
+
+You can restore this collection of modules at any time by doing:
+
+   $ module restore projectA
+##----
+
+   
