@@ -11,7 +11,7 @@
 
 #define BUFSIZE 256
 
-int issueWarning = 0;
+int issueWarning = 1;
 
 void finish_with_error(MYSQL *con)
 {
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
 	  idx = strtol(optarg, (char **) NULL, 10);
 	  break;
 	case 'w':
-	  issueWarning = 1;
+	  issueWarning = 0;
 	  break;
 	case 'h':
 	case '?':
