@@ -114,3 +114,5 @@ You can restore this collection of modules at any time by doing:
 
    $ module restore projectA
 ##----
+It usually takes a minimum of 30 minutes for new passwords to get propagated across TACC systems.
+##----
