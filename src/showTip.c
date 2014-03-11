@@ -81,7 +81,7 @@ int main(int argc, char **argv)
   int            numE = 0;
   int            idx  = -1;
   int            help = 0;
-  const char*    host = "rios.tacc.utexas.edu";
+  const char*    host = "tacc-stats.tacc.utexas.edu";
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";

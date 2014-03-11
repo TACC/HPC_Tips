@@ -87,7 +87,6 @@ Did you know that:
 is the same as:
 
     $ module rm foo bar; module load baz qux
-
 ##----
 Did you know that the "settarg" module provides TARG that dynamically changes as modules are changed.  See "module help settarg" for more info.
 ##----
