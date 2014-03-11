@@ -151,7 +151,7 @@ int main(int argc, char **argv)
     {
       /* (3) Pick random tip: idx */
       srand(time(NULL));
-      int idx = rand() % (numE - 1) + 1;
+      idx = rand() % (numE - 1) + 1;
     }
 
   /* (4) get term width */
