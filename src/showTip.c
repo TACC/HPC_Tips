@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <signal.h>
 
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -9,13 +11,13 @@
 
 #define BUFSIZE 256
 
-int issueWarning = 1;
+int issueWarning = 0;
 
 void finish_with_error(MYSQL *con)
 {
   if (issueWarning)
     {
-      fprintf(stderr, "%s\n", mysql_error(con));
+      fprintf(stderr, "RTM %s\n", mysql_error(con));
       mysql_close(con);
     }
   exit(1);        
@@ -63,6 +65,14 @@ void printwrap(const char *s, int lineSize, const char *prefix)
   printf("%s\n", head);
 }
  
+void timer_handler(int sig)
+{
+  static int count = 0;
+  printf("timer expired %d times\n", ++count);
+  exit(0);
+}
+
+
 void printUsage(const char* cmd)
 {
   printf("%s [options]\n\n"
@@ -86,6 +96,25 @@ int main(int argc, char **argv)
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
   
+  struct sigaction sa;
+  struct itimerval timer;
+
+  /* Install timer_handler as the signal handler for SIGVTALRM. */
+  memset (&sa, 0, sizeof (sa));
+  sa.sa_handler = &timer_handler;
+  sigaction (SIGVTALRM, &sa, NULL);
+
+  /* Configure the timer to expire after 250 msec... */
+  timer.it_value.tv_sec = 0;
+  timer.it_value.tv_usec = 250000;
+  /* ... and every 250 msec after that. */
+  timer.it_interval.tv_sec = 0;
+  timer.it_interval.tv_usec = 250000;
+  /* Start a virtual timer. It counts down whenever this process is
+     executing. */
+  setitimer (ITIMER_VIRTUAL, &timer, NULL);
+  
+
   while ( (opt = getopt(argc, argv, "n:wh?")) != -1)
     {
       switch (opt)
@@ -94,7 +123,7 @@ int main(int argc, char **argv)
 	  idx = strtol(optarg, (char **) NULL, 10);
 	  break;
 	case 'w':
-	  issueWarning = 0;
+	  issueWarning = 1;
 	  break;
 	case 'h':
 	case '?':
@@ -102,7 +131,6 @@ int main(int argc, char **argv)
 	  break;
 	}
     }
-	  
 
 
   if (help)

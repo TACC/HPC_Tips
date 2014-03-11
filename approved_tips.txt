@@ -1,9 +1,5 @@
 ##----
-Run "dos2unix" command to convert files from DOS format to Unix format when you transfer them to TACC resources. 
-##----
-To remove the extra ^M character from files transferred to Unix system from Windows:
-1) Press Esc and type ":"
-2) %s/(ctrl-v)(ctrl-m)//g
+Run "dos2unix" command to convert files from Windows/DOS format to Unix format when you transfer them to TACC resources. 
 ##----
 Use the command "du -sh" for finding out the total disk usage.
 ##----
@@ -118,5 +114,3 @@ You can restore this collection of modules at any time by doing:
 
    $ module restore projectA
 ##----
-
-   
