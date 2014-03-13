@@ -5,7 +5,7 @@ Use the command "du -sh" for finding out the total disk usage.
 ##----
 Use the command "du -h --max-depth=1" to find out which directory has the largest file size.
 ##----
-Use "!!" to repeat the most recent command.
+Use "!!" to repeat the most recent command. Use "!mpi" for the most recent command that started with "mpi" and "!?mpi?" for the most recent one that contained "mpi".
 ##----
 Use the command "cat -e -t -v Makefile" to check if you have proper usage of tabs in the Makefile.
 ##----
@@ -115,4 +115,38 @@ You can restore this collection of modules at any time by doing:
    $ module restore projectA
 ##----
 It usually takes a minimum of 30 minutes for new passwords to get propagated across TACC systems.
+##----
+Make sure that your ~/.ssh directory is only readable by you.  Otherwise this will disable your RSA keys and prevent normal access to compute nodes.
+##----
+If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
+##----
+To give your MPI tasks more memory, reduce the number of tasks per node: "-N 2 -n 16", for example, spreads your 16 tasks across 2 nodes, providing about twice as much memory per task as "-N 1 -n 16".
+##----
+If you like to work with several login sessions open, remember that changes to your environment (e.g. module commands) affect only the shell (login session) in which you make the changes.
+##----
+If you compile with "-mmic" you can launch your code from the host -- the runtime environment will transfer it to the MIC for you.
+##----
+$HOME, $WORK, and $SCRATCH are available to native MIC codes (and to users who ssh to a MIC), but are not accessible from offloaded code. The system aliases cdw and cds are not available on the MIC.
+##----
+View pdf files on stampede with xpdf.
+##----
+Linking to TACC packages? You don't have to remember their location. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
+##----
+Want to keep tabs on your job?
+
+   $ watch squeue -u yourname
+##----
+Not sure if TACC has a package you're looking for?
+
+  https://www.tacc.utexas.edu/resources/software
+
+will tell you.
+##----
+Do "module spider" to get a complete list of all installed software on the system.
+##----
+Not sure which TACC machine you're logged into? Type "hostname -f".
+##----
+To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the following line in your source:
+
+  \usepackage[pdftex,colorlinks]{hyperref}
 ##----

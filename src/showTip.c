@@ -30,6 +30,7 @@ void printwrap(const char *s, int lineSize, const char *prefix)
 
   pos = lastSpace = 0;
 
+  printf("   ");
   while(head[pos]!=0)
     {
 
@@ -45,7 +46,7 @@ void printwrap(const char *s, int lineSize, const char *prefix)
 
           while(*head!=0 && lastSpace-- > 0) 
             printf("%c", *head++); 
-          printf("\n");
+          printf("\n  ");
 
           if (isLf)
             head++;  // jump the line feed
@@ -95,6 +96,7 @@ int main(int argc, char **argv)
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
+  const char*    hlp  = "\"module help tips\" shows how to disable";
   
   struct sigaction sa;
   struct itimerval timer;
@@ -185,7 +187,7 @@ int main(int argc, char **argv)
   /* (4) get term width */
   
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-  twidth = w.ws_col - 2;
+  twidth = w.ws_col - 3;
 
 
   /* (4) Select idx tip */
@@ -204,20 +206,12 @@ int main(int argc, char **argv)
 
   while ((row = mysql_fetch_row(result))) 
     {
-      printf("\n-------------\n"
-             "Tip : %d"
-             "\n-------------\n\n",idx);
+      printf("\nTip %d   (%s)\n\n", idx, hlp);
       printwrap(row[0], twidth, NULL);
       printf("\n");
       break;
     }
   
-  printf("\n--------------------------------------------------------\n"
-	 "  Please send any tips you have to tips@tacc.utexas.edu\n\n"
-	 "  To stop do: touch ~/.no.tips"
-	 "\n--------------------------------------------------------\n");
-
-
   mysql_free_result(result);
   mysql_close(con);
   
