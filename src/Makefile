@@ -7,15 +7,21 @@ CC := gcc
 showTip: showTip.o
 	$(LINK.c) -o $@ $^ -lmysqlclient
 
-showTip.o: showTip.c
+showTip.o: showTip.c version.h
 
-neat:
+neat:  neat_only
+
+neat_only:
 	$(RM) *~
 
-clean: neat
+clean: neat clean_only
+
+clean_only:
 	$(RM) *.o
 
-clobber: clean
+clobber: clean clobber_only
+
+clobber_only:
 	$(RM) showTip
 
 

@@ -6,6 +6,7 @@
 
 #include "my_global.h"
 #include "mysql.h"
+#include "version.h"
 
 #define BUFSIZE 256
 
@@ -68,6 +69,7 @@ void printUsage(const char* cmd)
   printf("%s [options]\n\n"
 	 "Options:\n"
 	 " -h -?            : Print usage\n"
+	 " -v               : Print version\n"
 	 " -w               : do not print warnings\n"
 	 " -n num           : print tip num\n",
 	 cmd);
@@ -81,15 +83,19 @@ int main(int argc, char **argv)
   int            numE = 0;
   int            idx  = -1;
   int            help = 0;
+  int            ver  = 0;
   const char*    host = "rios.tacc.utexas.edu";
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
   
-  while ( (opt = getopt(argc, argv, "n:wh?")) != -1)
+  while ( (opt = getopt(argc, argv, "vn:wh?")) != -1)
     {
       switch (opt)
 	{
+	case 'v':
+	  ver = 1
+	  break;
 	case 'n':
 	  idx = strtol(optarg, (char **) NULL, 10);
 	  break;
@@ -104,14 +110,18 @@ int main(int argc, char **argv)
     }
 	  
 
+  if (ver)
+    {
+      printf("showTip Version: %s\n",VERSION);
+      return 0;
+    }
+
 
   if (help)
     {
       printUsage(argv[0]);
       return 0;
     }
-
-
 
   MYSQL *con = mysql_init(NULL);
   

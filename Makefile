@@ -4,13 +4,13 @@ all:
 
 neat:
 	$(RM) *~
-	cd src; make $@
+	cd src; make $@_only
 
 clean:  neat
-	cd src; make $@
+	cd src; make $@_only
 
 clobber: clean
-	cd src; make $@
+	cd src; make $@_only
 
 
 
@@ -20,6 +20,7 @@ gittag:
           if [ -s /tmp/tips$$$$ ]; then                                              \
 	    echo "All files not checked in => try again";                            \
 	  else                                                                       \
+	    echo $(TAG)                                           >  .version;       \
 	    echo '#define VERSION "$(TAG)"'                       >  $(VERSION_SRC); \
             git commit -m "moving to TAG_VERSION $(TAG)"             $(VERSION_SRC); \
             git tag -a $(TAG) -m 'Setting TAG_VERSION to $(TAG)'                   ; \
