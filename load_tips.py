@@ -50,7 +50,7 @@ def main():
 
   tips.db_connect()
 
-  fn     = "approved_tips.txt"
+  fn     = "approved.tips"
   f      = open (fn,"r")
   lines  = f.readlines()
   f.close()

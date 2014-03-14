@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <signal.h>
 
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -16,7 +18,7 @@ void finish_with_error(MYSQL *con)
 {
   if (issueWarning)
     {
-      fprintf(stderr, "%s\n", mysql_error(con));
+      fprintf(stderr, "RTM %s\n", mysql_error(con));
       mysql_close(con);
     }
   exit(1);        
@@ -29,6 +31,7 @@ void printwrap(const char *s, int lineSize, const char *prefix)
 
   pos = lastSpace = 0;
 
+  printf("   ");
   while(head[pos]!=0)
     {
 
@@ -44,7 +47,7 @@ void printwrap(const char *s, int lineSize, const char *prefix)
 
           while(*head!=0 && lastSpace-- > 0) 
             printf("%c", *head++); 
-          printf("\n");
+          printf("\n  ");
 
           if (isLf)
             head++;  // jump the line feed
@@ -64,6 +67,14 @@ void printwrap(const char *s, int lineSize, const char *prefix)
   printf("%s\n", head);
 }
  
+void timer_handler(int sig)
+{
+  static int count = 0;
+  printf("timer expired %d times\n", ++count);
+  exit(0);
+}
+
+
 void printUsage(const char* cmd)
 {
   printf("%s [options]\n\n"
@@ -84,11 +95,31 @@ int main(int argc, char **argv)
   int            idx  = -1;
   int            help = 0;
   int            ver  = 0;
-  const char*    host = "rios.tacc.utexas.edu";
+  const char*    host = "tacc-stats.tacc.utexas.edu";
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
+  const char*    hlp  = "\"module help tips\" shows how to disable";
   
+  struct sigaction sa;
+  struct itimerval timer;
+
+  /* Install timer_handler as the signal handler for SIGVTALRM. */
+  memset (&sa, 0, sizeof (sa));
+  sa.sa_handler = &timer_handler;
+  sigaction (SIGVTALRM, &sa, NULL);
+
+  /* Configure the timer to expire after 250 msec... */
+  timer.it_value.tv_sec = 0;
+  timer.it_value.tv_usec = 250000;
+  /* ... and every 250 msec after that. */
+  timer.it_interval.tv_sec = 0;
+  timer.it_interval.tv_usec = 250000;
+  /* Start a virtual timer. It counts down whenever this process is
+     executing. */
+  setitimer (ITIMER_VIRTUAL, &timer, NULL);
+  
+
   while ( (opt = getopt(argc, argv, "vn:wh?")) != -1)
     {
       switch (opt)
@@ -108,7 +139,6 @@ int main(int argc, char **argv)
 	  break;
 	}
     }
-	  
 
   if (ver)
     {
@@ -161,13 +191,13 @@ int main(int argc, char **argv)
     {
       /* (3) Pick random tip: idx */
       srand(time(NULL));
-      int idx = rand() % (numE - 1) + 1;
+      idx = rand() % (numE - 1) + 1;
     }
 
   /* (4) get term width */
   
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-  twidth = w.ws_col - 2;
+  twidth = w.ws_col - 3;
 
 
   /* (4) Select idx tip */
@@ -186,20 +216,12 @@ int main(int argc, char **argv)
 
   while ((row = mysql_fetch_row(result))) 
     {
-      printf("\n-------------\n"
-             "Tip : %d"
-             "\n-------------\n\n",idx);
+      printf("\nTip %d   (%s)\n\n", idx, hlp);
       printwrap(row[0], twidth, NULL);
       printf("\n");
       break;
     }
   
-  printf("\n--------------------------------------------------------\n"
-	 "  Please send any tips you have to tips@tacc.utexas.edu\n\n"
-	 "  To stop do: touch ~/.no.tips"
-	 "\n--------------------------------------------------------\n");
-
-
   mysql_free_result(result);
   mysql_close(con);
   
