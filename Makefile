@@ -14,6 +14,9 @@ clobber: clean
 
 
 
+dist:
+	git archive --prefix=hpc_tips-`cat .version`/ master | bzip2 > hpc_tips-`cat .version`.tar.bz2
+
 gittag:
         ifneq ($(TAG),)
 	  @git status -s > /tmp/tips$$$$;                                            \
