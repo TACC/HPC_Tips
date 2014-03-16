@@ -174,8 +174,7 @@ Sometime you may end up repeating the previous commands for various reasons. Fol
 ##----
 Sometime you find repeating the three commands over and over again.  If you type the up-arrow key three times, then it type Ctrl-O (not Ctrl-0).  It will run the current command and bring the next one in list.  This can be repeated as long as you like.
 ##----
-Want to execute a specific command from history ?
-No problem, you just have to type "history | more" and look at the corresponding number then use !n (n being the number corresponding to the command line that you want to repeat).
+To find a specific command from your history, you can type "history | more" and look at the corresponding number then use !n (n being the number corresponding to the command line that you want to repeat).
 ##----
 If you want to know the process mapping of MVAPICH2, then use "export MV2_SHOW_CPU_BINDING=1" inside your script or before to launch your job.
 ##----
