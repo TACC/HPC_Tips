@@ -116,7 +116,7 @@ You can restore this collection of modules at any time by doing:
 ##----
 It usually takes a minimum of 30 minutes for new passwords to get propagated across TACC systems.
 ##----
-Make sure that your ~/.ssh directory is only readable by you.  Otherwise this will disable your RSA keys and prevent normal access to compute nodes.
+Make sure that your $HOME directory is only writable by you and ~/.ssh directory is only readable by you.  Otherwise this will disable your RSA keys and prevent normal access to compute nodes.
 ##----
 If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
 ##----
@@ -134,7 +134,7 @@ Linking to TACC packages? You don't have to remember their location. Just use $T
 ##----
 Want to keep tabs on your job?
 
-   $ watch squeue -u yourname
+   $ watch -n 10 squeue -u yourname
 ##----
 Not sure if TACC has a package you're looking for?
 
@@ -149,4 +149,43 @@ Not sure which TACC machine you're logged into? Type "hostname -f".
 To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the following line in your source:
 
   \usepackage[pdftex,colorlinks]{hyperref}
+##----
+You can switch back to the last directory by doing:
+    $ cd -
+##----
+Tired of typing that long directory name, use tab-completion instead:
+    $ cd long<TAB>          becomes:
+    $ cd longDirectoryName
+##----
+You can switch back to your home directory in the following three ways:
+    $ cd $HOME
+    $ cd ~
+    $ cd
+##----
+No need to retype previous commands, you can use  Ctrl+R to search for them.
+##----
+We are doing full backup every months of your $HOME directory, with  an incremental backup every days. If you want to recover a file, you need to submit a ticket. There is no way for users to recover files.  If you request a file recovery, please provide the name, the date and an approximation of the time of the deletion.
+##----
+Sometime you may end up repeating the previous commands for various reasons. Following are the 4 different ways to repeat the last executed command.
+  * Use the up arrow to view the previous command and press enter to execute it.
+  * Type !! and press enter from the command line
+  * Type !-1 and press enter from the command line.
+  * Press Ctrl+P will display the previous command, press enter to execute it
+##----
+Sometime you find repeating the three commands over and over again.  If you type the up-arrow key three times, then it type Ctrl-O (not Ctrl-0).  It will run the current command and bring the next one in list.  This can be repeated as long as you like.
+##----
+Want to execute a specific command from history ?
+No problem, you just have to type "history | more" and look at the corresponding number then use !n (n being the number corresponding to the command line that you want to repeat).
+##----
+If you want to know the process mapping of MVAPICH2, then use "export MV2_SHOW_CPU_BINDING=1" inside your script or before to launch your job.
+##----
+A code built with Intel MPI won't run with MVAPICH2 and vice versa! Your build environment must match your submit environment.
+##----
+If you have an MPI application with threads, don't forget to use tacc_affinity! See the system user guide for more details. 
+##----
+You can only use Intel compilers on the login nodes and the development queue. If you try on normal queue, it will fail!
+##----
+You can use "tail -f file_name" to follow the output to a file.
+##----
+You can create a multiple sub-directories at one time with "mkdir -p a/b/c".
 ##----
