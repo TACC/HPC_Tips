@@ -188,3 +188,37 @@ You can use "tail -f file_name" to follow the output to a file.
 ##----
 You can create a multiple sub-directories at one time with "mkdir -p a/b/c".
 ##----
+You can find the newest file in a directory with "ls -ltr".  It will be the last file in the list.
+##----
+You can list a directory sorted by file size "ls -lShr". The "-h" option reports sizes in the nearest bytes, KiloBytes, MegaBytes, etc.
+##----
+Normally files that begin with a "." are not listed by "ls".  You can list those hidden files by: "ls -a".
+##----
+The option -F to ls adds an extra character to mark file type: '/' for directories '*' executables and '@' for symbolic links.
+##----
+Creating shell aliases can make remembering the all the options to command like "ls" easier:
+  * ll  => ls -al
+  * lf  => ls -aFC
+  * lt  => ls -alhtr
+##----
+Keeping all sources up-to-date in all locations can be difficult.  Using "git" or similar version control software can make this simple.  Simply check-in and push locally, then pull remotely.  You'll wonder how you lived without it!
+##----
+DRY:  Don't repeat yourself!  Avoid when you can, having repeating the same steps in multiple places, if only to protect yourself from having to find all the places when you need to make a change six months from now (cheerfully stolen from "The Pragmatic Programmer").
+##----
+On a lustre file system (like $WORK, and $SCRATCH) use "lfs find" instead of "find" to search for files.  It is much faster:
+
+   $ lfs find <directory/file>
+##----
+Bash and Zsh support string manipulation tools:  HOST="sam.domain.com"; SHOST=${HOST%%.*} => sam. Google "bash string manipulation" for more details.
+##----
+Did you know that emacs and vim support spell checking?
+##----
+Did you know that both emacs and vim support color syntax highlighting?
+##----
+Emacs support etags (a code database.)  M-. will jump to a function definition, M-x tags-query-replace can change strings throughout a code tree.
+##----
+Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
+##----
+
+
+
