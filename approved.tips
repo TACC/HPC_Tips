@@ -219,6 +219,3 @@ Emacs support etags (a code database.)  M-. will jump to a function definition, 
 ##----
 Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
 ##----
-
-
-
