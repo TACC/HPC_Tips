@@ -116,7 +116,10 @@ You can restore this collection of modules at any time by doing:
 ##----
 It usually takes a minimum of 30 minutes for new passwords to get propagated across TACC systems.
 ##----
-Make sure that your $HOME directory is only writable by you and ~/.ssh directory is only readable by you.  Otherwise this will disable your RSA keys and prevent normal access to compute nodes.
+If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh directories have the right permissions.  The following commands will remedy the situation:
+  $ chmod go-w $HOME $HOME/.ssh
+  $ chmod 600 $HOME/.ssh/authorized_keys
+  $ chown `whoami` $HOME/.ssh/authorized_keys
 ##----
 If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
 ##----
@@ -219,6 +222,7 @@ Emacs support etags (a code database.)  M-. will jump to a function definition, 
 ##----
 Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
 ##----
-
-
-
+In vi, typing "." will repeat the last edit. Try it!
+##----
+When in doubt, read the fine manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
+##----
