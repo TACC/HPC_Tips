@@ -3,7 +3,7 @@ Run "dos2unix" command to convert files from Windows/DOS format to Unix format w
 ##----
 Use the command "du -sh" to see total disk usage for the current directory.
 ##----
-Use the command "du -h --max-depth=1" to disk usage for all directories in the current directory.
+Use the command "du -h --max-depth=1" to see disk usage for all directories in the current directory.
 ##----
 Use "!!" to repeat the most recent command. Use "!mpi" to repeat the most recent command that started with "mpi" and "!?mpi?" for the most recent one that contained "mpi".
 ##----
@@ -50,7 +50,7 @@ An alias to display your $PATH with each directory on its own line:
 
    $ alias prettypath="echo \\$PATH | sed 's/:/\\n/g'"
 ##----
-Want a robust approach to backup, transfer, and version control? Give git a try; you'll be glad you did.
+Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
 ##----
 Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
 ##----
@@ -137,10 +137,6 @@ Want to keep tabs on your job?
 ##----
 Not sure if TACC has a package you're looking for?
 See https://www.tacc.utexas.edu/resources/software.
-
-  https://www.tacc.utexas.edu/resources/software
-
-will tell you.
 ##----
 Execute "module spider" to get a complete list of all installed software on the system.
 ##----
@@ -172,7 +168,7 @@ Here are four different ways to repeat the last executed command (press enter af
   * Type !-1
   * Press Ctrl+P
 ##----
-Here's a trick to execute the last three commands repeatedly.  Press the up-arrow key three times, then type Ctrl-O (this is the letter "O" not the numeral "0").  This will execute the displayed command and bring up the next one in list. Repeat as desired.
+Here's a trick to execute the last three commands repeatedly.  Press the up-arrow key three times, then type Ctrl-O (the letter not the number).  This will execute the displayed command and bring up the next one in list. Repeat as desired.
 ##----
 Try "history | more" to browse your recent commands together with their command numbers. To repeat a command, type !n (where "n" is the displayed command number).
 ##----
@@ -184,7 +180,7 @@ If you have an MPI application with threads, don't forget to use tacc_affinity. 
 ##----
 The Intel compilers are only usable from the login nodes and the development queue.
 ##----
-You can use "tail -f file_name" to follow the output to a file.
+You can use "tail -F file_name" to follow the output to a file.
 ##----
 You can create multiple sub-directories at one time with "mkdir -p a/b/c".
 ##----
@@ -222,4 +218,18 @@ Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function
 In vi, typing "." will repeat the last edit.
 ##----
 When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
+##----
+With the mv and cp commands, you can copy or move a group of files into a directory:  "mv file.A file.B  file.C dir"  or "cp sam.* dir"
+##----
+When you need to match all ".*" files without matching the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
+##----
+Every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or man 3 <name>" for example "man 2 time". 
+##----
+The man-pages are divided into sections: section (1) are commands; section (2) are system functions, section (3) are library functions.
+##----
+Try "man -k <key word>" to find the command or function you are looking for.
+##----
+The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers there.
+##----
+Linux like all Unix O.S. allow commands to be "piped" together where the output of one is the input next.  So  "ls | grep key | more" will print a page at a time all files that match "key".
 ##----
