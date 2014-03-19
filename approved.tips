@@ -233,3 +233,12 @@ The login nodes are a shared resource, so please don't use mpirun or multiple ta
 ##----
 Linux like all Unix O.S. allow commands to be "piped" together where the output of one is the input next.  So  "ls | grep key | more" will print a page at a time all files that match "key".
 ##----
+Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, for example, allocate 5 nodes and launch with:
+ 
+  $ ibrun –n 64 –o 15  # puts rank 0 on a node by itself.
+##----
+Commands like ls support file globbing pattern matching:
+  $  ls t*      #  -> list all files that start with t
+  $  ls [^tx]*  #  -> list all files that do NOT start with t or x
+  $  ls t?.sh   #  -> list files like t1.sh t2.sh but not t22.sh
+##----
