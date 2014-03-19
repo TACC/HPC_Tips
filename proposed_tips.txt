@@ -73,7 +73,7 @@ To find out more about a particular module do: "module help <name>"
 ##----
 Type "module help" to know more about the Lmod module system.
 ##----
-Did you know that you can only have one version a module loaded at a time:
+Did you know that you can only have one version of a module loaded at a time:
     $ module load foo/1.2; module load foo/1.4
 only foo/1.4 will be loaded.
 ##----
@@ -88,3 +88,8 @@ Type "module spider XXXXX" to find all the version of module XXXXX.
 Chapters 2 thru 5 to the Gnu Make Manual provide a great introduction for
 any one wishing to understand this powerful tool. See "info make".
 ##----
+When in doubt, read the fine manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
+##----
+In vi, typing "." will repeat the last edit. Try it!
+##----
+

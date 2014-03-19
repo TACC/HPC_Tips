@@ -1,30 +1,30 @@
 ##----
 Run "dos2unix" command to convert files from Windows/DOS format to Unix format when you transfer them to TACC resources. 
 ##----
-Use the command "du -sh" for finding out the total disk usage.
+Use the command "du -sh" to see total disk usage for the current directory.
 ##----
-Use the command "du -h --max-depth=1" to find out which directory has the largest file size.
+Use the command "du -h --max-depth=1" to disk usage for all directories in the current directory.
 ##----
-Use "!!" to repeat the most recent command. Use "!mpi" for the most recent command that started with "mpi" and "!?mpi?" for the most recent one that contained "mpi".
+Use "!!" to repeat the most recent command. Use "!mpi" to repeat the most recent command that started with "mpi" and "!?mpi?" for the most recent one that contained "mpi".
 ##----
-Use the command "cat -e -t -v Makefile" to check if you have proper usage of tabs in the Makefile.
+Use the command "cat -e -t -v Makefile" to check whether you are using tabs in your Makefile.
 ##----
-Add the following include statements in your Makefile for compiling PETSc code:
+Add the following include statements in your Makefile to compile PETSc code:
 
 include ${PETSC_DIR}/conf/variables
 include ${PETSC_DIR}/conf/rules
 ##----
-To restrict the memory that a JVM can use on a login node on Stampede, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G"
+To restrict the memory that a JVM can use on a Stampede login node, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
 ##----
-Don't get caught flat-footed by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe
+Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
 ##----
-Windows user looking for robust approach to accessing Linux resources? Try running Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare player running on your desktop.
+Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare player running on your desktop.
 ##----
 Want to mount your supercomputer directories on your desktop? Try the sshfs utility.
 ##----
 Load your favorite modules then execute "module save". Your saved collection will now be available on your next login, or anytime you execute "module restore".
 ##----
-Bash does not automatically source your .bashrc on login; if you want this behavior, source your .bashrc from .profile or your login startup script of choice.
+Bash does not automatically source your .bashrc on login; if you want this behavior, source your .bashrc from .profile or the login startup script of your choice.
 ##----
 If "ls" takes a long time, try /bin/ls for a lean, mean, uncolorized version of ls.
 ##----
@@ -50,33 +50,29 @@ An alias to display your $PATH with each directory on its own line:
 
    $ alias prettypath="echo \\$PATH | sed 's/:/\\n/g'"
 ##----
-Want a robust approach to backup, transfer, and version control? Give git a try, you'll be glad you did.
+Want a robust approach to backup, transfer, and version control? Give git a try; you'll be glad you did.
 ##----
-Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"
+Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
 ##----
 Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
 ##----
 A newer version of Perl is available by running the command "module load perl"
 ##----
-HPC Python? Yes! We have the Enthought distribution "module load python"
+HPC Python? Yes! We have the Enthought distribution: "module load python".
 ##----
-Did you know that you can find all the bio codes installed on our system by doing:
+You can find all installed bio codes by executing
 
        $ module keyword bio
 ##----
-You can have many named collection of modules: Do "module save collectionA" to create and "module restore collectionA" to restore.
+To find out more about a particular module execute "module help <name>"
 ##----
-To find out more about a particular module do: "module help <name>"
+Type "module help" to learn more about the Lmod module system.
 ##----
-Type "module help" to know more about the Lmod module system.
-##----
-Did you know that you can only have one version a module loaded at a time:
+Did you know that you can only have one version a module loaded at a time?
 
-    $ module load foo/1.2; module load foo/1.4
-
-only foo/1.4 will be loaded.
+    $ module load foo/1.2; module load foo/1.4  # only foo/1.4 will be loaded.
 ##----
-Did you know that:
+The module command:
 
     $ ml -foo -bar baz qux
 
@@ -84,17 +80,17 @@ is the same as:
 
     $ module rm foo bar; module load baz qux
 ##----
-Did you know that the "settarg" module provides TARG that dynamically changes as modules are changed.  See "module help settarg" for more info.
+The "settarg" module stores key environment information in the variable TARG that dynamically changes as modules are changed.  See "module help settarg" for more info.
 ##----
-Type "module spider XXXXX" to find all the version of module XXXXX.
+Type "module spider XXXXX" to find all the versions of module XXXXX.
 ##----
 Chapters 2 thru 5 to the Gnu Make Manual provide a great introduction for any one wishing to understand this powerful tool. See "info make".
 ##----
-If you want to see just the available default modules do:
+If you want to see just the available default modules execute:
 
    $ module -d avail
 ##----
-If you want to see all the available module that contain the string "abc" do:
+If you want to see all the currently loadable modules that contain the string "abc" execute:
 
    $ module avail abc
 
@@ -106,17 +102,20 @@ You can do simple regular expression searches:
 
 This will list all the modules that start with the letter p.
 ##----
-You can save more than one collection of modules, just give it a name:
+You can save more than one collection of modules; just give each collection a name:
 
    $ module save projectA
 
-You can restore this collection of modules at any time by doing:
+You can load this collection by executing:
 
    $ module restore projectA
 ##----
-It usually takes a minimum of 30 minutes for new passwords to get propagated across TACC systems.
+It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
 ##----
-Make sure that your $HOME directory is only writable by you and ~/.ssh directory is only readable by you.  Otherwise this will disable your RSA keys and prevent normal access to compute nodes.
+If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh directories have the right permissions.  The following commands may remedy the situation:
+  $ chmod go-w $HOME $HOME/.ssh
+  $ chmod 600 $HOME/.ssh/authorized_keys
+  $ chown `whoami` $HOME/.ssh/authorized_keys
 ##----
 If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
 ##----
@@ -124,25 +123,26 @@ To give your MPI tasks more memory, reduce the number of tasks per node: "-N 2 -
 ##----
 If you like to work with several login sessions open, remember that changes to your environment (e.g. module commands) affect only the shell (login session) in which you make the changes.
 ##----
-If you compile with "-mmic" you can launch your code from the host -- the runtime environment will transfer it to the MIC for you.
+If you compile with "-mmic" you can launch your code from the host -- the runtime environment will transfer your code to the MIC and launch it.
 ##----
 $HOME, $WORK, and $SCRATCH are available to native MIC codes (and to users who ssh to a MIC), but are not accessible from offloaded code. The system aliases cdw and cds are not available on the MIC.
 ##----
 View pdf files on stampede with xpdf.
 ##----
-Linking to TACC packages? You don't have to remember their location. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
+Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
 ##----
 Want to keep tabs on your job?
 
    $ watch -n 10 squeue -u yourname
 ##----
 Not sure if TACC has a package you're looking for?
+See https://www.tacc.utexas.edu/resources/software.
 
   https://www.tacc.utexas.edu/resources/software
 
 will tell you.
 ##----
-Do "module spider" to get a complete list of all installed software on the system.
+Execute "module spider" to get a complete list of all installed software on the system.
 ##----
 Not sure which TACC machine you're logged into? Type "hostname -f".
 ##----
@@ -150,10 +150,10 @@ To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the 
 
   \usepackage[pdftex,colorlinks]{hyperref}
 ##----
-You can switch back to the last directory by doing:
+You can switch back to the last directory by executing:
     $ cd -
 ##----
-Tired of typing that long directory name, use tab-completion instead:
+Tired of typing that long directory name? Use tab-completion instead:
     $ cd long<TAB>          becomes:
     $ cd longDirectoryName
 ##----
@@ -162,50 +162,50 @@ You can switch back to your home directory in the following three ways:
     $ cd ~
     $ cd
 ##----
-No need to retype previous commands, you can use  Ctrl+R to search for them.
+No need to retype previous commands; use Ctrl+R to search for them.
 ##----
-We are doing full backup every months of your $HOME directory, with  an incremental backup every days. If you want to recover a file, you need to submit a ticket. There is no way for users to recover files.  If you request a file recovery, please provide the name, the date and an approximation of the time of the deletion.
+We perform a full backup of your $HOME directory every few months, and an incremental backup of the latest changes every few days. To recover a file submit a ticket. Please provide the name of the file(s), the date of most useful version, and an estimate of the time you lost the file.
 ##----
-Sometime you may end up repeating the previous commands for various reasons. Following are the 4 different ways to repeat the last executed command.
-  * Use the up arrow to view the previous command and press enter to execute it.
-  * Type !! and press enter from the command line
-  * Type !-1 and press enter from the command line.
-  * Press Ctrl+P will display the previous command, press enter to execute it
+Here are four different ways to repeat the last executed command (press enter after each):
+  * Use the up arrow
+  * Type !!
+  * Type !-1
+  * Press Ctrl+P
 ##----
-Sometime you find repeating the three commands over and over again.  If you type the up-arrow key three times, then it type Ctrl-O (not Ctrl-0).  It will run the current command and bring the next one in list.  This can be repeated as long as you like.
+Here's a trick to execute the last three commands repeatedly.  Press the up-arrow key three times, then type Ctrl-O (this is the letter "O" not the numeral "0").  This will execute the displayed command and bring up the next one in list. Repeat as desired.
 ##----
-To find a specific command from your history, you can type "history | more" and look at the corresponding number then use !n (n being the number corresponding to the command line that you want to repeat).
+Try "history | more" to browse your recent commands together with their command numbers. To repeat a command, type !n (where "n" is the displayed command number).
 ##----
-If you want to know the process mapping of MVAPICH2, then use "export MV2_SHOW_CPU_BINDING=1" inside your script or before to launch your job.
+To see MVAPICH2's process mapping, "export MV2_SHOW_CPU_BINDING=1" inside your script or before launching your job.
 ##----
-A code built with Intel MPI won't run with MVAPICH2 and vice versa! Your build environment must match your submit environment.
+A code built with Intel MPI won't run with MVAPICH2 and vice versa. Your build environment must match your submit environment.
 ##----
-If you have an MPI application with threads, don't forget to use tacc_affinity! See the system user guide for more details. 
+If you have an MPI application with threads, don't forget to use tacc_affinity. See the system user guide for more details. 
 ##----
-You can only use Intel compilers on the login nodes and the development queue. If you try on normal queue, it will fail!
+The Intel compilers are only usable from the login nodes and the development queue.
 ##----
 You can use "tail -f file_name" to follow the output to a file.
 ##----
-You can create a multiple sub-directories at one time with "mkdir -p a/b/c".
+You can create multiple sub-directories at one time with "mkdir -p a/b/c".
 ##----
-You can find the newest file in a directory with "ls -ltr".  It will be the last file in the list.
+You can sort the output of "ls" in various ways. The command "ls -ltr" will sort so that the most recently changed files appear first.
 ##----
-You can list a directory sorted by file size "ls -lShr". The "-h" option reports sizes in the nearest bytes, KiloBytes, MegaBytes, etc.
+You can list a directory sorted by file size using "ls -lShr". The "-h" option reports sizes in human-readable form (bytes, KiloBytes, MegaBytes, etc.).
 ##----
-Normally files that begin with a "." are not listed by "ls".  You can list those hidden files by: "ls -a".
+Normally, "ls" does not show files that begin with a "." (so-called "hidden files"). You can list these files with "ls -a".
 ##----
-The option -F to ls adds an extra character to mark file type: '/' for directories '*' executables and '@' for symbolic links.
+The command "ls -F" adds an extra character to mark file type: '/' for directories '*' executables and '@' for symbolic links.
 ##----
-Creating shell aliases can make remembering the all the options to command like "ls" easier:
+Creating shell aliases is often easier than remembering/typing your favorite options:
   * ll  => ls -al
   * lf  => ls -aFC
   * lt  => ls -alhtr
 ##----
 Keeping all sources up-to-date in all locations can be difficult.  Using "git" or similar version control software can make this simple.  Simply check-in and push locally, then pull remotely.  You'll wonder how you lived without it!
 ##----
-DRY:  Don't repeat yourself!  Avoid when you can, having repeating the same steps in multiple places, if only to protect yourself from having to find all the places when you need to make a change six months from now (cheerfully stolen from "The Pragmatic Programmer").
+"DRY" is an acronym for "Don't repeat yourself"  Avoid when you can, having repeating the same steps or code in multiple places, if only to protect yourself from having to find all the places when you need to make a change six months from now (cheerfully stolen from "The Pragmatic Programmer").
 ##----
-On a lustre file system (like $WORK, and $SCRATCH) use "lfs find" instead of "find" to search for files.  It is much faster:
+On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
 
    $ lfs find <directory/file>
 ##----
@@ -218,4 +218,8 @@ Did you know that both emacs and vim support color syntax highlighting?
 Emacs support etags (a code database.)  M-. will jump to a function definition, M-x tags-query-replace can change strings throughout a code tree.
 ##----
 Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
+##----
+In vi, typing "." will repeat the last edit.
+##----
+When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
 ##----
