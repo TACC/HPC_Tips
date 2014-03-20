@@ -1,10 +1,33 @@
-Two files we are concerned with:
-* proposed_tips
-* approved_tips
+To use:
+
+a) Create a MySQL database called HPCTips.  Here at TACC we have a VM which provides the MySQL database.
+   a1) Create a user called "tipBuilder" with password "test623" granted all access to HPCTips.
+   a2) Create a user called "readerOfTips" with password "tipReader123" with only select privileges.
+   a3) Make sure that MySQL DB  can be seen by other hosts of interest. 
 
 
-proposed_tips:
-Place new tips you would like included
+b) Modify ./load_tips.py to match database hostname and possibly passwords if you have changed any of the above.
 
-approved_tips:
-Contains all tips approved by some Master Overlord.
+c) Modify approved.tips to match your site.
+
+d) Run ./load_tips.py to fill HPCTips db.  This script is designed to run on the machine that is providing the MySQL db.
+
+e) Modify src/showTip.c to match hostname, password for MySQL DB.
+
+f) Build showTip by:
+
+    $ make
+
+g) Here at TACC we have a module called "tips".  The help section tells users how to get tips and how to disable tips.
+   In our case we move the showTip executable to our "/opt/apps/hpc_tips/hpc_tips/bin/showTip".
+
+h) We have our startup scripts source all files in /etc/profile.d/ and the last one (z99_hpc_tips.{sh,csh}) causes the tip to be printed.
+
+      if [ $USER != "root" -a  -n "$PS1" -a -n "$LOGIN_SHELL" -a ! -f ~/.no.tips ]; then
+        /opt/apps/hpc_tips/hpc_tips/bin/showTip -w
+      fi
+
+   Note that on TACC systems LOGIN_SHELL is set if and only if the shell is a login shell.  Obviously, if a user has a file called ~/.no.tips
+   then the command is not run.
+
+   
