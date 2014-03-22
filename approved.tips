@@ -221,7 +221,9 @@ When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-gu
 ##----
 With the mv and cp commands, you can copy or move a group of files into a directory:  "mv file.A file.B  file.C dir"  or "cp sam.* dir"
 ##----
-When you need to match all ".*" files without matching the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
+When you need to match all ".*" files except for the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
+##----
+To match all hidden files without matching the current or parent directory, you can execute "ls .[^.]*"
 ##----
 Have you every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or "man 3 <name>" for example "man 2 time". 
 ##----
