@@ -69,8 +69,6 @@ void printwrap(const char *s, int lineSize, const char *prefix)
  
 void timer_handler(int sig)
 {
-  static int count = 0;
-  printf("timer expired %d times\n", ++count);
   exit(0);
 }
 
