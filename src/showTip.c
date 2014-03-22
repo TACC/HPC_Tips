@@ -107,7 +107,7 @@ int main(int argc, char **argv)
   
   timer.it_interval.tv_sec = 0;
   timer.it_interval.tv_usec = 0;
-  timer.it_value.tv_sec = 0
+  timer.it_value.tv_sec = 0;
   timer.it_value.tv_usec = INTERVAL;
   setitimer(ITIMER_REAL, &timer,0);
 
