@@ -130,7 +130,7 @@ int main(int argc, char **argv)
       switch (opt)
 	{
 	case 'v':
-	  ver = 1
+	  ver = 1;
 	  break;
 	case 'n':
 	  idx = strtol(optarg, (char **) NULL, 10);
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 
   if (ver)
     {
-      printf("showTip Version: %s\n",VERSION);
+      printf("showTip Version: %s\n",HPC_TIPS_VERSION);
       return 0;
     }
 

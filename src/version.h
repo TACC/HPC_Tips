@@ -1,1 +1,1 @@
-#define VERSION "0.2"
+#define HPC_TIPS_VERSION "0.2"
