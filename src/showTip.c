@@ -84,6 +84,8 @@ void printUsage(const char* cmd)
 	 cmd);
 }
 
+#define INTERVAL 250000
+
 int main(int argc, char **argv)
 {      
   struct winsize w;
@@ -99,6 +101,16 @@ int main(int argc, char **argv)
   const char*    db   = "HPCTips";
   const char*    hlp  = "\"module help tips\" shows how to disable";
   
+
+
+  struct itimerval timer;
+  
+  timer.it_interval.tv_sec = 0;
+  timer.it_interval.tv_usec = 0;
+  timer.it_value.tv_sec = 0
+  timer.it_value.tv_usec = INTERVAL;
+  setitimer(ITIMER_REAL, &timer,0);
+
 
 
   //struct sigaction sa;
@@ -121,7 +133,7 @@ int main(int argc, char **argv)
 
 
   signal(SIGALRM,timer_handler);
-  alarm(1);
+  //alarm(1);
 
   while ( (opt = getopt(argc, argv, "vn:wh?")) != -1)
     {
