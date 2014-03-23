@@ -223,7 +223,7 @@ With the mv and cp commands, you can copy or move a group of files into a direct
 ##----
 When you need to match all ".*" files except for the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
 ##----
-To list all hidden files without matching the current or parent directory, you can execute "ls .[^.]*".  This will match .a where as ".??*" will not.
+To list all hidden files without matching the current or parent directory, you can execute "ls .[^.]*".  This will match .a where as ".??*" will not. 
 ##----
 Have you every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or "man 3 <name>" for example "man 2 time". 
 ##----
@@ -241,6 +241,7 @@ Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, fo
 ##----
 Commands like ls, mv and cp support file globbing pattern matching:
   $  ls t*      #  -> list all files that start with t
+  $  ls [tx]*   #  -> list all files that do start with t or x
   $  ls [^tx]*  #  -> list all files that do NOT start with t or x
   $  ls t?.sh   #  -> list files like t1.sh t2.sh but not t22.sh
 ##----
