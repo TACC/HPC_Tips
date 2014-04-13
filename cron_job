@@ -1,0 +1,11 @@
+#!/bin/bash
+# -*- shell-script -*-
+
+result=`git pull 2> /dev/null`
+
+if [[ $result =~ up-to-date ]]; then
+  exit 0;
+fi
+
+$HOME/w/hpc_tips/load_tips.py
+
