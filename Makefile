@@ -30,7 +30,7 @@ gittag:
 	    echo "All files not checked in => try again";                            \
 	  else                                                                       \
 	    echo $(TAG)                                           >  .version;       \
-	    echo '#define VERSION "$(TAG)"'                       >  $(VERSION_SRC); \
+	    echo '#define HPC_TIPS_VERSION "$(TAG)"'              >  $(VERSION_SRC); \
             git commit -m "moving to TAG_VERSION $(TAG)"    .version $(VERSION_SRC); \
             git tag -a $(TAG) -m 'Setting TAG_VERSION to $(TAG)'                   ; \
 	    git push --tags                                                        ; \
