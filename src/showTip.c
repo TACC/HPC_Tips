@@ -99,7 +99,7 @@ int main(int argc, char **argv)
   const char*    user = "readerOfTips";
   const char*    pass = "tipReader123";
   const char*    db   = "HPCTips";
-  const char*    hlp  = "\"module help tips\" shows how to disable";
+  const char*    hlp  = "\"module help tacc_tips\" shows how to disable";
   
 
 
