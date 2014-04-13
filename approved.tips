@@ -227,7 +227,7 @@ To list all hidden files without matching the current or parent directory, you c
 ##----
 Have you every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or "man 3 <name>" for example "man 2 time". 
 ##----
-The man-pages are divided into sections: section (1) are commands; section (2) are system functions, section (3) are library functions.
+The man-pages are divided into sections: section (1) are commands; section (2) are system functions, section (3) are library functions. (e.g. man 2 time; man 3 strlen)
 ##----
 Try "man -k <key word>" to find the command or function you are looking for.
 ##----

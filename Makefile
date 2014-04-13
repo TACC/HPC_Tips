@@ -1,4 +1,5 @@
 VERSION_SRC := src/version.h
+NAME        := tacc_tips
 all:
 	cd src; make
 
@@ -13,9 +14,14 @@ clobber: clean
 	cd src; make $@_only
 
 
+install: $(DESTDIR)$(DIR)
+	cd src; make install DIR=$(DESTDIR)$(DIR)
+
+$(DESTDIR)$(DIR):
+	mkdir -p $@
 
 dist:
-	git archive --prefix=hpc_tips-`cat .version`/ master | bzip2 > hpc_tips-`cat .version`.tar.bz2
+	git archive --prefix=$(NAME)-`cat .version`/ master | bzip2 > $(NAME)-`cat .version`.tar.bz2
 
 gittag:
         ifneq ($(TAG),)

@@ -4,6 +4,9 @@ CFLAGS := -g -O2
 
 CC := gcc
 
+install: showTip
+	cp $^ $(DIR)
+
 showTip: showTip.o
 	$(LINK.c) -o $@ $^ -lmysqlclient
 
