@@ -39,6 +39,23 @@ class LD_TIPS(object):
     self.__conn.close()
 
 
+def files_in_tree(path, pattern):
+  fileA = []
+  wd = os.getcwd()
+  if (not os.path.isdir(path)):
+    return fileA
+
+  os.chdir(path)
+  path = os.getcwd()
+  os.chdir(wd)
+
+  for root, dirs, files in os.walk(path):
+    for name in files:
+      fn = os.path.join(root, name)
+      if (fnmatch(fn,pattern)):
+        fileA.append(fn)
+  return fileA  
+
 def main():
 
   host   = "localhost"
@@ -50,25 +67,27 @@ def main():
 
   tips.db_connect()
 
-  fn     = "approved.tips"
-  f      = open (fn,"r")
-  lines  = f.readlines()
-  f.close()
+  fileA  = files_in_tree("./tips", "*.tips")
 
-  idx    = 0
-  txt    = ""
-  sA     = []
-  for s in lines:
-    s = s.rstrip()
-    m = dividerPat.search(s)
-    if (m and sA):
-      txt = "\n".join(sA)
-      idx = idx + 1
+  for fn in fileA:
+    f      = open (fn,"r")
+    lines  = f.readlines()
+    f.close()
 
-      tips.insertTip(txt)
-      sA  = []
-    elif (not m):
-      sA.append(s)
+    idx    = 0
+    txt    = ""
+    sA     = []
+    for s in lines:
+      s = s.rstrip()
+      m = dividerPat.search(s)
+      if (m and sA):
+        txt = "\n".join(sA)
+        idx = idx + 1
+
+        tips.insertTip(txt)
+        sA  = []
+      elif (not m):
+        sA.append(s)
   
   tips.db_disconnect()
   
