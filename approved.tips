@@ -14,10 +14,6 @@ Add the following include statements in your Makefile to compile PETSc code:
 include ${PETSC_DIR}/conf/variables
 include ${PETSC_DIR}/conf/rules
 ##----
-To restrict the memory that a JVM can use on a Stampede login node, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
-##----
-Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
-##----
 Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare player running on your desktop.
 ##----
 Want to mount your supercomputer directories on your desktop? Try the sshfs utility.
@@ -31,12 +27,6 @@ If "ls" takes a long time, try /bin/ls for a lean, mean, uncolorized version of 
 Before executing "rm", try "ls" with the same arguments and see if you like what you get.
 ##----
 As long as your job is running, you can ssh to any node you own to monitor your job's progress. Try executing "top" then "1" for particularly useful display.
-##----
-Your MPI jobs suddenly start failing with mpispawn errors? Your rsa keys may be corrupted: to regenerate, go to $HOME then execute "mv .ssh dot.ssh.old", logout, then log back in.
-##----
-OMP_NUM_THREADS defaults to 1 on Lonestar and Stampede hosts (244 on MIC); be sure to export the desired value before running OpenMP jobs.
-##----
-MIC_OMP_NUM_THREADS defaults to 240 (offload) and 244 (native launched from host); be sure to export the desired value before running OpenMP jobs involving the Xeon Phi MIC.
 ##----
 Avoid recursive ("-r") file transfers; collect the files into a tar archive instead.
 ##----
@@ -53,12 +43,6 @@ An alias to display your $PATH with each directory on its own line:
 Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
 ##----
 Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
-##----
-Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
-##----
-A newer version of Perl is available by running the command "module load perl"
-##----
-HPC Python? Yes! We have the Enthought distribution: "module load python".
 ##----
 You can find all installed bio codes by executing
 
@@ -110,37 +94,7 @@ You can load this collection by executing:
 
    $ module restore projectA
 ##----
-It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
-##----
-If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh directories have the right permissions.  The following commands may remedy the situation:
-  $ chmod go-w $HOME $HOME/.ssh
-  $ chmod 600 $HOME/.ssh/authorized_keys
-  $ chown `whoami` $HOME/.ssh/authorized_keys
-##----
-If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
-##----
-To give your MPI tasks more memory, reduce the number of tasks per node: "-N 2 -n 16", for example, spreads your 16 tasks across 2 nodes, providing about twice as much memory per task as "-N 1 -n 16".
-##----
-If you like to work with several login sessions open, remember that changes to your environment (e.g. module commands) affect only the shell (login session) in which you make the changes.
-##----
-If you compile with "-mmic" you can launch your code from the host -- the runtime environment will transfer your code to the MIC and launch it.
-##----
-$HOME, $WORK, and $SCRATCH are available to native MIC codes (and to users who ssh to a MIC), but are not accessible from offloaded code. The system aliases cdw and cds are not available on the MIC.
-##----
-View pdf files on stampede with xpdf.
-##----
-Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
-##----
-Want to keep tabs on your job?
-
-   $ watch -n 10 squeue -u yourname
-##----
-Not sure if TACC has a package you're looking for?
-See https://www.tacc.utexas.edu/resources/software.
-##----
 Execute "module spider" to get a complete list of all installed software on the system.
-##----
-Not sure which TACC machine you're logged into? Type "hostname -f".
 ##----
 To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the following line in your source:
 
@@ -160,8 +114,6 @@ You can switch back to your home directory in the following three ways:
 ##----
 No need to retype previous commands; use Ctrl+R to search for them.
 ##----
-We perform a full backup of your $HOME directory every few months, and an incremental backup of the latest changes every few days. To recover a file submit a ticket. Please provide the name of the file(s), the date of most useful version, and an estimate of the time you lost the file.
-##----
 Here are four different ways to repeat the last executed command (press enter after each):
   * Use the up arrow
   * Type !!
@@ -171,14 +123,6 @@ Here are four different ways to repeat the last executed command (press enter af
 Here's a trick to execute the last three commands repeatedly.  Press the up-arrow key three times, then type Ctrl-O (the letter not the number).  This will execute the displayed command and bring up the next one in list. Repeat as desired.
 ##----
 Try "history | more" to browse your recent commands together with their command numbers. To repeat a command, type !n (where "n" is the displayed command number).
-##----
-To see MVAPICH2's process mapping, "export MV2_SHOW_CPU_BINDING=1" inside your script or before launching your job.
-##----
-A code built with Intel MPI won't run with MVAPICH2 and vice versa. Your build environment must match your submit environment.
-##----
-If you have an MPI application with threads, don't forget to use tacc_affinity. See the system user guide for more details. 
-##----
-The Intel compilers are only usable from the login nodes and the development queue.
 ##----
 You can use "tail -F file_name" to follow the output to a file.
 ##----
@@ -201,10 +145,6 @@ Keeping all sources up-to-date in all locations can be difficult.  Using "git" o
 ##----
 "DRY" is an acronym for "Don't repeat yourself"  Avoid when you can, having repeating the same steps or code in multiple places, if only to protect yourself from having to find all the places when you need to make a change six months from now (cheerfully stolen from "The Pragmatic Programmer").
 ##----
-On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
-
-   $ lfs find <directory/file>
-##----
 Bash and Zsh support string manipulation tools:  HOST="sam.domain.com"; SHOST=${HOST%%.*} => sam. Google "bash string manipulation" for more details.
 ##----
 Did you know that emacs and vim support spell checking?
@@ -216,8 +156,6 @@ Emacs support etags (a code database.)  M-. will jump to a function definition, 
 Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
 ##----
 In vi, typing "." will repeat the last edit.
-##----
-When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
 ##----
 With the mv and cp commands, you can copy or move a group of files into a directory:  "mv file.A file.B  file.C dir"  or "cp sam.* dir"
 ##----
@@ -231,13 +169,7 @@ The man-pages are divided into sections: section (1) are commands; section (2) a
 ##----
 Try "man -k <key word>" to find the command or function you are looking for.
 ##----
-The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers there.
-##----
 Linux like all Unix O.S. allow commands to be "piped" together where the output of one is the input next.  So  "ls | grep key | more" will print a page at a time all files that match "key".
-##----
-Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, for example, allocate 5 nodes and launch with:
- 
-  $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
 ##----
 Commands like ls, mv and cp support file globbing pattern matching:
   $  ls t*      #  -> list all files that start with t
