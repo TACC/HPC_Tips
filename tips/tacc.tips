@@ -13,7 +13,7 @@ Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/us
 ##----
 HPC Python? Yes! We have the Enthought distribution: "module load python".
 ##----
-A newer version of Perl is available by running the command "module load perl"
+A newer version of the system-supplied Perl is available by running the command "module load perl"
 ##----
 It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
 ##----
@@ -61,3 +61,7 @@ Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, fo
  
   $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
 ##----
+Do you know what is cool about cdh?
+You can use an argument with it like this:  cdh vtune  will take you to $HOME/vtune,  similar to the behavior for an argument with cds, cdw. You cannot do that with cd (as it should be),  “cd vtune” tries to cd to the vtune subdirectory in the present directory. It is quite handy.  (note that cd ~/vtune does the same thing).
+
+  
