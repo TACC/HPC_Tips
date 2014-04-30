@@ -10,9 +10,8 @@ Use "!!" to repeat the most recent command. Use "!mpi" to repeat the most recent
 Use the command "cat -e -t -v Makefile" to check whether you are using tabs in your Makefile.
 ##----
 Add the following include statements in your Makefile to compile PETSc code:
-
-include ${PETSC_DIR}/conf/variables
-include ${PETSC_DIR}/conf/rules
+  include ${PETSC_DIR}/conf/variables
+  include ${PETSC_DIR}/conf/rules
 ##----
 Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare player running on your desktop.
 ##----
@@ -37,7 +36,6 @@ To build software in your own user space, ./configure --prefix=$WORK/myapps is o
 Execute "du -sch *" to see your disk usage by directory.
 ##----
 An alias to display your $PATH with each directory on its own line:
-
    $ alias prettypath="echo \\$PATH | sed 's/:/\\n/g'"
 ##----
 Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
@@ -45,7 +43,6 @@ Want a robust approach to backup, transfer, and version control? Give git or mer
 Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
 ##----
 You can find all installed bio codes by executing
-
        $ module keyword bio
 ##----
 To find out more about a particular module execute "module help <name>"
@@ -126,7 +123,10 @@ Try "history | more" to browse your recent commands together with their command 
 ##----
 You can use "tail -F file_name" to follow the output to a file.
 ##----
-You can create multiple sub-directories at one time with "mkdir -p a/b/c".
+You can create a hierarchy of directories at one time with "mkdir -p a/b/c".
+##----
+You can create a multiple directories at one time with "mkdir -p a/{b,c}/{d,e}".
+This is the same as "mkdir -p a/b/d a/b/e a/c/d a/c/e".
 ##----
 You can sort the output of "ls" in various ways. The command "ls -ltr" will sort so that the most recently changed files appear first.
 ##----
