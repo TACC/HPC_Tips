@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- python -*-
 from __future__ import print_function
+from fnmatch    import fnmatch
 import os, sys, re
 import MySQLdb as mdb
 import warnings
