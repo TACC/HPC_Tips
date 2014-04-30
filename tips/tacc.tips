@@ -31,7 +31,6 @@ View pdf files on stampede with xpdf.
 Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
 ##----
 Want to keep tabs on your job?
-
    $ watch -n 10 squeue -u yourname
 ##----
 Not sure if TACC has a package you're looking for?
@@ -50,7 +49,6 @@ If you have an MPI application with threads, don't forget to use tacc_affinity. 
 The Intel compilers are only usable from the login nodes and the development queue.
 ##----
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
-
    $ lfs find <directory/file>
 ##----
 When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
@@ -58,7 +56,6 @@ When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-gu
 The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers there.
 ##----
 Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, for example, allocate 5 nodes and launch with:
- 
   $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
 ##----
 Do you know what is cool about cdh?
