@@ -177,3 +177,5 @@ Commands like ls, mv and cp support file globbing pattern matching:
   $  ls [^tx]*  #  -> list all files that do NOT start with t or x
   $  ls t?.sh   #  -> list files like t1.sh t2.sh but not t22.sh
 ##----
+Did you know that you can edit the command line with emacs or vi commands?  By default, bash uses emacs style editing.  Use "set -o vi" to switch to vi style.  See https://www.gnu.org/software/bash/manual/html_node/Command-Line-Editing.html for more details.
+##----
