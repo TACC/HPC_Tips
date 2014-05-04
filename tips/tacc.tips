@@ -53,7 +53,7 @@ On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "fin
 ##----
 When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
 ##----
-The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers there.
+The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers or "make -j4" there.
 ##----
 Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, for example, allocate 5 nodes and launch with:
   $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.

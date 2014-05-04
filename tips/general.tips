@@ -177,3 +177,5 @@ Commands like ls, mv and cp support file globbing pattern matching:
   $  ls [^tx]*  #  -> list all files that do NOT start with t or x
   $  ls t?.sh   #  -> list files like t1.sh t2.sh but not t22.sh
 ##----
+Need to view a graphics file (jpg and such)? Use the "display" command.
+##----
