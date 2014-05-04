@@ -179,3 +179,5 @@ Commands like ls, mv and cp support file globbing pattern matching:
 ##----
 Did you know that you can edit the command line with emacs or vi commands?  By default, bash uses emacs style editing.  Use "set -o vi" to switch to vi style.  See https://www.gnu.org/software/bash/manual/html_node/Command-Line-Editing.html for more details.
 ##----
+Need to view a graphics file (jpg and such)? Use the "display" command.
+##----
