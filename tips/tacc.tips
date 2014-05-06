@@ -49,7 +49,7 @@ If you have an MPI application with threads, don't forget to use tacc_affinity. 
 The Intel compilers are only usable from the login nodes and the development queue.
 ##----
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
-    $ lfs find <directory/file>
+    $ lfs find <directory> -name '*.c'
 ##----
 When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-guides/stampede-user-guide
 ##----
