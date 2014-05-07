@@ -189,5 +189,5 @@ Your build process is failing and you know that you need an extra include direct
 ##----
 Your build process is failing and you know that you need an extra library directories.  Try setting LIBRARY_PATH to be colon separated list of directories.  Both the intel and gcc compilers will use the list as library directories (-L/foo/bar).
 ##----
-You can set CDPATH to be the parent directories for sub-directories that switch between.  For example "CDPATH=.:~/a:~/b", then you can switching from ~/a/foo to ~/b/bar with "cd bar" and back with "cd foo".  Just define CDPATH in your ~/.bashrc but do not export it.
+You can set CDPATH to be a list of parent directories that contain sub-directories to which you like to cd regularly.  For example if you set "CDPATH=.:~/a:~/b", then you can switch from ~/a/foo to ~/b/bar with "cd bar", then back with "cd foo".  Just define CDPATH (for example in your ~/.bashrc); do not export it.
 ##----
