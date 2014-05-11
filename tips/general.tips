@@ -214,7 +214,7 @@ Want to know more about a bash command ? try to use the "--help" command. For ex
 Want to know detailed information about a file do: "stat your_file_or_dir" to find out the create, access and modify times, permission etc.
 ##----
 Want to compare 2 files? You can use diff.
-  $diff [options] file1 file2
+  $ diff [options] file1 file2
 
 Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison. 
 ##----
