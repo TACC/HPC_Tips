@@ -76,3 +76,7 @@ Here's a great way to set permissions recursively to share a directory named pro
  
 Using lfs is faster and less stressful on Lustre than a recursive chmod. The capital "X" assigns group execute permissions only to files and directories for which the owner has execute permissions.
 ##----
+You can transfer files to your work directory on another machine by putting a '\\' in front of $WORK:
+   $ scp yourfile stampede:\\$WORK
+##----
+   
