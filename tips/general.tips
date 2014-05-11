@@ -239,3 +239,5 @@ Since bash sources ~/.bashrc on every sub-shell you want to prevent things like 
       export PATH=$HOME/bin:$PATH
    fi
 ##----
+In bash, the ~/.bash_profile or ~/.profile file is sourced on login shells and ~/.bashrc is sourced on non-login interactive shells.  You may wish to source your ~/.bashrc inside your ~/.bash_profile or ~/.profile startup script so that you get the same behavior on both kinds of interactive shells.
+##----
