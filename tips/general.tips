@@ -191,3 +191,51 @@ Your build process is failing and you know that you need an extra library direct
 ##----
 You can set CDPATH to be a list of parent directories that contain sub-directories to which you like to cd regularly.  For example if you set "CDPATH=.:~/a:~/b", then you can switch from ~/a/foo to ~/b/bar with "cd bar", then back with "cd foo".  Just define CDPATH (for example in your ~/.bashrc); do not export it.
 ##----
+Want to measure how long a command takes, do:
+   $ time a.out
+##----
+Want to know if two files are exactly the same use "cmp".  It is faster than diff.
+##----
+Aliases can be very helpful.  For example, these command in your ~/.bashrc will allows you to go backward inside your directory more quickly.
+  alias cd2="cd ../.."
+  alias cd3="cd ../../.."
+##----
+Want to mkdir and cd with a single command? You can use the following function in bash or zsh:
+  function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; } 
+##----
+You are writing too fast and misspelled the path of your directory while working in interactive bash session?
+Try the following command "shopt -s cdspell" and bash  will try several minor spelling correction to see if it can find the actual directotory.
+##----
+Want to know the date or time from your terminal? Use the command "date"
+##----
+Want to know more about a bash command ? try to use the "--help" command. For example with mkdir:
+  $ mkdir --help
+##----
+Want to know detailed information about a file do: "stat your_file_or_dir" to find out the create, access and modify times, permission etc.
+##----
+Want to compare 2 files? You can use diff.
+  $diff [options] file1 file2
+
+Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison. 
+##----
+Want to display the current time in the prompt? You can use the following command: export PS1="\u@\h [\$(date +%k:%m:%S)]$ "
+   doe@login1 [14:04:43]$ 
+##----
+There are several visual diff tools: meld, kdiff3, fldiff.  meld and kdiff3 are pretty.   fldiff will handle a files with huge number of diffs quickly.
+##----
+Emacs offers the "ediff mode" to quickly merge files.
+##----
+Vimdiff is a vi based tool to merge files.
+##----
+Did you know that bash sources your ~/.profile or ~/.bash_profile for login shells but sources ~/.bashrc on interactive shells?
+##----
+Did you know that C-shell source your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells.
+##----
+Did you know that bash sources the file pointed to by the environment variable BASH_ENV when running a bash shell script but not a sh shell script?
+##----
+Since bash sources ~/.bashrc on every sub-shell you want to prevent things like path duplication by putting in guard if statements:
+   if [ -z "$__INIT" ]; then
+      export __INIT=1
+      export PATH=$HOME/bin:$PATH
+   fi
+##----

@@ -70,3 +70,9 @@ Do you want to use a hybrid code on 8 nodes using 2 MPI tasks and 8 OpenMP threa
 Be sure  to use the "-N" option to specify the number of nodes that you want to use in addition to "-n".
 In this example, it will be "srun -N 8 -n 16..." or in your script "#SBATCH -N 8 \ #SBATCH -n 16"
 ##----
+Here's a great way to set permissions recursively to share a directory named projdir with your research group:
+ 
+    $ lfs find projdir | xargs chmod g+rX
+ 
+Using lfs is faster and less stressful on Lustre than a recursive chmod. The capital "X" assigns group execute permissions only to files and directories for which the owner has execute permissions.
+##----
