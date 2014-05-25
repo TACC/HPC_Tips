@@ -243,3 +243,11 @@ In bash, the ~/.bash_profile or ~/.profile file is sourced on login shells and ~
 ##----
 Many times you'll want the last word on the previous command: "mkdir abc; cd abc".  Instead of retyping the last word over, you can use Meta-period  (M-.).  This keystroke will cycle through the last word on previous commands.  Note that on many keyboard Meta is the "Alt" key and on a Mac it may be the "command" key.
 ##----
+Bash scripts can to simple arithmetic:  i=1; j=2; ((k=j*10+i)); echo $k -> 21
+##----
+A common error in a bash script is to put spaces around "=".  Right: A=10, Wrong: A = 10
+##----
+You can capture the output of a command, in a bash script with:
+   WD=`pwd`
+   WD=$(pwd)
+##----
