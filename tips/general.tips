@@ -95,7 +95,7 @@ Execute "module spider" to get a complete list of all installed software on the 
 ##----
 To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the following line in your source:
 
-  \usepackage[pdftex,colorlinks]{hyperref}
+  \\usepackage[pdftex,colorlinks]{hyperref}
 ##----
 You can switch back to the last directory by executing:
     $ cd -
@@ -218,7 +218,7 @@ Want to compare 2 files? You can use diff.
 
 Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison. 
 ##----
-Want to display the current time in the prompt? You can use the following command: export PS1="\u@\h [\$(date +%k:%m:%S)]$ "
+Want to display the current time in the prompt? You can use the following command: export PS1="\\u@\\h [\\$(date +%k:%m:%S)]$ "
    doe@login1 [14:04:43]$ 
 ##----
 There are several visual diff tools: meld, kdiff3, fldiff.  meld and kdiff3 are pretty.   fldiff will handle a files with huge number of diffs quickly.

@@ -68,7 +68,7 @@ By default, idev provides you a full node and ibrun will use all cores as MPI ta
 ##----
 Do you want to use a hybrid code on 8 nodes using 2 MPI tasks and 8 OpenMP threads per node on Stampede?
 Be sure  to use the "-N" option to specify the number of nodes that you want to use in addition to "-n".
-In this example, it will be "srun -N 8 -n 16..." or in your script "#SBATCH -N 8 \ #SBATCH -n 16"
+In this example, it will be "srun -N 8 -n 16..." or in your script "#SBATCH -N 8 \\ #SBATCH -n 16"
 ##----
 Here's a great way to set permissions recursively to share a directory named projdir with your research group:
  
