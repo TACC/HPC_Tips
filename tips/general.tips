@@ -241,5 +241,5 @@ Since bash sources ~/.bashrc on every sub-shell you want to prevent things like 
 ##----
 In bash, the ~/.bash_profile or ~/.profile file is sourced on login shells and ~/.bashrc is sourced on non-login interactive shells.  You may wish to source your ~/.bashrc inside your ~/.bash_profile or ~/.profile startup script so that you get the same behavior on both kinds of interactive shells.
 ##----
-In bash and zsh, many times you'll want the last word on the previous command: "mkdir abc; cd abc".  Instead of retyping the last word over, you can use Meta-period  (M-.).  This keystroke will cycle through the last word on previous commands.  Note that on many keyboard Meta is the "Alt" key and on a Mac it may be the "command" key.  To use: hold down the Meta key and type the period key. 
+Many times you'll want the last word on the previous command: "mkdir abc; cd abc".  Instead of retyping the last word over, you can use Meta-period  (M-.).  This keystroke will cycle through the last word on previous commands.  Note that on many keyboard Meta is the "Alt" key and on a Mac it may be the "command" key.
 ##----
