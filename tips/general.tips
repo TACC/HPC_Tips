@@ -247,7 +247,7 @@ Bash scripts can to simple arithmetic:  i=1; j=2; ((k=j*10+i)); echo $k -> 21
 ##----
 A common error in a bash script is to put spaces around "=".  Right: A=10, Wrong: A = 10
 ##----
-You can capture the output of a command, in a bash script with:
+In a bash script, you can capture the output of a command with either:
    WD=`pwd`
    WD=$(pwd)
 ##----
