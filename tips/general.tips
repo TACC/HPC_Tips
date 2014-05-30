@@ -251,3 +251,13 @@ In a bash script, you can capture the output of a command with either:
    WD=`pwd`
    WD=$(pwd)
 ##----
+Many unix command will report their version with "--version":
+   $ ls --version
+   ls (GNU coreutils) 8.4
+##----
+The gnu compilers and intel compilers support "-dumpversion" option to just report the version.
+##----
+The module command support "-t" or "--terse" for easy parsing.
+##----
+The module command support "-q" or "--quiet" option for silencing warnings.
+##----
