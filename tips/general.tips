@@ -229,7 +229,7 @@ Vimdiff is a vi based tool to merge files.
 ##----
 Did you know that bash sources your ~/.profile or ~/.bash_profile for login shells but sources ~/.bashrc on interactive shells?
 ##----
-Did you know that C-shell source your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells.
+Did you know that C-shell sources your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells.
 ##----
 Did you know that bash sources the file pointed to by the environment variable BASH_ENV when running a bash shell script but not a sh shell script?
 ##----
@@ -260,4 +260,36 @@ The gnu compilers and intel compilers support "-dumpversion" option to just repo
 The module command support "-t" or "--terse" for easy parsing.
 ##----
 The module command support "-q" or "--quiet" option for silencing warnings.
+##----
+The terminal text can be cleared by typing "Ctrl+L".  It is the same as the command "clear".
+##----
+To prevent a command from being saved in your command history, put a space before the comand:
+   $ <space>command
+##----
+To bypass any alias or shell function for "foo" do "\foo".
+##----
+To delete the previous word use "Ctrl+W"
+##----
+To end an ssh connection do: "<enter>~."
+##----
+To print line number do:
+  $ nl <file>
+##----
+A complex if then else block in a shell script can be written  on one line as:
+   $ [[ test ]] && if_true_do_this || otherwise_to_that
+##----
+To find broken symlinks do:
+   $ find . -type l -xtype l
+##----
+To swap the two characters on the command line do: Ctrl+T
+##----
+To diff two variables do: "diff <(echo $a) <(echo $b)"
+##----
+The web site www.commandlinefu.com has command line gems.  Click on "All-Time greats" for the most popular tips.
+##----
+To know all the versions of a command do:
+   $ type -a foo
+##----
+To print a random number between 1 and X do:
+   $ echo $[RANDOM%X+1]
 ##----
