@@ -272,7 +272,7 @@ To delete the previous word use "Ctrl+W"
 ##----
 To end an ssh connection do: "<enter>~."
 ##----
-To print line number do:
+To print a file with line number do:
   $ nl <file>
 ##----
 A complex if then else block in a shell script can be written  on one line as:
@@ -303,4 +303,5 @@ To reset a borked terminal try either:
    $ reset
 or
    $ Ctrl+J stty sane Ctrl+J
+##----
    
