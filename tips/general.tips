@@ -266,7 +266,7 @@ The terminal text can be cleared by typing "Ctrl+L".  It is the same as the comm
 To prevent a command from being saved in your command history, put a space before the comand:
    $ <space>command
 ##----
-To bypass any alias or shell function for "foo" do "\foo".
+To bypass any alias or shell function for "foo" do "\\foo".
 ##----
 To delete the previous word use "Ctrl+W"
 ##----
