@@ -266,13 +266,13 @@ The terminal text can be cleared by typing "Ctrl+L".  It is the same as the comm
 To prevent a command from being saved in your command history, put a space before the comand:
    $ <space>command
 ##----
-To bypass any alias or shell function for "foo" do "\foo".
+To bypass any alias or shell function for "foo" do "\\foo".
 ##----
 To delete the previous word use "Ctrl+W"
 ##----
 To end an ssh connection do: "<enter>~."
 ##----
-To print line number do:
+To print a file with line numbers do:
   $ nl <file>
 ##----
 A complex if then else block in a shell script can be written  on one line as:
@@ -294,4 +294,15 @@ To print a random number between 1 and X do:
    $ echo $[RANDOM%X+1]
 ##----
 Use Ctrl+U to clear the current line.
+##----
+To run a command in a different directory and jump back to the current directory, use parentheses create a sub-shell:
+   $ (cd ~/project; make)
+##----
+When running a for loop in multiple directories, it may be helpful to use parentheses create a sub-shell:
+   $ for d in d1 d2 d3 ; do  ( cd $d; do_some_command_here; ); done
+##----
+To reset a borked terminal try either:
+   $ reset 
+or
+   $ Ctrl+J stty sane Ctrl+J
 ##----
