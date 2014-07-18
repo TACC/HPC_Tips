@@ -293,3 +293,5 @@ To know all the versions of a command do:
 To print a random number between 1 and X do:
    $ echo $[RANDOM%X+1]
 ##----
+Use Ctrl+U to clear the current line.
+##----
