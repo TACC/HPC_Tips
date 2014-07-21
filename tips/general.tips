@@ -306,3 +306,12 @@ To reset a borked terminal try either:
 or
    $ Ctrl+J stty sane Ctrl+J
 ##----
+To learn the vi editor, do:
+   $ vimtutor
+##----
+To learn emacs do
+   $ emacs
+Then inside emacs do:
+      Ctrl+H t         to run the tutorial    
+      Ctrl+X Ctrl+C    to exit emacs
+##----
