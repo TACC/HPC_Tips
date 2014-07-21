@@ -295,10 +295,10 @@ To print a random number between 1 and X do:
 ##----
 Use Ctrl+U to clear the current line.
 ##----
-To run a command in a different directory and jump back to the current directory, use parentheses create a sub-shell:
+To run a command in a different directory and jump back to the current directory, use parentheses to create a sub-shell:
    $ (cd ~/project; make)
 ##----
-When running a for loop in multiple directories, it may be helpful to use parentheses create a sub-shell:
+When running a for loop in multiple directories, it may be helpful to use parentheses to create a sub-shell:
    $ for d in d1 d2 d3 ; do  ( cd $d; do_some_command_here; ); done
 ##----
 To reset a borked terminal try either:

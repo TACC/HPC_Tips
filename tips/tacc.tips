@@ -3,7 +3,7 @@ To restrict the memory that a JVM can use on a Stampede login node, try the foll
 ##----
 Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
 ##----
-Your MPI jobs suddenly start failing with mpispawn errors? Your rsa keys may be corrupted: to regenerate, go to $HOME then execute "mv .ssh dot.ssh.old", logout, then log back in.
+Are your MPI jobs suddenly failing with mpispawn errors? Your rsa keys may be corrupted: to regenerate, go to $HOME then execute "mv .ssh dot.ssh.old", logout, then log back in.
 ##----
 OMP_NUM_THREADS defaults to 1 on Lonestar and Stampede hosts (244 on MIC); be sure to export the desired value before running OpenMP jobs.
 ##----
