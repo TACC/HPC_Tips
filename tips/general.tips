@@ -316,3 +316,4 @@ Then inside emacs do:
       Ctrl+X Ctrl+C    to exit emacs
 ##----
 You can use "module try-load foo" when you wish to load "foo" if available.  No error is reported if "foo" doesn't exist.
+##----
