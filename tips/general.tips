@@ -317,3 +317,9 @@ Then inside emacs do:
 ##----
 You can use "module try-load foo" when you wish to load "foo" if available.  No error is reported if "foo" doesn't exist.
 ##----
+To debug a bash script add "set -xv" where you'd like to start tracking and "set +xv" where you'd like to stop tracking.
+##----
+Use Ctrl+E to go the end of the command line.
+##----
+Use Ctrl+A to go the beginning of the command line.
+##----
