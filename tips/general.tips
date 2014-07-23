@@ -335,3 +335,8 @@ Use Ctrl+E to go the end of the command line.
 ##----
 Use Ctrl+A to go the beginning of the command line.
 ##----
+Bash and Zsh maintain the variable $OLDPWD which is the name of the previous directory.  This can be abbreviated by "~-".  A neat trick is to use this with the diff commmand:
+  $ diff ~- foo.txt
+is the same as:
+  $ diff $OLDPWD/foo.txt foo.txt
+##----
