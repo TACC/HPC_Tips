@@ -315,3 +315,15 @@ Then inside emacs do:
       Ctrl+H t         to run the tutorial    
       Ctrl+X Ctrl+C    to exit emacs
 ##----
+Want to know what MACROS are predefined by the GCC and Intel compilers?  Do
+   $ gcc -dM -E - < /dev/null  > gcc_defined_macros.txt
+   $ icc -dM -E - < /dev/null  > icc_defined_macros.txt
+##----
+To list just the sub-directories in the current directory do:
+   $ ls -d */
+##----
+The command below  will report the number of lines in a file foo.txt
+   $ wc -l foo.txt
+##----
+Use the "lscpu" command to report information about the CPU under linux.
+##----
