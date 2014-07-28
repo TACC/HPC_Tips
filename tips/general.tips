@@ -97,7 +97,9 @@ To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the 
 
   \\usepackage[pdftex,colorlinks]{hyperref}
 ##----
-You can switch back to the last directory by executing:
+$OLDPWD is the name of the previous directory in bash and zsh.  This can be abbreviated by "~-". 
+    $ cd ~-
+or
     $ cd -
 ##----
 Tired of typing that long directory name? Use tab-completion instead:
@@ -335,8 +337,10 @@ Use Ctrl+E to go the end of the command line.
 ##----
 Use Ctrl+A to go the beginning of the command line.
 ##----
-Bash and Zsh maintain the variable $OLDPWD which is the name of the previous directory.  This can be abbreviated by "~-".  A neat trick is to use this with the diff commmand:
+$OLDPWD or ~- is the name of the previous directory in bash or zsh. A neat trick is to use this with the diff commmand:
     $ diff ~- foo.txt
 is the same as:
     $ diff $OLDPWD/foo.txt foo.txt
+##----
+You can put a # at the beginning of a line to save it in the history.  This is handy when typing a long command and you need to look something up.  You can do this easily in bash,  M-#.
 ##----
