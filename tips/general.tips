@@ -342,5 +342,5 @@ $OLDPWD or ~- is the name of the previous directory in bash or zsh. A neat trick
 is the same as:
     $ diff $OLDPWD/foo.txt foo.txt
 ##----
-You can put a # at the beginning of a line to save it in the history.  This is handy when typing a long command and you need to look something up.  You can do this easily in bash,  M-#.
+You can put a # at the beginning of a line to save it in the history.  This is handy when typing a long command and you need to look something up.  You can do this easily in bash with M-# (a.k.a. Esc # or Alt-#).
 ##----
