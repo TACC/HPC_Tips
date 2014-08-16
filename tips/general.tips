@@ -289,7 +289,7 @@ To diff two variables do: "diff <(echo $a) <(echo $b)"
 ##----
 The web site www.commandlinefu.com has command line gems.  Click on "All-Time greats" for the most popular tips.
 ##----
-To know all the versions of a command do:
+Bash user can find out all the locations of the foo command by doing:
    $ type -a foo
 ##----
 To print a random number between 1 and X do:
@@ -345,4 +345,12 @@ is the same as:
 You can put a # at the beginning of a line to save it in the history.  This is handy when typing a long command and you need to look something up.  You can do this easily in bash with M-# (a.k.a. Esc # or Alt-#).
 ##----
 To clear the screen type Ctrl+L or the command clear.
+##----
+All users can use the following to find the location of a command:  
+   $ whereis foo
+##----
+Are you having trouble figuring out why your link went bad?  Try adding -Wl,--trace to your link line and capture the output.
+##----
+This up shell function can change directory quickly up the directory tree: "up 3" is the same as "cd ../../..". Extra bonus points if you understand how the printf trick works.
+    up() { [ $(( $1 + 0 )) -gt 0 ] && cd $(eval "printf '../'%.0s {1..$1}"); }
 ##----
