@@ -344,3 +344,5 @@ is the same as:
 ##----
 You can put a # at the beginning of a line to save it in the history.  This is handy when typing a long command and you need to look something up.  You can do this easily in bash with M-# (a.k.a. Esc # or Alt-#).
 ##----
+To clear the screen type Ctrl+L or the command clear.
+##----
