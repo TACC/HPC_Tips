@@ -1,0 +1,3 @@
+##----
+Are you having trouble figuring out why your link went bad?  Try adding -Wl,--trace to your link line and capture the output.
+##----
