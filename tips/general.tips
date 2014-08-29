@@ -3,7 +3,7 @@ Run "dos2unix" command to convert files from Windows/DOS format to Unix format w
 ##----
 Use the command "du -sh" to see total disk usage for the current directory.
 ##----
-Use the command "du -h --max-depth=1" to see disk usage for all directories in the current directory.
+Use the command "du -h *" to see disk usage for all directories in the current directory.
 ##----
 Use "!!" to repeat the most recent command. Use "!mpi" to repeat the most recent command that started with "mpi" and "!?mpi?" for the most recent one that contained "mpi".
 ##----
@@ -276,6 +276,8 @@ To end an ssh connection do: "<enter>~."
 ##----
 To print a file with line numbers do:
   $ nl <file>
+or 
+  $ cat -n <file>
 ##----
 A complex if then else block in a shell script can be written  on one line as:
    $ [[ test ]] && if_true_do_this || otherwise_to_that
@@ -356,4 +358,6 @@ To delete a file name -foo you can do either rm ./-foo or rm -- -foo but not rm 
 ##----
 If you make changes to your ~/.bashrc, you can test it immediately by:
     $ source ~/.bashrc
+##----
+You should never name a program "test".  All shells have that name as a shell built-in.
 ##----
