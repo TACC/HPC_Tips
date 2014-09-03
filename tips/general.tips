@@ -99,7 +99,7 @@ To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the 
 ##----
 $OLDPWD is the name of the previous directory in bash and zsh.  This can be abbreviated by "~-". 
     $ cd ~-
-or
+or with the cd command
     $ cd -
 ##----
 Tired of typing that long directory name? Use tab-completion instead:
