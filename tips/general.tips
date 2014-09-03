@@ -231,7 +231,7 @@ Vimdiff is a vi based tool to merge files.
 ##----
 Did you know that bash sources your ~/.profile or ~/.bash_profile for login shells but sources ~/.bashrc on interactive shells?
 ##----
-Did you know that C-shell sources your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells.
+C-shell users: did you know that C-shell sources your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells?
 ##----
 Did you know that bash sources the file pointed to by the environment variable BASH_ENV when running a bash shell script but not a sh shell script?
 ##----
