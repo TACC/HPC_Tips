@@ -359,5 +359,9 @@ To delete a file name -foo you can do either rm ./-foo or rm -- -foo but not rm 
 If you make changes to your ~/.bashrc, you can test it immediately by:
     $ source ~/.bashrc
 ##----
-You should never name a program "test".  All shells have that name as a shell built-in.
+You should never name a program "test".  All shells have "test" as a built-in which means the shell will find the built-in before your command.  
 ##----
+Are you having trouble figuring out why your link went bad?  Try adding -Wl,--trace to your link line and capture the output.
+##----
+
+
