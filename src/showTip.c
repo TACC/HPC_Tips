@@ -79,45 +79,71 @@ void printUsage(const char* cmd)
 	 "Options:\n"
 	 " -h -?            : Print usage\n"
 	 " -v               : Print version\n"
+	 " -a               : print all tips\n"
 	 " -w               : do not print warnings\n"
 	 " -n num           : print tip num\n",
 	 cmd);
 }
+
+MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
+{
+  MYSQL_RES*  result;
+  char        cmd[BUFSIZE];
+  MYSQL_ROW   row;
+
+  sprintf(&cmd[0], "select msg from tips where tips_id = %d", idx);
+
+  if (mysql_query(con, cmd))
+    finish_with_error(con);
+  
+  result = mysql_store_result(con);
+  
+  if (result == NULL) 
+    finish_with_error(con);
+
+  int num_fields = mysql_num_fields(result);
+
+  while ((row = mysql_fetch_row(result))) 
+    {
+      printf("\nTip %d   %s\n\n", idx, hlp);
+      printwrap(row[0], twidth, NULL);
+      printf("\n");
+      break;
+    }
+  return result;
+}
+
+
 
 #define INTERVAL 400000
 
 int main(int argc, char **argv)
 {      
   struct winsize w;
-  char           cmd[BUFSIZE];
   int            i, twidth, opt;
-  int            numE = 0;
-  int            idx  = -1;
-  int            help = 0;
-  int            ver  = 0;
-  const char*    host = "tacc-stats.tacc.utexas.edu";
-  const char*    user = "readerOfTips";
-  const char*    pass = "tipReader123";
-  const char*    db   = "HPCTips";
-  const char*    hlp  = "\"module help tacc_tips\" shows how to disable";
+  int            numE	= 0;
+  int            idx	= -1;
+  int            help	= 0;
+  int            ver	= 0;
+  int            factor	= 1;
+  int            all	= 0;
+  const char*    host	= "tacc-stats.tacc.utexas.edu";
+  const char*    user	= "readerOfTips";
+  const char*    pass	= "tipReader123";
+  const char*    db	= "HPCTips";
+  const char*    hlp	= "(\"module help tacc_tips\" shows how to disable)";
   
 
 
   struct itimerval timer;
   
-  timer.it_interval.tv_sec = 0;
-  timer.it_interval.tv_usec = 0;
-  timer.it_value.tv_sec = 0;
-  timer.it_value.tv_usec = INTERVAL;
-  setitimer(ITIMER_REAL, &timer,0);
-
-
-  signal(SIGALRM,timer_handler);
-
-  while ( (opt = getopt(argc, argv, "vn:wh?")) != -1)
+  while ( (opt = getopt(argc, argv, "avn:wh?")) != -1)
     {
       switch (opt)
 	{
+	case 'a':
+	  all = 1;
+	  break;
 	case 'v':
 	  ver = 1;
 	  break;
@@ -146,6 +172,19 @@ int main(int argc, char **argv)
       printUsage(argv[0]);
       return 0;
     }
+
+  if (all)
+    factor = 100;
+
+  timer.it_interval.tv_sec = 0;
+  timer.it_interval.tv_usec = 0;
+  timer.it_value.tv_sec = 0;
+  timer.it_value.tv_usec = factor*INTERVAL;
+  setitimer(ITIMER_REAL, &timer,0);
+  
+  signal(SIGALRM,timer_handler);
+
+
 
   MYSQL *con = mysql_init(NULL);
   
@@ -180,42 +219,27 @@ int main(int argc, char **argv)
       break;
     }
   
+  /* (3) get term width */
   
+  ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+  twidth = w.ws_col - 3;
+  
+  /* (4) Select idx tip */
   if (idx < 0 || idx > numE)
     {
-      /* (3) Pick random tip: idx */
+      /* (4a) Pick random tip: idx */
       srand(time(NULL));
       idx = rand() % (numE - 1) + 1;
     }
 
-  /* (4) get term width */
-  
-  ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-  twidth = w.ws_col - 3;
-
-
-  /* (4) Select idx tip */
-
-  sprintf(&cmd[0], "select msg from tips where tips_id = %d", idx);
-
-  if (mysql_query(con, cmd))
-    finish_with_error(con);
-  
-  result = mysql_store_result(con);
-  
-  if (result == NULL) 
-    finish_with_error(con);
-
-  num_fields = mysql_num_fields(result);
-
-  while ((row = mysql_fetch_row(result))) 
+  if (! all)
+    result = printOneTip(con,twidth, hlp, idx);
+  else
     {
-      printf("\nTip %d   (%s)\n\n", idx, hlp);
-      printwrap(row[0], twidth, NULL);
-      printf("\n");
-      break;
+      for (idx = 1; idx <= numE; ++idx)
+	result = printOneTip(con,twidth, "", idx);
     }
-  
+
   mysql_free_result(result);
   mysql_close(con);
   

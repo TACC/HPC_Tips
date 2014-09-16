@@ -79,7 +79,7 @@ Using lfs is faster and less stressful on Lustre than a recursive chmod. The cap
 You can transfer files to your work directory on another machine by putting a '\\' in front of $WORK:
    $ scp yourfile stampede:\\$WORK
 ##----
-At TACC, it is probably safer to use "module reset" rather than "module purge" to get to a known good state.  Note that "module reset" means "module purge; module load TACC".
+It is probably safer to use "module reset" rather than "module purge" to get to a known good state.  At TACC, "module reset" means "module purge; module load TACC".
 ##----
 The most portable way across TACC systems to load a particular compiler and MPI stack combination in a script is to unload the currently loaded compiler and MPI stack first using environment variables. Then you may load the specific compiler and MPI stack that you want. E.g.:
    $ module unload $TACC_FAMILY_MPI $TACC_FAMILY_COMPILER
