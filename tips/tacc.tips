@@ -86,7 +86,7 @@ The most portable way across TACC systems to load a particular compiler and MPI 
    $ module load <compiler>/version <mpi>/version
    $ module load <PKG1> <PKG2>
 ##----
-All compiler modules at TACC define the TACC_FAMILY_COMPILER environment variable.  If you load any intel compiler module, it will define TACC_FAMILY_COMPILER to be "intel".  Similarly, any gcc compiler module will define it to be "gcc".  This can be useful in Makefiles to control which compiler flags to set.
+At TACC, loading any intel or gcc compiler module, it will define TACC_FAMILY_COMPILER to be "intel" or "gcc". This can be useful in Makefiles to control which compiler flags to set.
 ##----
 
 
