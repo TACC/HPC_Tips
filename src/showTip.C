@@ -1,3 +1,6 @@
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,6 +25,38 @@ void finish_with_error(MYSQL *con)
       mysql_close(con);
     }
   exit(1);        
+}
+
+
+std::string wrap(std::string line, size_t line_length = 72)
+{
+  std::string indent = "   ";
+  std::istringstream words(line);
+  std::ostringstream wrapped;
+  std::string word;
+
+  std::string::size_type found = line.find_first_not_of(" ");
+  if (found != std::string::npos)
+    indent += line.substr(0, found);
+
+  wrapped << indent;
+
+
+
+  if (words >> word) {
+    wrapped << word;
+    size_t space_left = line_length - word.length();
+    while (words >> word) {
+      if (space_left < word.length() + 1) {
+        wrapped << '\n' << indent << word;
+        space_left = line_length - word.length();
+      } else {
+        wrapped << ' ' << word;
+        space_left -= word.length() + 1;
+      }
+    }
+  }
+  return wrapped.str();
 }
 
 void printwrap(const char *s, int lineSize, const char *prefix) 
@@ -103,13 +138,26 @@ MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
 
   int num_fields = mysql_num_fields(result);
 
-  while ((row = mysql_fetch_row(result))) 
+  //while ((row = mysql_fetch_row(result))) 
+  //  {
+  //    printf("\nTip %d   %s\n\n", idx, hlp);
+  //    printwrap(row[0], twidth, NULL);
+  //    printf("\n");
+  //    break;
+  //  }
+
+  while ((row = mysql_fetch_row(result)))
     {
-      printf("\nTip %d   %s\n\n", idx, hlp);
-      printwrap(row[0], twidth, NULL);
-      printf("\n");
-      break;
+      std::cout << "\nTip " << idx << "   " << hlp << "\n\n";
+      std::stringstream whole(row[0]);
+      std::string line;
+      while (std::getline(whole, line, '\n'))
+        {
+          std::string oline = wrap(line, twidth);
+          std::cout << oline << "\n";
+        }
     }
+
   return result;
 }
 
