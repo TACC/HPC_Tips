@@ -5,7 +5,7 @@ CFLAGS := -g -O2
 CXX := g++
 
 install: showTip
-	cp $^ $(DIR)
+	[ -n "$(DIR)" ] && cp $^ $(DIR) || true
 
 showTip: showTip.o
 	$(LINK.C) -o $@ $^ -lmysqlclient
