@@ -2,15 +2,15 @@ export CPATH=/usr/include/mysql
 export LIBRARY_PATH=/usr/lib64/mysql
 CFLAGS := -g -O2
 
-CC := gcc
+CXX := g++
 
 install: showTip
 	cp $^ $(DIR)
 
 showTip: showTip.o
-	$(LINK.c) -o $@ $^ -lmysqlclient
+	$(LINK.C) -o $@ $^ -lmysqlclient
 
-showTip.o: showTip.c version.h
+showTip.o: showTip.C version.h
 
 neat:  neat_only
 
