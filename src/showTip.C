@@ -175,6 +175,7 @@ int main(int argc, char **argv)
   int            ver	= 0;
   int            factor	= 1;
   int            all	= 0;
+  int            bypass = 0;
   const char*    host	= "tacc-stats.tacc.utexas.edu";
   const char*    user	= "readerOfTips";
   const char*    pass	= "tipReader123";
@@ -185,7 +186,7 @@ int main(int argc, char **argv)
 
   struct itimerval timer;
   
-  while ( (opt = getopt(argc, argv, "avn:wh?")) != -1)
+  while ( (opt = getopt(argc, argv, "avn:wWh?")) != -1)
     {
       switch (opt)
 	{
@@ -200,6 +201,9 @@ int main(int argc, char **argv)
 	  break;
 	case 'w':
 	  issueWarning = 0;
+	  break;
+	case 'W':
+	  bypass = 1;
 	  break;
 	case 'h':
 	case '?':
@@ -224,13 +228,16 @@ int main(int argc, char **argv)
   if (all)
     factor = 100;
 
-  timer.it_interval.tv_sec = 0;
-  timer.it_interval.tv_usec = 0;
-  timer.it_value.tv_sec = 0;
-  timer.it_value.tv_usec = factor*INTERVAL;
-  setitimer(ITIMER_REAL, &timer,0);
-  
-  signal(SIGALRM,timer_handler);
+  if (! bypass)
+    {
+      timer.it_interval.tv_sec = 0;
+      timer.it_interval.tv_usec = 0;
+      timer.it_value.tv_sec = 0;
+      timer.it_value.tv_usec = factor*INTERVAL;
+      setitimer(ITIMER_REAL, &timer,0);
+      
+      signal(SIGALRM,timer_handler);
+    }
 
 
 

@@ -1,6 +1,6 @@
 export CPATH=/usr/include/mysql
 export LIBRARY_PATH=/usr/lib64/mysql
-CFLAGS := -g -O2
+CXXFLAGS := -g -O2
 
 CXX := g++
 
