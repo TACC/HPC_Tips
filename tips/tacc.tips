@@ -88,7 +88,7 @@ The most portable way across TACC systems to load a particular compiler and MPI 
 ##----
 At TACC, loading any intel or gcc compiler module, it will define TACC_FAMILY_COMPILER to be "intel" or "gcc". This can be useful in Makefiles to control which compiler flags to set.
 ##----
-At TACC, loading any MPI module, it will define TACC_FAMILY_MPI to be the name of the MPI Stack name (e.g mvapich2, impi)
+At TACC, loading any MPI module, it will define TACC_FAMILY_MPI to be the name of the MPI Stack name (e.g mvapich2, impi).
 ##----
 
 
