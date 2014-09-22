@@ -154,8 +154,9 @@ MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
       while (std::getline(whole, line, '\n'))
         {
           std::string oline = wrap(line, twidth);
-          std::cout << oline << "\n\n";
+          std::cout << oline << "\n";
         }
+      std::cout << "\n";
     }
 
   return result;
