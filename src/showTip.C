@@ -40,12 +40,12 @@ std::string wrap(std::string line, size_t line_length = 72)
     indent += line.substr(0, found);
 
   wrapped << indent;
-
+  size_t space_left = line_length - indent.length();
 
 
   if (words >> word) {
     wrapped << word;
-    size_t space_left = line_length - word.length();
+    space_left -= word.length();
     while (words >> word) {
       if (space_left < word.length() + 1) {
         wrapped << '\n' << indent << word;
@@ -137,14 +137,6 @@ MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
     finish_with_error(con);
 
   int num_fields = mysql_num_fields(result);
-
-  //while ((row = mysql_fetch_row(result))) 
-  //  {
-  //    printf("\nTip %d   %s\n\n", idx, hlp);
-  //    printwrap(row[0], twidth, NULL);
-  //    printf("\n");
-  //    break;
-  //  }
 
   while ((row = mysql_fetch_row(result)))
     {
