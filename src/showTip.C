@@ -49,7 +49,7 @@ std::string wrap(std::string line, size_t line_length = 72)
     while (words >> word) {
       if (space_left < word.length() + 1) {
         wrapped << '\n' << indent << word;
-        space_left = line_length - word.length();
+        space_left = line_length - word.length() - indent.length();
       } else {
         wrapped << ' ' << word;
         space_left -= word.length() + 1;
