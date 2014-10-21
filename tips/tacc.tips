@@ -92,6 +92,6 @@ At TACC, loading any intel or gcc compiler module, it will define TACC_FAMILY_CO
 ##----
 At TACC, loading any MPI module, it will define TACC_FAMILY_MPI to be the name of the MPI Stack name (e.g mvapich2, impi).
 ##----
+The day before a Tuesday maintenance is a great time to submit short jobs. The scheduler drains the queues by holding up jobs that will not complete before the start of maintenance. Your short jobs will have the machine to themselves!
+##----
 
-
-   
