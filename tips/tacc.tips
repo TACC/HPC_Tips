@@ -94,4 +94,5 @@ At TACC, loading any MPI module, it will define TACC_FAMILY_MPI to be the name o
 ##----
 The day before a Tuesday maintenance is a great time to submit short jobs. The scheduler drains the queues by holding up jobs that will not complete before the start of maintenance. Your short jobs will have the machine to themselves!
 ##----
-
+To perform basic diagnostics on your account settings, execute "module load sanitytool" and then run "sanitycheck -v".
+##----
