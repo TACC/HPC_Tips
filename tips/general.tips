@@ -98,7 +98,7 @@ To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the 
   \\usepackage[pdftex,colorlinks]{hyperref}
 ##----
 $OLDPWD is the name of the previous directory in bash and zsh.  This can be abbreviated by "~-". 
-    $ cd ~-
+    $ ls ~-
 or with the cd command
     $ cd -
 ##----
@@ -198,7 +198,7 @@ Want to measure how long a command takes, do:
 ##----
 Want to know if two files are exactly the same use "cmp".  It is faster than diff.
 ##----
-Aliases can be very helpful.  For example, these command in your ~/.bashrc will allows you to go backward inside your directory more quickly.
+Aliases can be very helpful.  For example, these commands in your ~/.bashrc will allows you to go backward inside your directory more quickly.
   alias cd2="cd ../.."
   alias cd3="cd ../../.."
 ##----
