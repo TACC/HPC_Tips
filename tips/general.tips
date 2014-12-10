@@ -179,7 +179,7 @@ Commands like ls, mv and cp support file globbing pattern matching:
   $  ls [^tx]*  #  -> list all files that do NOT start with t or x
   $  ls t?.sh   #  -> list files like t1.sh t2.sh but not t22.sh
 ##----
-Did you know that you can edit the command line with emacs or vi commands?  By default, bash uses emacs style editing.  Use "set -o vi" to switch to vi style.  See https://www.gnu.org/software/bash/manual/html_node/Command-Line-Editing.html for more details.
+Did you know that you can edit the command line with emacs or vi commands?  By default, bash uses emacs style editing.  Use "set -o vi" to switch to vi style.  See www.gnu.org/software/bash/manual/html_node/Command-Line-Editing.html for more details.
 ##----
 Need to view a graphics file (jpg and such)? Use the "display" command.
 ##----
@@ -245,7 +245,7 @@ In bash, the ~/.bash_profile or ~/.profile file is sourced on login shells and ~
 ##----
 Many times you'll want the last word on the previous command: "mkdir abc; cd abc".  Instead of retyping the last word over, you can use Meta-period  (M-.).  This keystroke will cycle through the last word on previous commands.  Note that on many keyboard Meta is the "Alt" key and on a Mac it may be the "command" key.
 ##----
-Bash scripts can to simple arithmetic:  i=1; j=2; ((k=j*10+i)); echo $k -> 21
+Bash scripts can do simple arithmetic:  i=1; j=2; ((k=j*10+i)); k is 21.
 ##----
 A common error in a bash script is to put spaces around "=".  Right: A=10, Wrong: A = 10
 ##----
