@@ -153,9 +153,9 @@ Did you know that emacs and vim support spell checking?
 ##----
 Did you know that both emacs and vim support color syntax highlighting?
 ##----
-Emacs support etags (a code database.)  M-. will jump to a function definition, M-x tags-query-replace can change strings throughout a code tree.
+Emacs supports etags (a code database.)  M-. will jump to a function definition, M-x tags-query-replace can change strings throughout a code tree.
 ##----
-Vim support ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
+Vim supports ctags (a code database.)  ctags -R *; Ctrl-] will jump to a function definition underneath the cursor.
 ##----
 In vi, typing "." will repeat the last edit.
 ##----
@@ -259,9 +259,9 @@ Many unix command will report their version with "--version":
 ##----
 The gnu compilers and intel compilers support "-dumpversion" option to just report the version.
 ##----
-The module command support "-t" or "--terse" for easy parsing.
+The module command supports "-t" or "--terse" for easy parsing.
 ##----
-The module command support "-q" or "--quiet" option for silencing warnings.
+The module command supports "-q" or "--quiet" option for silencing warnings.
 ##----
 The terminal text can be cleared by typing "Ctrl+L".  It is the same as the command "clear".
 ##----
