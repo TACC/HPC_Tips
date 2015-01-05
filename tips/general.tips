@@ -35,8 +35,9 @@ To build software in your own user space, ./configure --prefix=$WORK/myapps is o
 ##----
 Execute "du -sch *" to see your disk usage by directory.
 ##----
-An alias to display your $PATH with each directory on its own line:
-   $ alias prettypath="echo \\$PATH | sed 's/:/\\n/g'"
+If you find it difficult to mentally parse through a colon separated list like PATH or LD_LIBRARY_PATH, you can create bash function to print each directory on its own line.
+   function prettypath() { echo ${1-$PATH} | sed 's/:/\n/g'; }
+By default it pretty prints $PATH or whatever the first argument is.
 ##----
 Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
 ##----
