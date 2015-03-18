@@ -96,3 +96,5 @@ The day before a Tuesday maintenance is a great time to submit short jobs. The s
 ##----
 To perform basic diagnostics on your account settings, execute "module load sanitytool" and then run "sanitycheck -v".
 ##----
+If you don't need 48 hrs for your job, don't request that much: the job scheduler will have an easier time finding a slot for the 1 hour you really need.
+##----
