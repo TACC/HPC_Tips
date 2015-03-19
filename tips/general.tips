@@ -369,3 +369,6 @@ Are you having trouble figuring out why your link went bad?  Try adding -Wl,--tr
 You easily find the longest line in a file by executing:
     $ wc -L <file>
 ##----
+Create a nifty overview of the hardware on your system and open the "hardware.html" in a browser:
+    $ lshw -html > hardware.html
+##----
