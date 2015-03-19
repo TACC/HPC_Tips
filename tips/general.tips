@@ -372,3 +372,12 @@ You easily find the longest line in a file by executing:
 Create a nifty overview of the hardware on your system and open the "hardware.html" in a browser:
     $ lshw -html > hardware.html
 ##----
+You can open a file and jump to the first place that matches a pattern with:
+    $ vi +/pattern <file>
+##----
+You can open a file and jump to a particular line with:
+    $ vi +10 <file>
+##----
+You can open a file and jump to a particular line with:
+    $ emacs +10 <file>
+##----
