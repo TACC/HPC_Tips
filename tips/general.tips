@@ -416,3 +416,4 @@ If you have added a command to your path but can't find it try:
    $ hash -r
    
 to re-build bash's internal memory of where commands are.
+##----
