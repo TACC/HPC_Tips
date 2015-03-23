@@ -381,3 +381,12 @@ You can open a file and jump to a particular line with:
 You can open a file and jump to a particular line with:
     $ emacs +10 <file>
 ##----
+For those of you who use vi you might consider creating this alias to close a terminal:
+    $ alias ':q'=exit
+##----
+To place the NUM-th argument from the most recent command do  <Alt>+<NUM>+<.>:
+   $ echo a b c 
+   $ cat <Alt>+2+<.>
+Becomes:
+   $ cat b
+##----
