@@ -411,4 +411,8 @@ cd () {
 
 This function strips the file part from the directory when the argument is a file, then the built-in cd command is called.
 ##----
+If you have added a command to your path but can't find it try:
 
+   $ hash -r
+   
+to re-build bash's internal memory of where commands are.
