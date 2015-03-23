@@ -396,3 +396,7 @@ You can make sure a parameter has a value by putting this in a shell script:
 If you really want to know what shell you are currently running do:
    $ readlink -f /proc/$$/exe
 ##----
+It is possible to have an alias the same as the name of the command.  For example, you can redefine the tail command to always print a screen worth of text by doing:
+   tail() { command tail -n $(($LINES - 2)) "$@"; }
+The "command" command tells bash (and zsh) to ignore any aliases or shell functions when trying to resolve "tail".  Bonus point for knowing what "$(($LINES - 2)) does! 
+##----
