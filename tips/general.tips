@@ -390,3 +390,9 @@ To place the NUM-th argument from the most recent command do  <Alt>+<NUM>+<.>:
 Becomes:
    $ cat b
 ##----
+You can make sure a parameter has a value by putting this in a shell script:
+   param=${param:-$(read -p "Enter parameter: "; echo "$REPLY")}
+##----
+If you really want to know what shell you are currently running do:
+   $ readlink -f /proc/$$/exe
+##----
