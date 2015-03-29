@@ -417,4 +417,16 @@ If you have added a command to your path but can't find it, try:
    
 to re-build bash's internal memory of where commands are.
 ##----
+To run the previous command repeatly until it exits successfully do:
+    $ until !!; do :; done
+##----
+If you set "shopt -s autocd" in the bash shell, then you'll be able to change directories by just typing the name of the directory.
+##----
+A nice way to debug shell scripts is to define the bash shell function "shdebug" shown below.  
 
+   shdebug() { env PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]}) ' sh -x $1; }
+
+This will give the file, line number and function name for each line in a shell script.  To use do:
+
+    $ shdebug /path/to/bash_shell_script
+##----
