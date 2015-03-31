@@ -430,3 +430,7 @@ This will give the file, line number and function name for each line in a shell 
 
     $ shdebug /path/to/bash_shell_script
 ##----
+You can get the status of the last command with "$?".  It is 0 for success and non-zero for failure:
+     $ echo "$?"
+##----
+     
