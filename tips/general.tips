@@ -447,5 +447,5 @@ To clear the text from the current position to the end of line do: Ctrl+K
 In bash, one can compute the substring by doing:
       $ A="abcdef"
       $ echo ${A:0:-1}      # -> abcde
-      $ echo ${A:1,${#A}}   # -> bcdef
+      $ echo ${A:1:${#A}}   # -> bcdef
 ##----
