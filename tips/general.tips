@@ -431,6 +431,21 @@ This will give the file, line number and function name for each line in a shell 
     $ shdebug /path/to/bash_shell_script
 ##----
 You can get the status of the last command with "$?".  It is 0 for success and non-zero for failure:
-     $ echo "$?"
+    $ echo "$?"
 ##----
-     
+You can send the output of a command to standard error with:
+    $ echo "This will be written to stderr" 1>&2
+##----
+You can send the output of both stderr and stdout to a file with:
+    $ executable >& output
+##----
+You can record what gets written to a terminal session with the command "script" and the output will be recorded to a file "typescript".
+    $ script
+##----
+To clear the text from the current position to the end of line do: Ctrl+K
+##----
+In bash, one can compute the substring by doing:
+      $ A="abcdef"
+      $ echo ${A:0:-1}      # -> abcde
+      $ echo ${A:1,${#A}}   # -> bcdef
+##----
