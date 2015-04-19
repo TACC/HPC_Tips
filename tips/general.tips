@@ -273,6 +273,10 @@ To prevent a command from being saved in your command history, put a space befor
 ##----
 To bypass any alias (but not shell function) for "foo" do "\\foo".
 ##----
+To bypass any alias and shell function for any executable do "command foo".
+##----
+To bypass any alias and shell function for any shell built-in foo like cd or ls do "builtin foo".
+##----
 To delete the previous word use "Ctrl+W"
 ##----
 To end an ssh connection do: "<enter>~."
