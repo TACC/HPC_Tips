@@ -11,7 +11,9 @@ MIC_OMP_NUM_THREADS defaults to 240 (offload) and 244 (native launched from host
 ##----
 Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
 ##----
-HPC Python? Yes! We have the Enthought distribution: "module load python".
+HPC Python? Yes! "module load python".
+##----
+Want to install your own python modules?  Do "module help python".
 ##----
 A newer version of the system-supplied Perl is available by running the command "module load perl"
 ##----
