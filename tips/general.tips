@@ -208,8 +208,8 @@ Aliases can be very helpful.  For example, these commands in your ~/.bashrc will
 Want to mkdir and cd with a single command? You can use the following function in bash or zsh:
   function mkdircd () { mkdir -p "$1" && eval cd "$1"; } 
 ##----
-You are writing too fast and misspelled the path of your directory while working in interactive bash session?
-Try the following command "shopt -s cdspell" and bash  will try several minor spelling correction to see if it can find the actual directotory.
+You are writing too fast and misspelled the path of your directory while working in an interactive bash session?
+Try the following command "shopt -s cdspell" and bash  will try several minor spelling corrections to see if it can find the actual directory.
 ##----
 Want to know the date or time from your terminal? Use the command "date"
 ##----
