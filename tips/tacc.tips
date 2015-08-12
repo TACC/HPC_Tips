@@ -30,7 +30,7 @@ $HOME, $WORK, and $SCRATCH are available to native MIC codes (and to users who s
 ##----
 View pdf files on stampede with xpdf.
 ##----
-Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB
+Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB.  These variables will be defined after you load the module.
 ##----
 Want to keep tabs on your job?
    $ watch -n 10 squeue -u yourname
