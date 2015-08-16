@@ -13,7 +13,7 @@ Add the following include statements in your Makefile to compile PETSc code:
   include ${PETSC_DIR}/conf/variables
   include ${PETSC_DIR}/conf/rules
 ##----
-Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare Player running on your desktop.
+Are you a Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare Player running on your desktop.
 ##----
 Want to mount your supercomputer directories on your desktop? Try the sshfs utility.
 ##----
@@ -456,4 +456,6 @@ In bash, one can compute the substring by doing:
 Another way to follow a growing file is to use:
     $ less +F <file>
 This is just like tail -F but it all you to move back and forth in the file.
+##----
+To see how to control an ssh session type:  <enter>~?
 ##----
