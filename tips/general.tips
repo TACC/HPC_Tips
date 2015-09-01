@@ -298,8 +298,8 @@ To diff two variables do: "diff <(echo $a) <(echo $b)"
 ##----
 The web site www.commandlinefu.com has command line gems.  Click on "All-Time greats" for the most popular tips.
 ##----
-Bash user can find out all the locations of the foo command by doing:
-   $ type -a foo
+A Bash user should consider using `type' instead of `which'. In particular `type -a' find out all the path locations, functions and alias of the `ls' command by doing: 
+   $ type -a ls
 ##----
 To print a random number between 1 and X do:
    $ echo $[RANDOM%X+1]
