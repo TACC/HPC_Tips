@@ -395,9 +395,12 @@ Becomes:
    $ cat b
 ##----
 You can make sure a parameter has a value by putting this in a shell script:
-   param=${param:-$(read -p "Enter parameter: "; echo "$REPLY")}
+   param=${param:-$(read -p "Enter parameter: ")}; echo "$REPLY"
 ##----
-If you really want to know what shell you are currently running do:
+A very portable way to find what shell you running is to do:
+   $  my_shell=$(basename $(ps -p $$ -ocomm=)); echo $my_shell
+##----
+If you really want to know what shell you are currently running on a Linux system do:
    $ readlink -f /proc/$$/exe
 ##----
 It is possible to have an alias the same as the name of the command.  For example, you can redefine the tail command to always print a screen worth of text by doing:
