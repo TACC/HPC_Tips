@@ -26,7 +26,7 @@ If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh di
 ##----
 If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
 ##----
-$HOME, $WORK, and $SCRATCH are available to native MIC codes (and to users who ssh to a MIC), but are not accessible from offloaded code. The system aliases cdw and cds are not available on the MIC.
+You can access your home, work, and scratch directories from native MIC codes, but you cannot do so from offloaded code. The environment variables $WORK and $SCRATCH (and the aliases cdw and cds) are not defined on the MIC.
 ##----
 View pdf files on stampede with xpdf.
 ##----
