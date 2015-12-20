@@ -2,7 +2,7 @@
 # -*- python -*-
 from __future__ import print_function
 from fnmatch    import fnmatch
-import os, sys, re
+import os, sys, re, platform
 import MySQLdb as mdb
 import warnings
 warnings.filterwarnings("ignore", "Unknown table.*")
@@ -59,7 +59,8 @@ def files_in_tree(path, pattern):
 
 def main():
 
-  host   = "localhost"
+  myhost = platform.node()
+  host   = (myhost == "tacc-stats") and "localhost" or "tacc-stats.tacc.utexas.edu"
   user   = "tipBuilder"
   passwd = "test623"
   db     = "HPCTips"
