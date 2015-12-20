@@ -62,6 +62,11 @@ class LD_TIPS(object):
       self.__readFromUser()
 
   def db_connect(self):
+    if(os.path.exists(self.__confFn)):
+      self.__readConfig()
+    else:
+      self.__readFromUser()
+
     self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
 
     with self.__conn:
