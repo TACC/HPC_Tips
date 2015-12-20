@@ -1,5 +1,6 @@
 ##----
-To restrict the memory that a JVM can use on a Stampede login node, try the following: "export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
+To restrict the memory that a JVM can use on a Stampede login node, try the following:
+   $ export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
 ##----
 Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
 ##----
@@ -35,8 +36,7 @@ Linking to TACC packages? You don't have to remember their locations. Just use $
 Want to keep tabs on your job?
    $ watch -n 10 squeue -u yourname
 ##----
-Not sure if TACC has a package you're looking for?
-See https://www.tacc.utexas.edu/resources/software.
+Not sure if TACC has a package you're looking for? See https://www.tacc.utexas.edu/resources/software.
 ##----
 Not sure which TACC machine you're logged into? Type "hostname -f".
 ##----
