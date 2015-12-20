@@ -108,7 +108,7 @@ def files_in_tree(path, pattern):
 
 def main():
 
-  confFn = "tips_db.conf"
+  confFn = "HPCTips_db.conf"
   
 
   myhost = platform.node()
