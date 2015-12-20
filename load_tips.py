@@ -104,6 +104,7 @@ def files_in_tree(path, pattern):
       fn = os.path.join(root, name)
       if (fnmatch(fn,pattern)):
         fileA.append(fn)
+  fileA.sort()
   return fileA  
 
 def main():
