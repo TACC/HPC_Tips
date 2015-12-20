@@ -2,21 +2,65 @@
 # -*- python -*-
 from __future__ import print_function
 from fnmatch    import fnmatch
-import os, sys, re, platform
+import os, sys, re, platform, getpass, base64, argparse
 import MySQLdb as mdb
 import warnings
+try:
+  import configparser
+except:
+  import ConfigParser as configparser
+
 warnings.filterwarnings("ignore", "Unknown table.*")
 
 dividerPat = re.compile(r'^##\-\-*$')
 
 class LD_TIPS(object):
-  def __init__(self, host, user, passwd, db):
+  def __init__(self, confFn):
+    self.__host   = None
+    self.__user   = None
+    self.__passwd = None
+    self.__db     = None
     self.__conn   = None
-    self.__host   = host
-    self.__user   = user
-    self.__passwd = passwd
-    self.__db     = db
-    
+    self.__confFn = confFn
+
+  def __readFromUser(self):
+    """ Ask user for database access info. (private) """
+
+    self.__host   = raw_input("Database host:")
+    self.__user   = raw_input("Database user:")
+    self.__passwd = getpass.getpass("Database pass:")
+    self.__db     = raw_input("Database name:")
+    self.__writeConfig()
+
+  def __writeConfig(self):
+    config=configparser.ConfigParser()
+    config.add_section("MYSQL")
+    config.set("MYSQL","HOST",self.__host)
+    config.set("MYSQL","USER",self.__user)
+    config.set("MYSQL","PASSWD",base64.b64encode(self.__passwd))
+    config.set("MYSQL","DB",self.__db)
+
+    fn = self.__db + "_db.conf"
+
+    f = open(fn,"w")
+    config.write(f)
+    f.close()
+
+  def __readConfig(self):
+    """ Read database access info from config file. (private)"""
+    confFn = self.__confFn
+    try:
+      config=configparser.ConfigParser()
+      config.read(confFn)
+      self.__host    = config.get("MYSQL","HOST")
+      self.__user    = config.get("MYSQL","USER")
+      self.__passwd  = base64.b64decode(config.get("MYSQL","PASSWD"))
+      self.__db      = config.get("MYSQL","DB")
+    except configparser.NoOptionError as err:
+      sys.stderr.write("\nCannot parse the config file\n")
+      sys.stderr.write("Switch to user input mode...\n\n")
+      self.__readFromUser()
+
   def db_connect(self):
     self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
 
@@ -59,13 +103,16 @@ def files_in_tree(path, pattern):
 
 def main():
 
+  confFn = "tips"
+  
+
   myhost = platform.node()
   host   = (myhost == "tacc-stats") and "localhost" or "tacc-stats.tacc.utexas.edu"
   user   = "tipBuilder"
   passwd = "test623"
   db     = "HPCTips"
 
-  tips   = LD_TIPS(host, user, passwd, db)
+  tips   = LD_TIPS(confFn)
 
   tips.db_connect()
 
