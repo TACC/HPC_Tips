@@ -75,7 +75,6 @@ class LD_TIPS(object):
       cur.execute("CREATE TABLE tips ( tips_id INT  PRIMARY KEY AUTO_INCREMENT, \
                    msg varchar(2048) not null)")
 
-  
   def insertTip(self, txt):
 
     with self.__conn:
