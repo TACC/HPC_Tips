@@ -190,9 +190,9 @@ Need override the definition of C compiler in a Makefile, just do:  "make CC=mpi
 ##----
 Having trouble figuring out how a macro is being expanded?  Try pasting the line into a terminal and adding a "-E". For example try changing "mpicc -DFOO -DBAR -c foo.c" into "mpicc -DFOO -DBAR -E foo.c > foo.i" and look at the "foo.i" file.
 ##----
-Your build process is failing and you know that you need some extra include directories.  Try setting CPATH to be colon separated list of directories.  Both the intel and gcc compilers will use the list as include paths (i.e. -I/foo/bar)
+If your build process is failing and you know that you need some extra include directories.  Try setting CPATH to be colon separated list of directories.  Both the intel and gcc compilers will use the list as include paths (i.e. -I/foo/bar)
 ##----
-Your build process is failing and you know that you need an extra library directories.  Try setting LIBRARY_PATH to be colon separated list of directories.  Both the intel and gcc compilers will use the list as library directories (-L/foo/bar).
+If your build process is failing and you know that you need an extra library directories.  Try setting LIBRARY_PATH to be colon separated list of directories.  Both the intel and gcc compilers will use the list as library directories (-L/foo/bar).
 ##----
 You can set CDPATH to be a list of parent directories that contain sub-directories to which you like to cd regularly.  For example if you set "CDPATH=.:~/a:~/b", then you can switch from ~/a/foo to ~/b/bar with "cd bar", then back with "cd foo".  Just define CDPATH (for example in your ~/.bashrc); do not export it.
 ##----
