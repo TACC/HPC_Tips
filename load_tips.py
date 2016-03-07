@@ -71,7 +71,7 @@ class LD_TIPS(object):
 
     with self.__conn:
       cur = self.__conn.cursor()
-      cur.execute("DROP TABLE IF EXISTS HPCTips")
+      cur.execute("DROP TABLE IF EXISTS tips")
       cur.execute("CREATE TABLE tips ( tips_id INT  PRIMARY KEY AUTO_INCREMENT, \
                    msg varchar(2048) not null)")
 
@@ -109,7 +109,6 @@ def files_in_tree(path, pattern):
 def main():
 
   confFn = "HPCTips_db.conf"
-  
 
   myhost = platform.node()
 
