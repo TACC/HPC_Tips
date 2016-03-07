@@ -462,3 +462,5 @@ This is just like tail -F but it all you to move back and forth in the file.
 ##----
 To see how to control an ssh session type:  <enter>~?
 ##----
+If you use vi you might find the vim graphical cheat-sheet useful: http://www.viemu.com/vi-vim-cheat-sheet.gif
+##----
