@@ -3,7 +3,8 @@ To use:
 a) Create a MySQL database called HPCTips.  Here at TACC we have a VM which provides the MySQL database.
    a1) Create a user called "tipBuilder" with password "test623" granted all access to HPCTips.
    a2) Create a user called "readerOfTips" with password "tipReader123" with only select privileges.
-   a3) Make sure that MySQL DB  can be seen by other hosts of interest. 
+   a3) Make sure that MySQL DB  can be seen by other hosts of interest.
+   a4) "mysql> create database HPCTips;"
 
 
 b) Modify ./load_tips.py to match database hostname and possibly passwords if you have changed any of the above.

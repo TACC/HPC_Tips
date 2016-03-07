@@ -71,7 +71,7 @@ class LD_TIPS(object):
 
     with self.__conn:
       cur = self.__conn.cursor()
-      cur.execute("DROP TABLE IF EXISTS tips")
+      cur.execute("DROP TABLE IF EXISTS HPCTips")
       cur.execute("CREATE TABLE tips ( tips_id INT  PRIMARY KEY AUTO_INCREMENT, \
                    msg varchar(2048) not null)")
 
@@ -112,10 +112,6 @@ def main():
   
 
   myhost = platform.node()
-  host   = (myhost == "tacc-stats") and "localhost" or "tacc-stats.tacc.utexas.edu"
-  user   = "tipBuilder"
-  passwd = "test623"
-  db     = "HPCTips"
 
   tips   = LD_TIPS(confFn)
 
