@@ -1,6 +1,0 @@
-[MYSQL]
-host = tacc-stats.tacc.utexas.edu
-user = tipBuilder
-passwd = dGVzdDYyMw==
-db = HPCTips
-
