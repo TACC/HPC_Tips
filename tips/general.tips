@@ -1,4 +1,10 @@
 ##----
+If you find it difficult to mentally parse through a colon separated list like PATH or LD_LIBRARY_PATH, you can create bash function to print each directory on its own line.
+
+   function prettypath() { echo ${1-$PATH} | sed 's/:/\\n/g'; }
+
+By default it pretty prints $PATH or whatever the first argument is.
+##----
 Run "dos2unix" command to convert files from Windows/DOS format to Unix format when you transfer them to TACC resources. 
 ##----
 Use the command "du -sh" to see total disk usage for the current directory.
@@ -34,12 +40,6 @@ Execute "module show xxxx" to see exactly what module xxxx does to your environm
 To build software in your own user space, ./configure --prefix=$WORK/myapps is often the trick you're looking for.
 ##----
 Execute "du -sch *" to see your disk usage by directory.
-##----
-If you find it difficult to mentally parse through a colon separated list like PATH or LD_LIBRARY_PATH, you can create bash function to print each directory on its own line.
-
-   function prettypath() { echo ${1-$PATH} | sed 's/:/\\n/g'; }
-
-By default it pretty prints $PATH or whatever the first argument is.
 ##----
 Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
 ##----

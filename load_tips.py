@@ -72,8 +72,13 @@ class LD_TIPS(object):
     with self.__conn:
       cur = self.__conn.cursor()
       cur.execute("DROP TABLE IF EXISTS tips")
-      cur.execute("CREATE TABLE tips ( tips_id INT  PRIMARY KEY AUTO_INCREMENT, \
-                   msg varchar(2048) not null)")
+      cur.execute("""
+          CREATE TABLE IF NOT EXISTS `tips` (
+            `tips_id` INT           unsigned NOT NULL auto_increment, 
+            `msg`     varchar(2048)          NOT NULL,
+            PRIMARY KEY (`tips_id`)
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COLLATE=utf8_general_ci AUTO_INCREMENT=1
+          """)
 
   def insertTip(self, txt):
 
@@ -81,7 +86,9 @@ class LD_TIPS(object):
       cur = self.__conn.cursor()
       txt = txt.replace("'",r"\'")
 
+      cur.execute("START TRANSACTION")      
       cur.execute("INSERT INTO tips(msg) VALUES('%s')" % txt)
+      cur.execute("COMMIT")      
 
 
   def db_disconnect(self):
@@ -120,6 +127,9 @@ def main():
   tips   = LD_TIPS(confFn)
 
   tips.db_connect()
+
+  if (True):
+    return
 
   fileA  = files_in_tree("./tips", "*.tips")
 
