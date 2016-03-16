@@ -26,6 +26,3 @@ clobber: clean clobber_only
 
 clobber_only:
 	$(RM) showTip
-
-
-
