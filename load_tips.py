@@ -121,9 +121,6 @@ def main():
 
   tips.db_connect()
 
-  if (True):
-    return
-
   fileA  = files_in_tree("./tips", "*.tips")
 
   for fn in fileA:
