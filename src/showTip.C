@@ -169,7 +169,7 @@ int main(int argc, char **argv)
   int            factor	= 1;
   int            all	= 0;
   int            bypass = 0;
-  const char*    host	= "tacc-stats.tacc.utexas.edu";
+  const char*    host	= "xalt.tacc.utexas.edu";
   const char*    user	= "readerOfTips";
   const char*    pass	= "tipReader123";
   const char*    db	= "HPCTips";

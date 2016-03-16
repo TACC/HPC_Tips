@@ -2,7 +2,7 @@
 # -*- python -*-
 from __future__ import print_function
 from fnmatch    import fnmatch
-import os, sys, re, platform, getpass, base64, argparse
+import os, sys, re, getpass, base64, argparse
 import MySQLdb as mdb
 import warnings
 try:
@@ -116,13 +116,6 @@ def files_in_tree(path, pattern):
 def main():
 
   confFn = "HPCTips_db.conf"
-  
-
-  myhost = platform.node()
-  host   = (myhost == "tacc-stats") and "localhost" or "tacc-stats.tacc.utexas.edu"
-  user   = "tipBuilder"
-  passwd = "test623"
-  db     = "HPCTips"
 
   tips   = LD_TIPS(confFn)
 
