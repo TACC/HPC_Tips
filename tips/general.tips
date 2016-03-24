@@ -260,7 +260,7 @@ Many unix command will report their version with "--version":
    $ ls --version
    ls (GNU coreutils) 8.4
 ##----
-The gnu compilers and intel compilers support "-dumpversion" option to just report the version.
+The gnu and intel compilers support "-dumpversion" option to just report the version.
 ##----
 The module command supports "-t" or "--terse" for easy parsing.
 ##----
