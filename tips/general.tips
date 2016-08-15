@@ -464,3 +464,10 @@ To see how to control an ssh session type:  <enter>~?
 ##----
 If you use vi you might find the vim graphical cheat-sheet useful: http://www.viemu.com/vi-vim-cheat-sheet.gif
 ##----
+Have you ever run a group of command with a pipe and need to check the status of one of them?
+
+   $ sbatch job | tee file.log
+
+Using $? will return the status of the tee command.  ${PIPESTATUS[0]} will return the status of the sbatch command in bash.
+##----
+
