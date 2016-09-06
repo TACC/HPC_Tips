@@ -458,7 +458,7 @@ In bash, one can compute the substring by doing:
 ##----
 Another way to follow a growing file is to use:
     $ less +F <file>
-This is just like tail -F but it all you to move back and forth in the file.
+This is just like tail -F but it allows you to move back and forth in the file.
 ##----
 To see how to control an ssh session type:  <enter>~?
 ##----
