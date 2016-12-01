@@ -232,7 +232,7 @@ Emacs offers the "ediff mode" to quickly merge files.
 ##----
 Vimdiff is a vi based tool to merge files.
 ##----
-Did you know that bash sources your ~/.profile or ~/.bash_profile for login shells but sources ~/.bashrc on interactive shells?
+Did you know that bash sources your ~/.profile or ~/.bash_profile for login shells but only directly sources ~/.bashrc on interactive shells?
 ##----
 C-shell users: did you know that C-shell sources your ~/.cshrc on EVERY kind of shell: login, interactive, non-interactive shells?
 ##----
