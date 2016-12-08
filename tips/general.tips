@@ -407,7 +407,7 @@ It is possible to have an alias the same as the name of the command.  For exampl
 
    tail() { command tail -n $(($LINES - 2)) "$@"; }
 
-The "command" command tells bash (and zsh) to ignore any aliases or shell functions when trying to resolve "tail".  Bonus point for knowing what "$(($LINES - 2)) does! 
+The "command" command tells bash (and zsh) to ignore any aliases or shell functions when trying to resolve "tail".  Bonus points for knowing what "$(($LINES - 2)) does! 
 ##----
 It is possible to redefine a shell builtin function by using the "builtin" command.  For example you can redefine the cd command to handle pasting in the path to a file when you want to "cd" to the directory containing the file:
 
