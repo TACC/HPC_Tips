@@ -57,7 +57,7 @@ When in doubt, read the manual: http://www.tacc.utexas.edu/user-services/user-gu
 ##----
 The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers or "make -j4" there.
 ##----
-Does rank 0 need more memory than your other MPI tasks? If you have 64 tasks, for example, allocate 5 nodes and launch with:
+Does rank 0 need more memory than your other MPI tasks? Suppose you have 64 tasks and want to run 16 tasks per node. Allocate 5 nodes and launch with:
   $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
 ##----
 Do you know what is cool about cdh?
