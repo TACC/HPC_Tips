@@ -120,5 +120,5 @@ MPI jobs running out of memory? Spread your tasks across more nodes to increase 
 ##----
 Some apps, commands and libraries are available both with and without a module loaded, including python, gcc, git, python, perl, java, and cmake. You’ll almost always get newer versions if you load the module.
 ##----
-KNL nodes do have 272 hardware threads, but it’s often a bad idea to use them all. In most cases it’s best to stay at or below 64 independent tasks per node, and 1-2 threads per core.
+KNL nodes have 272 hardware threads, but it may not be a good idea to use them all. Focus instead on the 68 cores: in most cases it's best to stay at or below 64-68 independent processes per node, and 1-2 threads per core.
 ##----
