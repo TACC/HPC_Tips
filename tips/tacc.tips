@@ -48,8 +48,6 @@ A code built with Intel MPI won't run with MVAPICH2 and vice versa. Your build e
 ##----
 If you have an MPI application with threads, don't forget to use tacc_affinity. See the system user guide for more details. 
 ##----
-The Intel compilers are only usable from the login nodes and the development queue.
-##----
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
     $ lfs find <directory> -name '*.c'
 ##----
