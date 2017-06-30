@@ -8,8 +8,6 @@ Are your MPI jobs suddenly failing with mpispawn errors? Your rsa keys may be co
 ##----
 OMP_NUM_THREADS defaults to 1 on most TACC systems; be sure to export the desired value before running OpenMP jobs.
 ##----
-MIC_OMP_NUM_THREADS defaults to 240 (offload) and 244 (native launched from host); be sure to export the desired value before running OpenMP jobs involving the Xeon Phi KNC MIC coprocessor.
-##----
 Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
 ##----
 HPC Python? Yes! "module load python".
@@ -26,8 +24,6 @@ If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh di
   $ chown `whoami` $HOME/.ssh/authorized_keys
 ##----
 If you need X11 to run a GUI-based app on a Stampede compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
-##----
-You can access your home, work, and scratch directories from codes running natively on the Xeon Phi KNC MIC coprocessor, but you cannot do so from offloaded code. The environment variables $WORK and $SCRATCH (and the aliases cdw and cds) are not defined on the Xeon Phi KNC MIC coprocessor.
 ##----
 View pdf files on stampede with xpdf.
 ##----
