@@ -104,7 +104,7 @@ Did you know that job resource utilization reports are available via TACC's remo
   $ module load remora
   $ module help remora
 ##----
-MPI jobs running out of memory? Spread your tasks across more nodes to increase the memory available to each task. Instead of “-N 4 –n 64” (64 tasks spread across 4 nodes, or 16 tasks per node), try “-N 16 –n 64” (4 tasks per node) or even “-N 64 –n 64” (1 task per node). Use the remora module to monitor your job’s memory use.
+MPI jobs running out of memory? Spread your tasks across more nodes to increase the memory available to each task. Instead of "-N 4 -n 64" (64 tasks spread across 4 nodes, or 16 tasks per node), try "-N 16 -n 64" (4 tasks per node) or even "-N 64 -n 64" (1 task per node). Use the remora module to monitor your job's memory use.
 ##----
 Some apps, commands and libraries are available both with and without a module loaded, including python, gcc, git, python, perl, java, and cmake. You’ll almost always get newer versions if you load the module.
 ##----
