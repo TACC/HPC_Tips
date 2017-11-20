@@ -174,7 +174,7 @@ The man-pages are divided into sections: section (1) are commands; section (2) a
 ##----
 Try "man -k <key word>" to find the command or function you are looking for.
 ##----
-Linux, like all Unix O.S., allow commands to be "piped" together where the output of one is the input next.  So  "ls | grep key | more" will print a page at a time for all files that match "key".
+Linux, like all Unix O.S., allow commands to be "piped" together where the output of one is the input next.  So  "ls | grep key | more" will print a page at a time for all file names that match "key".
 ##----
 Commands like ls, mv and cp support file globbing pattern matching:
   $  ls t*      #  -> list all files that start with t
