@@ -16,8 +16,8 @@ Use "!!" to repeat the most recent command. Use "!mpi" to repeat the most recent
 Use the command "cat -e -t -v Makefile" to check whether you are using tabs in your Makefile.
 ##----
 Add the following include statements in your Makefile to compile PETSc code:
-  include ${PETSC_DIR}/conf/variables
-  include ${PETSC_DIR}/conf/rules
+  include ${PETSC_DIR}/lib/petsc/conf/variables
+  include ${PETSC_DIR}/lib/petsc/conf/rules
 ##----
 Are you a Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare Player running on your desktop.
 ##----
@@ -476,4 +476,3 @@ Suppose you are building a program in one directory and running it in another.  
 In bash and zsh you can define one or more environment variables for just one command:
    $ VAR1=V1 VAR2=V2 command
 ##----
-
