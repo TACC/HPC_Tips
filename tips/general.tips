@@ -361,7 +361,7 @@ All users can use the following to find the location of a command:
 This up shell function can change directory quickly up the directory tree: "up 2" is the same as "cd ../..". Extra bonus points if you understand how the printf trick works.
     up() { cd $(eval "printf '../'%.0s {1..$1}") && pwd }
 ##----
-To delete a file name -foo you can do either rm ./-foo or rm -- -foo but not rm -foo.  Why?
+To delete a file named -foo you can do either rm ./-foo or rm -- -foo but not rm -foo.  Why?
 ##----
 If you make changes to your ~/.bashrc, you can test it immediately by:
     $ source ~/.bashrc
