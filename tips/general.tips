@@ -152,6 +152,11 @@ Keeping all sources up-to-date in all locations can be difficult.  Using "git" o
 ##----
 Bash and Zsh support string manipulation tools:  HOST="sam.domain.com"; SHOST=${HOST%%.*} => sam. Google "bash string manipulation" for more details.
 ##----
+You can remove parts of strings directly in Bash and Zsh:
+  $ a=foo.bar
+  $ echo ${a%%.bar}  # -> foo
+  $ echo ${a##foo.}  # -> bar
+##----
 Did you know that emacs and vim support spell checking?
 ##----
 Did you know that both emacs and vim support color syntax highlighting?
