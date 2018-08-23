@@ -159,17 +159,17 @@ You can remove parts of strings directly in Bash and Zsh:
 ##----
 String removal from front of string in Bash/Zsh:
   $ x=abcABC123ABCxyz
-  $ # |----|       #    shortest match 
-  $ # |----------| #    longest  match 
+  $ # |----|.......#   shortest match 
+  $ # |----------|.#   longest  match 
   $ echo ${x#a*C}  # -> 123ABCxyz
   $ echo ${x##a*C} # -> xyz
 ##----
 String removal from back of string in Bash/Zsh:
   $ x=abcABC123ABCabc
-  $ #              ||   shortest match
-  $ #  |------------|   longest  match
+  $ # .............||   shortest match
+  $ # .|------------|   longest  match
   $ echo ${x%b*c}  # -> abcABC123ABCa
-  $ echo ${x##b*c} # -> a
+  $ echo ${x%%b*c} # -> a
 ##----
 Did you know that emacs and vim support spell checking?
 ##----
