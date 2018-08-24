@@ -334,7 +334,9 @@ When running a for loop in multiple directories, it may be helpful to use parent
 To reset a "borked" terminal try either:
    $ reset 
 or
-   $ Ctrl+J stty sane Ctrl+J
+   $ ctrl+j stty sane ctrl+j
+or
+   $ echo ctrl-v <esc> c ctrl-j
 ##----
 To learn the vi editor, do:
    $ vimtutor
@@ -494,4 +496,10 @@ Suppose you are building a program in one directory and running it in another.  
 ##----
 In bash and zsh you can define one or more environment variables for just one command:
    $ VAR1=V1 VAR2=V2 command
+##----
+You can remove all but one file under bash with:
+   $ rm -f !(survivor.txt)
+##----
+Extract the current day month and year with one command line in bash:
+   $ read day month year <<< $(date +'%d %m %y')
 ##----
