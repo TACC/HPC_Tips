@@ -503,3 +503,6 @@ You can remove all but one file under bash with:
 Extract the current day month and year with one command line in bash:
    $ read day month year <<< $(date +'%d %m %y')
 ##----
+If you are a vi user, you might like to know that you can control info with vi style keybindings with:
+   $ info --vi-keys
+##----
