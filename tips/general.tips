@@ -347,7 +347,7 @@ Then inside emacs do:
       Ctrl+H t         to run the tutorial    
       Ctrl+X Ctrl+C    to exit emacs
 ##----
-Want to know what MACROS are predefined by the GCC and Intel compilers?  Do
+Want to know what MACROS are predefined by the GCC and Intel C compilers?  Do
    $ gcc -dM -E - < /dev/null  > gcc_defined_macros.txt
    $ icc -dM -E - < /dev/null  > icc_defined_macros.txt
 ##----
