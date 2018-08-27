@@ -515,3 +515,6 @@ If you would like to what kind of Linux computer you are on you can do:
 You can have ls ignore certain patterns:
    $ ls -I *.gz
 ##----
+You can have ls list all files except . and ..
+   $ ls -A
+##----
