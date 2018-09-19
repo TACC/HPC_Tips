@@ -518,3 +518,7 @@ You can have ls ignore certain patterns:
 You can have ls list all files except . and ..
    $ ls -A
 ##----
+Did you know that you can run command from inside vi without exiting?
+  :! ls -l 
+results in listing the files in the current directory. pressing "enter" will get you back into vi.
+##----
