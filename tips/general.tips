@@ -21,7 +21,7 @@ Add the following include statements in your Makefile to compile PETSc code:
 ##----
 Are you a Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare Player running on your desktop.
 ##----
-Want to mount your supercomputer directories on your desktop? Try the sshfs utility.
+If you want to mount your supercomputer directories on your desktop? Try the sshfs utility.
 ##----
 Load your favorite modules then execute "module save". Your saved collection will now be available on your next login, or anytime you execute "module restore".
 ##----
@@ -41,7 +41,7 @@ To build software in your own user space, ./configure --prefix=$WORK/myapps is o
 ##----
 Execute "du -sch *" to see your disk usage by directory.
 ##----
-Want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
+Do you want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
 ##----
 Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
 ##----
@@ -215,16 +215,16 @@ If your build process is failing and you know that you need some extra library d
 ##----
 You can set CDPATH to be a list of parent directories that contain sub-directories to which you like to cd regularly.  For example if you set "CDPATH=.:~/a:~/b", then you can switch from ~/a/foo to ~/b/bar with "cd bar", then back with "cd foo".  Just define CDPATH (for example in your ~/.bashrc); do not export it.
 ##----
-Want to measure how long a command takes, do:
+If you want to measure how long a command takes, do:
    $ time a.out
 ##----
-Want to know if two files are exactly the same use "cmp".  It is faster than diff.
+If you want to know if two files are exactly the same use "cmp".  It is faster than diff.
 ##----
 Aliases can be very helpful.  For example, these commands in your ~/.bashrc will allows you to go backward inside your directory more quickly.
   alias cd2="cd ../.."
   alias cd3="cd ../../.."
 ##----
-Want to mkdir and cd with a single command? You can use the following function in bash or zsh:
+Would you combine mkdir and cd with a single command? You can use the following function in bash or zsh:
   function mkdircd () { mkdir -p "$1" && eval cd "$1"; } 
 ##----
 You are writing too fast and misspelled the path of your directory while working in an interactive bash session?
@@ -232,17 +232,17 @@ Try the following command "shopt -s cdspell" and bash  will try several minor sp
 ##----
 Want to know the date or time from your terminal? Use the command "date"
 ##----
-Want to know more about a bash command ? try to use the "--help" command. For example with mkdir:
+If you want to know more about a bash command ? try to use the "--help" command. For example with mkdir:
   $ mkdir --help
 ##----
-Want to know detailed information about a file do: "stat your_file_or_dir" to find out the create, access and modify times, permission etc.
+If you want to know detailed information about a file do: "stat your_file_or_dir" to find out the create, access and modify times, permission etc.
 ##----
 Want to compare 2 files? You can use diff.
   $ diff [options] file1 file2
 
 Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison. 
 ##----
-Want to display the current time in the prompt? You can use the following command: export PS1="\\u@\\h [\\$(date +%k:%m:%S)]$ "
+If you want to display the current time in the prompt? You can use the following command: export PS1="\\u@\\h [\\$(date +%k:%m:%S)]$ "
    doe@login1 [14:04:43]$ 
 ##----
 There are several visual diff tools: meld, kdiff3, fldiff.  meld and kdiff3 are pretty.   fldiff will handle a files with huge number of diffs quickly.
@@ -347,7 +347,7 @@ Then inside emacs do:
       Ctrl+H t         to run the tutorial    
       Ctrl+X Ctrl+C    to exit emacs
 ##----
-Want to know what MACROS are predefined by the GCC and Intel C compilers?  Do
+If you want to know what MACROS are predefined by the GCC and Intel C compilers?  Do
    $ gcc -dM -E - < /dev/null  > gcc_defined_macros.txt
    $ icc -dM -E - < /dev/null  > icc_defined_macros.txt
 ##----
