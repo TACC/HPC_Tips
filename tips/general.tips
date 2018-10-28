@@ -389,6 +389,8 @@ If you make changes to your ~/.bashrc, you can test it immediately by:
 ##----
 You should never name a program "test".  All shells have "test" as a built-in which means the shell will find the built-in before your command.  
 ##----
+If you really must name a program "test", then it can be run with ./test, assuming that program "test" is in the current directory.
+##----
 Are you having trouble figuring out why your link went bad?  Try adding -Wl,--trace to your link line and capture the output.
 ##----
 You easily find the longest line in a file by executing:
