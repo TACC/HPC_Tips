@@ -524,3 +524,5 @@ Did you know that you can run command from inside vi without exiting?
   :! ls -l 
 results in listing the files in the current directory. pressing "enter" will get you back into vi.
 ##----
+Python 2 reaches end-of-life in 2020.  Please consider converting all your python2 scripts into python3.
+##----
