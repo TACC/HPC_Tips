@@ -1,7 +1,7 @@
 ##----
 If you find it difficult to mentally parse through a colon separated list like PATH or LD_LIBRARY_PATH, you can create bash function to print each directory on its own line.
 
-   function prettypath() { echo ${1-$PATH} | sed 's/:/\\n/g'; }
+   function prettypath () { echo ${1-$PATH} | sed 's/:/\\n/g'; }
 
 By default it pretty prints $PATH or whatever the first argument is.
 ##----

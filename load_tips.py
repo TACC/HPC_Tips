@@ -1,14 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- python -*-
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
 import MySQLdb as mdb
 import warnings
-try:
-  import configparser
-except:
-  import ConfigParser as configparser
+import configparser
 
 warnings.filterwarnings("ignore", "Unknown table.*")
 
@@ -54,7 +51,7 @@ class LD_TIPS(object):
       config.read(confFn)
       self.__host    = config.get("MYSQL","HOST")
       self.__user    = config.get("MYSQL","USER")
-      self.__passwd  = base64.b64decode(config.get("MYSQL","PASSWD"))
+      self.__passwd  = base64.b64decode(config.get("MYSQL","PASSWD")).decode()
       self.__db      = config.get("MYSQL","DB")
     except configparser.NoOptionError as err:
       sys.stderr.write("\nCannot parse the config file\n")
@@ -89,6 +86,17 @@ class LD_TIPS(object):
       cur.execute("START TRANSACTION")      
       cur.execute("INSERT INTO tips(msg) VALUES('%s')" % txt)
       cur.execute("COMMIT")      
+
+  def nrows(self):
+    with self.__conn:
+      cur = self.__conn.cursor()
+
+      query = "SELECT count(*) from tips"
+      cur.execute(query)
+      resultA = cur.fetchall()
+      Nrows   = resultA[0][0]
+      print("number of rows: ",Nrows)
+      
 
 
   def db_disconnect(self):
@@ -143,6 +151,10 @@ def main():
       elif (not m):
         sA.append(s)
   
+
+  tips.nrows()
+  #print("number of rows: ",
+
   tips.db_disconnect()
   
 
