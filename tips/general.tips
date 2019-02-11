@@ -526,3 +526,13 @@ results in listing the files in the current directory. pressing "enter" will get
 ##----
 Python 2 reaches end-of-life in 2020.  Please consider converting all your python2 scripts into python3.
 ##----
+A bash user can find all the commands available to them by doing:
+  $ compgen -c 
+A user might like to know all the commands that have "_info" as part of the its name:
+  $ compgen -c | grep _info
+##----
+A zsh user can find all the commands available to them by doing:
+  $ whence -pm '*'
+A user might like to know all the commands that have "_info" as part of the its name:
+  $ whence -pm '*' | grep _info
+##----
