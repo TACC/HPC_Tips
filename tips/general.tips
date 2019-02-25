@@ -536,3 +536,9 @@ A zsh user can find all the commands available to them by doing:
 A user might like to know all the commands that have "_info" as part of the its name:
   $ whence -pm '*' | grep _info
 ##----
+You can use the "command" key on a Mac keyboard to be a "Meta" key.  See https://www.emacswiki.org/emacs/MetaKeyProblems for details.
+This can make editting on the command line easier by making a single keystroke Meta-b rather than Escape then b.
+##----
+You can use the "Alt" key on a Linux keyboard in X-windows to be a "Meta" key.  See https://www.emacswiki.org/emacs/MetaKeyProblems for details.
+This can make editting on the command line easier by making a single keystroke Meta-b rather than Escape then b.
+##----
