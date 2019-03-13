@@ -28,7 +28,7 @@ Linking to TACC packages? You don't have to remember their locations. Just use $
 Want to keep tabs on your job?
    $ watch -n 10 squeue -u yourname
 ##----
-Not sure if TACC has a package you're looking for? See https://www.tacc.utexas.edu/resources/software.
+Not sure if TACC has a package you're looking for? See https://www.tacc.utexas.edu/system/software.
 ##----
 Not sure which TACC machine you're logged into? Type "hostname -f".
 ##----
