@@ -377,7 +377,7 @@ You can put a # at the beginning of a line to save it in the history.  This is h
 To clear the screen type Ctrl+L or the command clear.
 ##----
 All users can use the following to find the location of a command:  
-   $ whereis foo
+   $ whereis ls
 ##----
 This up shell function can change directory quickly up the directory tree: "up 2" is the same as "cd ../..". Extra bonus points if you understand how the printf trick works.
     up() { cd $(eval "printf '../'%.0s {1..$1}") && pwd }
