@@ -336,7 +336,7 @@ To reset a "borked" terminal try either:
 or
    $ ctrl+j stty sane ctrl+j
 or
-   $ echo ctrl-v <esc> c ctrl-j
+   $ ctrl+j tput reset ctrl+j
 ##----
 To learn the vi editor, do:
    $ vimtutor
