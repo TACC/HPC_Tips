@@ -542,9 +542,8 @@ This can make editting on the command line easier by making a single keystroke M
 You can use the "Alt" key on a Linux keyboard in X-windows to be a "Meta" key.  See https://www.emacswiki.org/emacs/MetaKeyProblems for details.
 This can make editting on the command line easier by making a single keystroke Meta-b rather than Escape then b.
 ##----
-Suppose you wish to remove all trailing blanks in your *.c and *.h files. You can use the find command with the sed command with inplace editing and regular expressions to this. 
-Starting in the current directory you can do:
-  $ find . -name *.[ch] -exec sed -i -e 's/  *$//' {} \;
+Suppose you wish to remove all trailing blanks in your *.c and *.h files. You can use the find command with the sed command with inplace editing and regular expressions to this.  Starting in the current directory you can do:
+  $ find . -name *.[ch] -exec sed -i -e 's/ \+$//' {} \;
 
-The find command finds all the *.c and *.h files and the -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/  *$// tells sed to replace blanks at the end of the line to be replaced with nothing.
+The find command finds all the *.c and *.h files and the -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \+$// tells sed to one or blanks at the end of the line to be replaced with nothing.
 ##----
