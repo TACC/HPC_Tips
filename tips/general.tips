@@ -546,5 +546,5 @@ Suppose you wish to remove all trailing blanks in your *.c and *.h files. You ca
 
   $ find . -name *.[ch] -exec sed -i -e 's/ \\+$//' {} \\;
 
-The find command locates all the *.c and *.h files and the -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \\+$// tells sed to replace one or blanks at the end of the line with nothing. The \\; is required to let find know where the end of the text for the -exec option.
+The find command locates all the *.c and *.h files in the current directory and below. The -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \\+$// tells sed to replace one or blanks at the end of the line with nothing. The \\; is required to let find know where the end of the text for the -exec option.
 ##----
