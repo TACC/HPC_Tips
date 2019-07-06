@@ -543,7 +543,8 @@ You can use the "Alt" key on a Linux keyboard in X-windows to be a "Meta" key.  
 This can make editting on the command line easier by making a single keystroke Meta-b rather than Escape then b.
 ##----
 Suppose you wish to remove all trailing blanks in your *.c and *.h files. You can use the find command with the sed command with in place editing and regular expressions to this.  Starting in the current directory you can do:
+
   $ find . -name *.[ch] -exec sed -i -e 's/ \\+$//' {} \\;
 
-The find command finds all the *.c and *.h files and the -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \\+$// tells sed to replace one or blanks at the end of the line with nothing. The \\; is required to let find know where the end of the text for the -exec option.
+The find command locates all the *.c and *.h files and the -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \\+$// tells sed to replace one or blanks at the end of the line with nothing. The \\; is required to let find know where the end of the text for the -exec option.
 ##----
