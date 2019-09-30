@@ -548,7 +548,7 @@ Suppose you wish to remove all trailing blanks in your *.c and *.h files. You ca
 
 The find command locates all the *.c and *.h files in the current directory and below. The -exec option run the sed command replacing {} with the name of each file.  The -i option tells sed to make the changes in place. The s/ \\+$// tells sed to replace one or blanks at the end of the line with nothing. The \\; is required to let find know where the end of the text for the -exec option.
 ##----
-Python 2 reaches end-of-life on January 1, 2020.  If you want a method to support python3 scripts that work with python2, you can place the following at the top of all your python scripts to run under either python3 or python2. (See https://stackoverflow.com/a/47886254)
+Python 2 reaches end-of-life on January 1, 2020.  Below shows a method to support python3 scripts that work with python2. You can place the following at the top of all your python scripts to run under either python3 or python2. (See https://stackoverflow.com/a/47886254)
     #!/bin/sh
     # This file is python bilingual: The line """:" starts a comment in 
     # Python and is a no-op in shell. 
