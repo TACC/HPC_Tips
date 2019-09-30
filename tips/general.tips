@@ -562,6 +562,6 @@ Python 2 reaches end-of-life on January 1, 2020.  If you want a method to suppor
     exit 2
     ":"""
 
-    # More python script ...
+    # ... python code ...
     from __future__ import print_function
 ##----
