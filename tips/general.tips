@@ -550,8 +550,8 @@ The find command locates all the *.c and *.h files in the current directory and 
 ##----
 Python 2 reaches end-of-life in January 1, 2020.  If you want a method to support python3 scripts that work with python2, you can place the following at the top of all your python scripts to run under either python2 or python3.
     #!/bin/sh
-    # This file is python bilingual: The next line starts a comment in Python,
-    # and is a no-op in shell
+    # This file is python bilingual: The next line starts a comment in 
+    # Python and is a no-op in shell.
     """:"
     # Find a suitable python interpreter (adapt for your specific needs) 
     for cmd in python3 python python2; do
