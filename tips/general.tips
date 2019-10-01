@@ -497,7 +497,7 @@ Have you ever run a group of command with a pipe and need to check the status of
 Using $? will return the status of the tee command.  ${PIPESTATUS[0]} will return the status of the sbatch command in bash.
 ##----
 Suppose you are building a program in one directory and running it in another.  You can wrap commands in parentheses to run those commands in a subshell:
-   $ (cd OneDirectory; git pull; make); a.out
+   $ (cd SomeDirectory; git pull; make); a.out
 ##----
 In bash and zsh you can define one or more environment variables for just one command:
    $ VAR1=V1 VAR2=V2 command
