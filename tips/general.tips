@@ -553,7 +553,7 @@ Python 2 reaches end-of-life on January 1, 2020.  You can place the following at
     # This file is python 2/3 bilingual. 
     # The line """:" starts a comment in python and is a no-op in shell. 
     """:"
-    # Shell code to find a suitable python interpreter.
+    # Shell code to find and run a suitable python interpreter on this file.
     for cmd in python3 python python2; do
        command -v > /dev/null $cmd && exec $cmd $0 "$@"
     done
