@@ -1,5 +1,17 @@
-#!/usr/bin/env python3
+#!/bin/sh
 # -*- python -*-
+# This file is python bilingual: it starts a comment in Python, and is a no-op in shell
+
+""":"
+# Find a suitable python interpreter (adapt for your specific needs) 
+for cmd in python3 python python2; do
+   command -v > /dev/null $cmd && exec $cmd $0 "$@"
+done
+
+echo "Error: Could not find a valid python interpreter --> exiting!"
+exit 2
+":"""
+
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
