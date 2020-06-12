@@ -1,5 +1,5 @@
 ##----
-To restrict the memory that a JVM can use on a Stampede2 login node, try the following:
+To restrict the memory that a JVM can use on a login node, try the following:
    $ export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
 ##----
 Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
@@ -21,7 +21,7 @@ If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh di
   $ chmod 600 $HOME/.ssh/authorized_keys
   $ chown `whoami` $HOME/.ssh/authorized_keys
 ##----
-If you need X11 to run a GUI-based app on a Stampede2 compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
+If you need X11 to run a GUI-based app on a compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
 ##----
 Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB.  These variables will be defined after you load the module.
 ##----
@@ -41,7 +41,7 @@ A code built with Intel MPI won't run with MVAPICH2 and vice versa. Your build e
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
     $ lfs find <directory> -name '*.c'
 ##---- 
-When in doubt, read the manual: https://portal.tacc.utexas.edu/user-guides/stampede2
+When in doubt, read the manual: https://portal.tacc.utexas.edu/user-guides
 ##----
 The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers or "make -j4" there.
 ##----
@@ -54,11 +54,11 @@ Do you know what is cool about cdh?
 ##----
 In the commands "srun -n X ..." or "idev -n X" or "#SBATCH -n X", X correspond to the number of MPI tasks that you want to use, not the number of cores.
 
-For example, on Stampede2,  if you want to use 1 node with 4 MPI tasks and 4 OpenMP threads, please use "srun -n 4..." or "idev -n 4" or "#SBATCH -n 4"
+For example, if you want to use 1 node with 4 MPI tasks and 4 OpenMP threads, please use "srun -n 4..." or "idev -n 4" or "#SBATCH -n 4"
 ##----
-By default, idev provides you a full node and ibrun will use all cores as MPI tasks. For example, on Stampede2, If you want to use 1 node on with 4 MPI tasks and 4 OpenMP threads, please use "idev -n 4"
+By default, idev provides you a full node and ibrun will use all cores as MPI tasks. For example, If you want to use 1 node on with 4 MPI tasks and 4 OpenMP threads, please use "idev -n 4"
 ##----
-Do you want to use a hybrid code on 8 nodes using 2 MPI tasks and 8 OpenMP threads per node on Stampede2? Be sure  to use the "-N" option to specify the number of nodes that you want to use in addition to "-n".
+Do you want to use a hybrid code on 8 nodes using 2 MPI tasks and 8 OpenMP threads per node? Be sure  to use the "-N" option to specify the number of nodes that you want to use in addition to "-n".
 
 In this example, it will be "srun -N 8 -n 16..." or in your script "#SBATCH -N 8 \\ #SBATCH -n 16"
 ##----
