@@ -41,7 +41,7 @@ To build software in your own user space, ./configure --prefix=$WORK/myapps is o
 ##----
 Execute "du -sch *" to see your disk usage by directory.
 ##----
-Do you want a robust approach to backup, transfer, and version control? Give git or mercurial a try; you'll be glad you did.
+Do you want a robust approach to backup, transfer, and version control? Give git a try; you'll be glad you did.
 ##----
 Tired of all that typing? Did you know you can type "ml" instead of "module list" and  "ml git" instead of "module load git"?
 ##----
