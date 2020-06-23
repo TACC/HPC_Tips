@@ -13,15 +13,13 @@
 #include "mysql.h"
 #include "version.h"
 
-#define BUFSIZE 256
-
 int issueWarning = 1;
 
 void finish_with_error(MYSQL *con)
 {
   if (issueWarning)
     {
-      fprintf(stderr, "RTM %s\n", mysql_error(con));
+      fprintf(stderr, "HPC_Tips %s\n", mysql_error(con));
       mysql_close(con);
     }
   exit(1);        
@@ -120,27 +118,30 @@ void printUsage(const char* cmd)
 	 cmd);
 }
 
-MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
+MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, const char* moduleNm, int idx)
 {
   MYSQL_RES*  result;
-  char        cmd[BUFSIZE];
+  char*       cmd    = NULL;
+  char*       hlpMsg = NULL;
   MYSQL_ROW   row;
 
-  sprintf(&cmd[0], "select msg from tips where tips_id = %d", idx);
+  asprintf(&cmd, "select msg from tips where tips_id = %d", idx);
 
   if (mysql_query(con, cmd))
     finish_with_error(con);
   
+  free(cmd);
   result = mysql_store_result(con);
   
   if (result == NULL) 
     finish_with_error(con);
 
   int num_fields = mysql_num_fields(result);
+  asprintf(&hlpMsg,hlp, moduleNm);
 
   while ((row = mysql_fetch_row(result)))
     {
-      std::cout << "\nTip " << idx << "   " << hlp << "\n\n";
+      std::cout << "\nTip " << idx << "   " << hlpMsg << "\n\n";
       std::stringstream whole(row[0]);
       std::string line;
       while (std::getline(whole, line, '\n'))
@@ -151,6 +152,7 @@ MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, int idx)
       std::cout << "\n";
     }
 
+  free(hlpMsg);
   return result;
 }
 
@@ -162,18 +164,19 @@ int main(int argc, char **argv)
 {      
   struct winsize w;
   int            i, twidth, opt;
-  int            numE	= 0;
-  int            idx	= -1;
-  int            help	= 0;
-  int            ver	= 0;
-  int            factor	= 1;
-  int            all	= 0;
-  int            bypass = 0;
-  const char*    host	= "xalt.tacc.utexas.edu";
-  const char*    user	= "readerOfTips";
-  const char*    pass	= "tipReader123";
-  const char*    db	= "HPCTips";
-  const char*    hlp	= "(See \"module help tacc_tips\" for features or how to disable)";
+  int            numE     = 0;
+  int            idx      = -1;
+  int            help     = 0;
+  int            ver      = 0;
+  int            factor   = 1;
+  int            all      = 0;
+  int            bypass   = 0;
+  const char*    host     = "xalt.tacc.utexas.edu";
+  const char*    user     = "readerOfTips";
+  const char*    pass     = "tipReader123";
+  const char*    db       = "HPCTips";
+  const char*    moduleNm = "tacc_tips"
+  const char*    hlp      = "(See \"module help %s\" for features or how to disable)";
   
 
 
@@ -281,11 +284,11 @@ int main(int argc, char **argv)
     }
 
   if (! all)
-    result = printOneTip(con,twidth, hlp, idx);
+    result = printOneTip(con,twidth, hlp, moduleNm, idx);
   else
     {
       for (idx = 1; idx <= numE; ++idx)
-	result = printOneTip(con,twidth, "", idx);
+	result = printOneTip(con,twidth, "%s", "", idx);
     }
 
   mysql_free_result(result);
