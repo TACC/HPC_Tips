@@ -175,7 +175,7 @@ int main(int argc, char **argv)
   const char*    user     = "readerOfTips";
   const char*    pass     = "tipReader123";
   const char*    db       = "HPCTips";
-  const char*    moduleNm = "tacc_tips"
+  const char*    moduleNm = "tacc_tips";
   const char*    hlp      = "(See \"module help %s\" for features or how to disable)";
   
 
