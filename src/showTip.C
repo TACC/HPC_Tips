@@ -8,17 +8,16 @@
 
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <sys/time.h>
 
-#include "config.h"
+#include "header.h"
 #include "version.h"
 
-#ifdef HAVE_MARIADB_MYSQL_H
-#  include "mariadb/my_global.h"
-#  include "mariadb/mysql.h"
+#ifdef HAVE_MYSQL_MY_GLOBAL_H
+#  include "mysql/my_global.h"
 #endif
 
 #ifdef HAVE_MYSQL_MYSQL_H
-#  include "mysql/my_global.h"
 #  include "mysql/mysql.h"
 #endif
 
