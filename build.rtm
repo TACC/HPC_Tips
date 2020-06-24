@@ -1,0 +1,120 @@
+#!/bin/bash
+# -*- shell-script -*-
+#-----------------------------------------------------------------------
+# This library is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as
+# published by the Free Software Foundation; either version 2.1 of 
+# the License, or (at your option) any later version. 
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser  General Public License for more details. 
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free
+# Software Foundation, Inc., 59 Temple Place, Suite 330,
+# Boston, MA 02111-1307 USA
+#-----------------------------------------------------------------------
+PKG_VERSION=`cat .version`
+echo Making Version: $PKG_VERSION
+
+runMe()
+{
+  local cmdA=("$@")
+
+  local j
+  local jj
+  local i
+  local ignoreError
+  local j=0
+  for i in "${cmdA[@]}" ; do
+    ignoreError=
+    if [ "x${i:0:1}" = x- ]; then
+      i=${i:1}
+      ignoreError=1
+    fi
+
+    j=$((j+1))
+    jj=$(printf "%02d" $j)
+    echo
+    echo "%%---------------------------------%%"
+    echo "   " $jj: $i
+    echo "%%---------------------------------%%"
+    echo
+
+    eval $i
+    if [ -z "$ignoreError" -a $? != 0 ]; then
+      break
+    fi
+  done
+}
+
+if [ -z "$SYSHOST" ]; then
+  myhost=$(hostname -f)
+  myhost=${myhost%.tacc.utexas.edu}
+  myhost=${myhost%.local}
+  first=${myhost%%.*}
+  if [ "$first" = xalt ]; then
+    export SYSHOST=xalt
+  else
+    export SYSHOST=${myhost#*.}
+  fi
+fi
+
+echo SYSHOST: $SYSHOST
+
+case $SYSHOST in
+  mijo)
+    echo "Building on $SYSHOST using mijo rules"
+    SUDO="sudo"
+    base="$HOME/l/pkg/HPC_Tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-user=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
+    ;;
+
+   *)
+    echo "Building on $SYSHOST"
+    SUDO="sudo"
+    base="/opt/apps"
+    CONF_OPTS="--with-etcDir=/opt/moduleData --with-syshostConfig=nth_name:2 --with-config=Config/rtm_config.py \
+       --prefix=/opt/apps/xalt/$PKG_VERSION --with-siteControlledPrefix=yes"
+    ;;
+
+esac
+BASE_DIR=$base
+
+pkgName=
+PKG=$BASE_DIR
+
+$SUDO rm -rf $PKG/xalt/$PKG_VERSION
+
+MAKE=make
+command -v remake 2>&1 > /dev/null
+if [ "$?" = 0 ]; then
+  MAKE=remake
+fi
+
+unset LD_PRELOAD
+
+unload_xalt ()
+{
+   type module > /dev/null 2>&1
+   if [ "$?" = 0 ]; then
+      echo "module unload xalt"
+      module unload xalt
+   fi
+}
+
+cmdA=("unload_xalt"
+      "-$MAKE distclean"
+      "-rm -rf $PKG/xalt/$PKG_VERSION"
+      "-rm -f src/*.o src/*.d libuuid/src/*.o"
+      "$SETUP_CMD"
+      "./configure --prefix=$PKG $CONF_OPTS"
+      "$SUDO $MAKE $MAKE_OPTS install"
+      "$SUDO $MAKE $MAKE_OPTS Inst_TACC"
+      "rm -f config.log"
+      )
+
+
+runMe "${cmdA[@]}"

@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 
+#include "config.h"
 #include "my_global.h"
 #include "mysql.h"
 #include "version.h"
@@ -156,8 +157,6 @@ MYSQL_RES * printOneTip(MYSQL* con, int twidth, const char* hlp, const char* mod
   return result;
 }
 
-
-
 #define INTERVAL 400000
 
 int main(int argc, char **argv)
@@ -171,14 +170,12 @@ int main(int argc, char **argv)
   int            factor   = 1;
   int            all      = 0;
   int            bypass   = 0;
-  const char*    host     = "xalt.tacc.utexas.edu";
-  const char*    user     = "readerOfTips";
-  const char*    pass     = "tipReader123";
-  const char*    db       = "HPCTips";
-  const char*    moduleNm = "tacc_tips";
+  const char*    host     = TIPS_HOST;
+  const char*    user     = TIPS_USER;
+  const char*    pass     = TIPS_PASS;
+  const char*    db       = TIPS_DB;
+  const char*    moduleNm = TIPS_MODULE_NAME;
   const char*    hlp      = "(See \"module help %s\" for features or how to disable)";
-  
-
 
   struct itimerval timer;
   

@@ -2,3 +2,10 @@ showTip
 *.o
 *~
 .*~
+*.pyc
+*.pyo
+__pycache__
+config.log
+config.status
+make.log
+makefile
