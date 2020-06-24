@@ -1,6 +1,14 @@
 AC_INIT(Makefile.in)
+AC_CONFIG_HEADERS(src/__build__/header.h:src/header.h.in)
 AC_PROG_CC
 AC_PREFIX_DEFAULT(/usr/local)
+
+AH_TOP(
+[
+/* Remember that AC_DEFINE() end up in header.h.in
+ * AC_SUBST() end up in config.h.in
+ */
+])
 
 AC_SUBST(TIPS_HOST)
 AC_ARG_WITH(host,
@@ -108,10 +116,20 @@ if test "$HAVE_PYMOD_MYSQLDB" = no; then
    exit 1
 fi
 
-AC_CHECK_HEADER(mysql.h,
-                [AC_DEFINE([HAVE_MYSQL_H], 1,
-                   [Define to 1 if you have <mysql.h>.])],
-                [AC_MSG_ERROR([Unable to build HPC_Tips without mysql.h])])
+dnl AC_CHECK_HEADER(mysql/mysql.h,
+dnl                [AC_DEFINE([HAVE_MYSQL_MYSQL_H], 1,
+dnl                   [Define to 1 if you have <mysql/mysql.h>.])],
+dnl		[AC_CHECK_HEADER(mariadb/mysql.h,
+dnl			[AC_DEFINE([HAVE_MARIADB_MYSQL_H], 1,
+dnl                   [Define to 1 if you have <mariadb/mysql.h>.])])],
+dnl		     [AC_MSG_ERROR([Unable to build HPC_Tips without mysql.h])])
+
+AC_CHECK_HEADER(mariadb/mysql.h,
+                [AC_DEFINE([HAVE_MARIADB_MYSQL_H], 1,
+                   [Define to 1 if you have <mariadb/mysql.h>.])],
+		[AC_CHECK_HEADER(mysql/mysql.h,
+                   [AC_DEFINE([HAVE_MYSQL_MYSQL_H], 1,
+                      [Define to 1 if you have <mysql/mysql.h>.])],
+                   [AC_MSG_ERROR([Unable to build HPC_Tips without mysql.h])])])
 
 AC_OUTPUT(makefile:Makefile.in src/__build__/config.h:src/config.h.in)
-

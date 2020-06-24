@@ -10,9 +10,17 @@
 #include <sys/ioctl.h>
 
 #include "config.h"
-#include "my_global.h"
-#include "mysql.h"
 #include "version.h"
+
+#ifdef HAVE_MARIADB_MYSQL_H
+#  include "mariadb/my_global.h"
+#  include "mariadb/mysql.h"
+#endif
+
+#ifdef HAVE_MYSQL_MYSQL_H
+#  include "mysql/my_global.h"
+#  include "mysql/mysql.h"
+#endif
 
 int issueWarning = 1;
 
