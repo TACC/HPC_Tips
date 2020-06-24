@@ -108,10 +108,10 @@ if test "$HAVE_PYMOD_MYSQLDB" = no; then
    exit 1
 fi
 
-AC_CHECK_HEADER(mysql.h,
+AC_CHECK_HEADER(mysql/mysql.h,
                 [AC_DEFINE([HAVE_MYSQL_H], 1,
-                   [Define to 1 if you have <mysql.h>.])],
-                [AC_MSG_ERROR([Unable to build HPC_Tips without mysql.h])])
+                   [Define to 1 if you have <mysql/mysql.h>.])],
+                [AC_MSG_ERROR([Unable to build HPC_Tips without mysql/mysql.h])])
 
 AC_OUTPUT(makefile:Makefile.in src/__build__/config.h:src/config.h.in)
 
