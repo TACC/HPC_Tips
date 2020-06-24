@@ -116,14 +116,6 @@ if test "$HAVE_PYMOD_MYSQLDB" = no; then
    exit 1
 fi
 
-dnl AC_CHECK_HEADER(mysql/mysql.h,
-dnl                [AC_DEFINE([HAVE_MYSQL_MYSQL_H], 1,
-dnl                   [Define to 1 if you have <mysql/mysql.h>.])],
-dnl		[AC_CHECK_HEADER(mariadb/mysql.h,
-dnl			[AC_DEFINE([HAVE_MARIADB_MYSQL_H], 1,
-dnl                   [Define to 1 if you have <mariadb/mysql.h>.])])],
-dnl		     [AC_MSG_ERROR([Unable to build HPC_Tips without mysql.h])])
-
 AC_CHECK_HEADER(mariadb/mysql.h,
                 [AC_DEFINE([HAVE_MARIADB_MYSQL_H], 1,
                    [Define to 1 if you have <mariadb/mysql.h>.])],
