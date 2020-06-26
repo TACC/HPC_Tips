@@ -141,4 +141,4 @@ A copy of our module file can be found in modules/HPC_Tips.lua
 
 9) Add the files init/z99_HPC_Tips.sh and init/z99_HPC_Tips.csh to your /etc/profile.d directory for all login nodes
 
-You will need to specify the location of the **showTips** binary in each file.
+You will need to specify the location of the **showTips** binary in each of the /etc/profile.d/z99_HPC_Tips.\* files
