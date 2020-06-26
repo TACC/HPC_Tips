@@ -135,8 +135,15 @@ def files_in_tree(path, pattern):
 
 def main():
 
-  confFn = "HPCTips_db.conf"
-
+  if (len(sys.argv) > 1):
+    confFn = sys.argv[1]
+  else:
+    A = [ "HPCTips_db.conf",  "HPC_Tips_db.conf" ]
+    for i in A:
+      if (sys.path.exists(i)):
+        confFn = i
+        break
+      
   tips   = LD_TIPS(confFn)
 
   tips.db_connect()
