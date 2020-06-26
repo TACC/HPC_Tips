@@ -4,13 +4,13 @@ HPC_Tips:
 
 HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
 
-    (1) A program, showTips, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
+(1) A program, showTips, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
 
-    (2) A couple of files containing short tips each being 1 to 5 lines long.
+(2) A couple of files containing short tips each being 1 to 5 lines long.
 
-    (3) A python program to load the database from supplied list of tips
+(3) A python program to load the database from supplied list of tips
 
-    (4) Tools to setup the configuration file and build and install the necessary programs.
+(4) Tools to setup the configuration file and build and install the necessary programs.
 
 This works by installing a MySQL database on a server which is accessible from all your login nodes.  The source for this
 project can live anywhere.  One uses the "load_tips.py" script to install the tips in the database. You place the source on a
@@ -87,6 +87,7 @@ sites.  This file could be moved out of this directory and edited at a later dat
 The following rules are used with the tips:
 
   a) All tips are between lines "##---" as shown below:
+
      ##----
      It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
      ##----
@@ -97,7 +98,7 @@ The following rules are used with the tips:
 
 4) load the database:
 
-   $ ./load_tips.py HPC_Tips_db.conf
+    ./load_tips.py HPC_Tips_db.conf
 
 Note that the load_tips.py program uses the first argument given as the name of the config file.  If no argument is given
 it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
