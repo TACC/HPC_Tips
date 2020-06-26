@@ -12,7 +12,7 @@ all:
 	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS) PARENT_DIR=$(abs_srcdir)
 
 neat:
-	$(RM) *~
+	$(RM) *~ config.log
 	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS)  $@_only
 
 clean:  neat
