@@ -62,6 +62,8 @@ pw: tipReader123) is needed to read the tips. You need to login to the mysql pro
 
 Obviously, you can use any names and password you like, you just need to be consistent throughout this process.
 
+You may have to edit the mysql.cnf file to allow access.  Check here for more details: https://linuxize.com/post/mysql-remote-access/
+
 
 2) Create database config file:
  
