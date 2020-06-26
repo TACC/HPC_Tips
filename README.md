@@ -107,7 +107,6 @@ it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
      $ mysql -u readerOfTips -h alice -p HPC_Tips 
      Enter password: 
-
      mysql> select * from tips limit 1;
 
 If this doesn't work then check to see that you can read the tips on the server and then check the firewall rules to
