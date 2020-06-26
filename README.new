@@ -1,0 +1,5 @@
+HPC_Tips 1.0+
+     (1.0)  * Upgraded for public release
+            * Now has a configure script.
+	    * Builds the reader username and passwd into "header.h" for the showTips binary to use
+	    * Updated README.md for better instructions on how to install.
