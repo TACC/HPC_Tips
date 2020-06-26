@@ -1,10 +1,9 @@
-===========
 HPC_Tips:
-===========
+=========
 
 HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
 
-(1) A program, showTips, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
+(1) A program, **showTips**, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
 
 (2) A couple of files containing short tips each being 1 to 5 lines long.
 
@@ -117,6 +116,7 @@ allow the mysql ports access the "alice" server.
 6) Build the showTips program:
 
    $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
+
    $ make install
 
 7) Test showTips program to see if works:
