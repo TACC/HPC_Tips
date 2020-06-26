@@ -1,3 +1,57 @@
+===========
+HPC_Tips:
+===========
+
+HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
+
+    (1) A program, showTips, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
+    (2) A couple of files containing short tips each being 1 to 5 lines long.
+    (3) A python program to load the database from supplied list of tips
+    (4) Tools to setup the configuration file and build and install the necessary programs.
+
+This works by installing a MySQL database on a server which is accessible from all your login nodes.  The source for this
+project can live anywhere.  One uses the "load_tips.py" script to install the tips in the database. You place the source on a
+host where you have write access to the database.  If you only allow write access to the database on the server, then the
+source will have to live there.
+
+Note that the tips database is independent of the install of the showTips program used to display tips to users.  Tips can be
+updated at anytime.
+
+To install:
+===========
+
+1) Setup MySQL Database:
+
+Have a server which can be seen on the network from your login nodes.  On that server install a mysql database server and allow
+your login nodes access to the the mysql ports on this server. This might require opening ports in various firewalls.  For the
+purposes of this discussion, lets assume that this server is called "alice".
+
+Once this mysql database server is running you'll need to create two accounts to access this database. Using "tipBuilder" as
+the account name that has write access to the database and setting "test623" as the password.  A second account (account: readerOfTips,
+pw: tipReader123) is needed to read the tips. You need to login to the mysql program and do:
+
+    mysql> create database HPC_Tips;
+    mysql> create user 'tipBuilder'@'%'           identified by 'test623';
+    mysql> create user 'tipBuilder'@'localhost'   identified by 'test623';
+    mysql> create user 'readerOfTips'@'%'         identified by 'tipReader123';
+    mysql> create user 'readerOfTips'@'localhost' identified by 'tipReader123';
+    mysql> grant all privileges ON HPC_Tips.* TO 'tipBuilder'@'localhost';
+    mysql> grant all privileges ON HPC_Tips.* TO 'tipBuilder'@'%';
+    mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'localhost';
+    mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'%';
+
+
+2) Create database config file.
+
+
+    $ ./conf_create.py
+    
+    
+
+
+
+
+
 To use:
 
 a) Create a MySQL database called HPCTips.  Here at TACC we have a VM which provides the MySQL database.
