@@ -9,3 +9,4 @@ config.log
 config.status
 make.log
 makefile
+*.conf

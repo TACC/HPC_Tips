@@ -5,8 +5,11 @@ HPC_Tips:
 HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
 
     (1) A program, showTips, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
+
     (2) A couple of files containing short tips each being 1 to 5 lines long.
+
     (3) A python program to load the database from supplied list of tips
+
     (4) Tools to setup the configuration file and build and install the necessary programs.
 
 This works by installing a MySQL database on a server which is accessible from all your login nodes.  The source for this
@@ -40,49 +43,77 @@ pw: tipReader123) is needed to read the tips. You need to login to the mysql pro
     mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'localhost';
     mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'%';
 
+Obviously, you can use any names and password you like, you just need to be consistent throughout this process.
 
-2) Create database config file.
 
+2) Create database config file:
+ 
+The following program will create a database configuration file used by the load_tips.py program
 
     $ ./conf_create.py
+
+    Database host: alice
+    Database user: tipBuilder
+    Database pass: test623
+    Database name: HPC_Tips
     
-    
+If you want to just load the database from the server then replace "alice" with "localhost".  This program will use the database
+name you used to create a file.  In this case it will use "HPC_Tips_db.conf".
+
+3) Edit tips
+
+The tips text files are broken into two files at are used at TACC.  There is a general.tips file which contains general tips that
+should be useful at all sites.  The second file is the tacc.tips file.  This contains tips that may need to be modified for other
+sites.  This file could be moved out of this directory and edited at a later date.
+
+The following rules are used with the tips:
+
+  a) All tips are between lines "##---" as shown below:
+     ##----
+     It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
+     ##----
+
+  b) Long lines are filled to fit the line width on the terminal.
+  c) Newlines are honored when formatting the tip for the terminal.
+  d) leading blanks are honored when formatting the tip for the terminal.
+
+4) load the database:
+
+   $ ./load_tips.py HPC_Tips_db.conf
+
+Note that the load_tips.py program uses the first argument given as the name of the config file.  If no argument is given
+it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
 
+5) Check that you can access the database from the login nodes:
+
+   $ mysql -u readerOfTips -h alice -p HPC_Tips 
+   Enter password: 
+
+   mysql> select * from tips limit 1;
+
+If this doesn't work then check to see that you can read the tips on the server and then check the firewall rules to
+allow the mysql ports access the "alice" server.
+
+6) Build the showTips program:
+
+   $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
+   $ make
+   $ make install
+
+7) Test showTips program to see if works:
+
+   $ /path/to/HPCTips/bin/showTips -n 1
+
+8) Install showTips program and the HPC_Tips modulefile on your system
+
+At TACC, we install the showTips program in /opt/apps/HPC_Tips/<version>/bin/showTip. Then in the /opt/apps/HPC_Tips directory
+we make a symbolic link between the version and HPC_Tips. This way we have a fixed location for the showTips binary. This makes
+the next step easier.
+
+A copy of our module file can be found in modules/HPC_Tips.lua
 
 
+9) Add the files init/z99_HPC_Tips.sh and init/z99_HPC_Tips.csh to your /etc/profile.d directory for all login nodes
 
-To use:
-
-a) Create a MySQL database called HPCTips.  Here at TACC we have a VM which provides the MySQL database.
-   a1) Create a user called "tipBuilder" with password "test623" granted all access to HPCTips.
-   a2) Create a user called "readerOfTips" with password "tipReader123" with only select privileges.
-   a3) Make sure that MySQL DB  can be seen by other hosts of interest.
-   a4) "mysql> create database HPCTips;"
-
-
-b) Modify ./load_tips.py to match database hostname and possibly passwords if you have changed any of the above.
-
-c) Modify approved.tips to match your site.
-
-d) Run ./load_tips.py to fill HPCTips db.  This script is designed to run on the machine that is providing the MySQL db.
-
-e) Modify src/showTip.c to match hostname, password for MySQL DB.
-
-f) Build showTip by:
-
-    $ make
-
-g) Here at TACC we have a module called "tips".  The help section tells users how to get tips and how to disable tips.
-   In our case we move the showTip executable to our "/opt/apps/hpc_tips/hpc_tips/bin/showTip".
-
-h) We have our startup scripts source all files in /etc/profile.d/ and the last one (z99_hpc_tips.{sh,csh}) causes the tip to be printed.
-
-      if [ $USER != "root" -a  -n "$PS1" -a -n "$LOGIN_SHELL" -a ! -f ~/.no.tips ]; then
-        /opt/apps/hpc_tips/hpc_tips/bin/showTip -w
-      fi
-
-   Note that on TACC systems LOGIN_SHELL is set if and only if the shell is a login shell.  Obviously, if a user has a file called ~/.no.tips
-   then the command is not run.
-
-   
+You will need to specify the location of the showTips binary in each file.

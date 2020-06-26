@@ -42,9 +42,7 @@ except:
 try:
   input = raw_input
 except:
-  passi
-
-
+  pass
 
 dirNm, execName = os.path.split(sys.argv[0])
 sys.path.insert(1,os.path.abspath(os.path.join(dirNm, "../libexec")))
