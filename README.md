@@ -132,8 +132,8 @@ You can test the various options to the **showTips** binary:
 
 8) Install **showTips** program and the HPC_Tips modulefile on your system
 
-At TACC, we install the **showTips** program in /opt/apps/HPC_Tips/*version*/bin/showTip. Then in the /opt/apps/HPC_Tips directory
-we make a symbolic link between the version and HPC_Tips. This way we have a fixed location for the **showTips** binary. This makes
+At TACC, we install the **showTips** program in **/opt/apps/HPC_Tips**/*version*/**bin/showTip**. Then in the **/opt/apps/HPC_Tips** directory
+we make a symbolic link between the *version* and **HPC_Tips** sub-directory. This way we have a fixed location for the **showTips** binary. This makes
 the next step easier.
 
 A copy of our module file can be found in modules/HPC_Tips.lua
