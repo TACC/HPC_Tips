@@ -60,3 +60,9 @@ world_update:
             git push --tags github     $$branchName                           		      ; \
         fi                                                                    		      ; \
         rm -f /tmp/git_st_$$$$
+
+makefile: $(srcdir)/Makefile.in config.status
+	./config.status $@
+
+src/makefile: $(srcdir)/src/Makefile.in config.status
+	./config.status $@
