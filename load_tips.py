@@ -76,40 +76,39 @@ class LD_TIPS(object):
     else:
       self.__readFromUser()
 
-    self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
+    try: 
+      self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
 
-    with self.__conn:
-      cur = self.__conn.cursor()
-      cur.execute("DROP TABLE IF EXISTS tips")
-      cur.execute("""
+      cursor = self.__conn.cursor()
+      cursor.execute("DROP TABLE IF EXISTS tips")
+      cursor.execute("""
           CREATE TABLE IF NOT EXISTS `tips` (
             `tips_id` INT           unsigned NOT NULL auto_increment, 
             `msg`     varchar(2048)          NOT NULL,
             PRIMARY KEY (`tips_id`)
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COLLATE=utf8_general_ci AUTO_INCREMENT=1
           """)
+    except:
+      print("Failed to connect");
+      raise
 
   def insertTip(self, txt):
 
-    with self.__conn:
-      cur = self.__conn.cursor()
-      txt = txt.replace("'",r"\'")
+    cursor = self.__conn.cursor()
+    txt = txt.replace("'",r"\'")
 
-      cur.execute("START TRANSACTION")      
-      cur.execute("INSERT INTO tips(msg) VALUES('%s')" % txt)
-      cur.execute("COMMIT")      
+    cursor.execute("START TRANSACTION")      
+    cursor.execute("INSERT INTO tips(msg) VALUES('%s')" % txt)
+    cursor.execute("COMMIT")      
 
   def nrows(self):
-    with self.__conn:
-      cur = self.__conn.cursor()
+    cursor = self.__conn.cursor()
 
-      query = "SELECT count(*) from tips"
-      cur.execute(query)
-      resultA = cur.fetchall()
-      Nrows   = resultA[0][0]
-      print("number of rows: ",Nrows)
-      
-
+    query = "SELECT count(*) from tips"
+    cursor.execute(query)
+    resultA = cursor.fetchall()
+    Nrows   = resultA[0][0]
+    print("number of rows: ",Nrows)
 
   def db_disconnect(self):
     self.__conn.close()
