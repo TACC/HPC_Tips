@@ -1,3 +1,7 @@
+THIS_DIR := $(PARENT_DIR)/src
+VPATH = .:$(THIS_DIR)
+
+
 export CPATH=/usr/include/mysql
 export LIBRARY_PATH=/usr/lib64/mysql
 CXXFLAGS := -g -O2 -I __build__ -Wno-unused-result
@@ -5,7 +9,7 @@ CXXFLAGS := -g -O2 -I __build__ -Wno-unused-result
 CXX := g++
 
 install: showTip
-	[ -n "$(DIR)" ] && cp $^ $(DIR) || true
+	[ -n "$(DIR)" ] && mkdir -p $(DIR) && cp $^ $(DIR) || true
 
 showTip: showTip.o
 	$(LINK.C) -o $@ $^ -lmysqlclient

@@ -178,7 +178,7 @@ int main(int argc, char **argv)
   int            all      = 0;
   int            bypass   = 0;
   const char*    host     = TIPS_HOST;
-  const char*    user     = TIPS_USER;
+  const char*    reader   = TIPS_READER;
   const char*    pass     = TIPS_PASS;
   const char*    db       = TIPS_DB;
   const char*    moduleNm = TIPS_MODULE_NAME;
@@ -251,7 +251,7 @@ int main(int argc, char **argv)
   
   /* (1) Open DB */
 
-  if (mysql_real_connect(con, host, user, pass, db, 3306, NULL, 0) == NULL) 
+  if (mysql_real_connect(con, host, reader, pass, db, 3306, NULL, 0) == NULL) 
     finish_with_error(con);
   
   /* (2) Find number of tips */

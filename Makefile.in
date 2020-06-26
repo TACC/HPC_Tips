@@ -1,21 +1,29 @@
+
+abs_srcdir        := @abs_srcdir@
+srcdir            := @srcdir@
+VPATH             := @srcdir@
+CURRENT_MK        := $(lastword $(MAKEFILE_LIST))
+INSTALL_DIR       := @prefix@/bin
+
 VERSION_SRC := src/version.h
 NAME        := tacc_tips
+
 all:
-	cd src; make
+	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS) PARENT_DIR=$(abs_srcdir)
 
 neat:
 	$(RM) *~
-	cd src; make $@_only
+	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS)  $@_only
 
 clean:  neat
-	cd src; make $@_only
+	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS)  $@_only
 
 clobber: clean
-	cd src; make $@_only
+	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS)  $@_only
 
 
 install: $(DESTDIR)$(DIR)
-	cd src; make install DIR=$(DESTDIR)$(DIR)
+	cd src; $(MAKE) -f $(CURRENT_MK) $(MAKEFLAGS) PARENT_DIR=$(abs_srcdir) DIR=$(DESTDIR)$(INSTALL_DIR) install
 
 $(DESTDIR)$(DIR):
 	mkdir -p $@

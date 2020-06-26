@@ -20,6 +20,23 @@ source will have to live there.
 Note that the tips database is independent of the install of the showTips program used to display tips to users.  Tips can be
 updated at anytime.
 
+Security Issues:
+================
+
+In order for a user to access the MySQL database, they must have a MySQL account and passwd.  All users
+use the same account and password that is hardcoded into the showTips binary. A determined user might be
+able to decode the showTips binary to exact the MySQL account and password.  However this account and password
+only have "select" privileges.  They cannot delete or modify the database in any way.
+
+The python script and MySQL username and password that can change the database need to be stored in a
+location where users cannot access such as the server where the database is stored.
+
+Runtime issues
+==============
+
+Since this showTips program is part of the login procedure, it shouldn't hang if the database cannot be accessed.
+The program has 0.4 second timeout if the database cannot be accessed and no warning is produced normally.
+
 To install:
 ===========
 
@@ -42,6 +59,7 @@ pw: tipReader123) is needed to read the tips. You need to login to the mysql pro
     mysql> grant all privileges ON HPC_Tips.* TO 'tipBuilder'@'%';
     mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'localhost';
     mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'%';
+    mysql> flush privileges;
 
 Obviously, you can use any names and password you like, you just need to be consistent throughout this process.
 
@@ -98,12 +116,13 @@ allow the mysql ports access the "alice" server.
 6) Build the showTips program:
 
    $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
-   $ make
    $ make install
 
 7) Test showTips program to see if works:
 
    $ /path/to/HPCTips/bin/showTips -n 1
+   $ /path/to/HPCTips/bin/showTips -w
+   $ /path/to/HPCTips/bin/showTips -a
 
 8) Install showTips program and the HPC_Tips modulefile on your system
 

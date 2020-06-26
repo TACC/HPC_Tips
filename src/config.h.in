@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 #define TIPS_HOST                  "@TIPS_HOST@"
-#define TIPS_USER                  "@TIPS_USER@"
+#define TIPS_READER                "@TIPS_READER@"
 #define TIPS_PASS                  "@TIPS_PASS@"
 #define TIPS_DB                    "@TIPS_DB@"
 #define TIPS_MODULE_NAME           "@TIPS_MODULE_NAME@"

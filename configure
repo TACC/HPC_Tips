@@ -630,7 +630,7 @@ PATH_TO_PYTHON
 TIPS_MODULE_NAME
 TIPS_DB
 TIPS_PASS
-TIPS_USER
+TIPS_READER
 TIPS_HOST
 OBJEXT
 EXEEXT
@@ -682,7 +682,7 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 with_host
-with_user
+with_reader
 with_pass
 with_db
 with_module
@@ -1314,11 +1314,11 @@ Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-host=ans         The hostname for where the database resides
-  --with-user=ans         The username for the tips database
+  --with-reader=ans       The username for the tips database
                           reader[[readerOfTips]]
   --with-pass=ans         The password for the tips database reader
   --with-db=ans           The database name for the tips [[HPCTips]]
-  --with-module=ans       The module name for the tips[[hpc_tips]]
+  --with-module=ans       The module name for the tips[[HPC_Tips]]
 
 Some influential environment variables:
   CC          C compiler command
@@ -2817,24 +2817,24 @@ fi
 
 
 
-# Check whether --with-user was given.
-if test "${with_user+set}" = set; then :
-  withval=$with_user; TIPS_USER="$withval"
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: TIPS_USER=$with_user" >&5
-$as_echo "TIPS_USER=$with_user" >&6; }
+# Check whether --with-reader was given.
+if test "${with_reader+set}" = set; then :
+  withval=$with_reader; TIPS_READER="$withval"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: TIPS_READER=$with_reader" >&5
+$as_echo "TIPS_READER=$with_reader" >&6; }
 
 cat >>confdefs.h <<_ACEOF
-#define TIPS_USER "$with_user"
+#define TIPS_READER "$with_reader"
 _ACEOF
 
 else
   withval="readerOfTips"
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: TIPS_USER=$withval" >&5
-$as_echo "TIPS_USER=$withval" >&6; }
-    TIPS_USER="$withval"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: TIPS_READER=$withval" >&5
+$as_echo "TIPS_READER=$withval" >&6; }
+    TIPS_READER="$withval"
 
 cat >>confdefs.h <<_ACEOF
-#define TIPS_USER "$withval"
+#define TIPS_READER "$withval"
 _ACEOF
 
 fi
@@ -2900,7 +2900,7 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 else
-  withval="hpc_tips"
+  withval="HPC_Tips"
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: TIPS_MODULE_NAME=$withval" >&5
 $as_echo "TIPS_MODULE_NAME=$withval" >&6; }
     TIPS_MODULE_NAME="$withval"
@@ -3438,7 +3438,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files makefile:Makefile.in src/__build__/config.h:src/config.h.in"
+ac_config_files="$ac_config_files makefile:Makefile.in src/__build__/config.h:src/config.h.in src/makefile:src/Makefile.in"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -4132,6 +4132,7 @@ do
     "src/__build__/header.h") CONFIG_HEADERS="$CONFIG_HEADERS src/__build__/header.h:src/header.h.in" ;;
     "makefile") CONFIG_FILES="$CONFIG_FILES makefile:Makefile.in" ;;
     "src/__build__/config.h") CONFIG_FILES="$CONFIG_FILES src/__build__/config.h:src/config.h.in" ;;
+    "src/makefile") CONFIG_FILES="$CONFIG_FILES src/makefile:src/Makefile.in" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -4712,4 +4713,20 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+
+
+
+echo
+echo '----------------------------------- SUMMARY ----------------------------------'
+echo
+echo "Prefix..............................................." : $prefix
+echo "TIPS_HOST............................................" : $TIPS_HOST
+echo "TIPS_READER.........................................." : $TIPS_READER
+echo "TIPS_PASS............................................" : $TIPS_PASS
+echo "TIPS_DB.............................................." : $TIPS_DB
+echo "TIPS_MODULE_NAME....................................." : $TIPS_MODULE_NAME
+echo
+echo '------------------------------------------------------------------------------'
+echo
+
 

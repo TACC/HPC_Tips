@@ -22,17 +22,17 @@ AC_ARG_WITH(host,
     TIPS_HOST="$withval"
     AC_DEFINE_UNQUOTED(TIPS_HOST, "$withval",[The hostname for where the database resides]))dnl
 
-AC_SUBST(TIPS_USER)
-AC_ARG_WITH(user,
-    AC_HELP_STRING([--with-user=ans],[The username for the tips database reader[[readerOfTips]]]),
-    TIPS_USER="$withval"
-    AC_MSG_RESULT([TIPS_USER=$with_user])
-    AC_DEFINE_UNQUOTED(TIPS_USER, "$with_user",[The username for the tips database reader])dnl
+AC_SUBST(TIPS_READER)
+AC_ARG_WITH(reader,
+    AC_HELP_STRING([--with-reader=ans],[The username for the tips database reader[[readerOfTips]]]),
+    TIPS_READER="$withval"
+    AC_MSG_RESULT([TIPS_READER=$with_reader])
+    AC_DEFINE_UNQUOTED(TIPS_READER, "$with_reader",[The username for the tips database reader])dnl
     ,
     withval="readerOfTips"
-    AC_MSG_RESULT([TIPS_USER=$withval])
-    TIPS_USER="$withval"
-    AC_DEFINE_UNQUOTED(TIPS_USER, "$withval",[The username for the tips database reader]))dnl
+    AC_MSG_RESULT([TIPS_READER=$withval])
+    TIPS_READER="$withval"
+    AC_DEFINE_UNQUOTED(TIPS_READER, "$withval",[The username for the tips database reader]))dnl
 
 AC_SUBST(TIPS_PASS)
 AC_ARG_WITH(pass,
@@ -60,12 +60,12 @@ AC_ARG_WITH(db,
 
 AC_SUBST(TIPS_MODULE_NAME)
 AC_ARG_WITH(module,
-    AC_HELP_STRING([--with-module=ans],[The module name for the tips[[hpc_tips]]]),
+    AC_HELP_STRING([--with-module=ans],[The module name for the tips[[HPC_Tips]]]),
     TIPS_MODULE_NAME="$withval"
     AC_MSG_RESULT([TIPS_MODULE_NAME=$with_module])
     AC_DEFINE_UNQUOTED(TIPS_MODULE_NAME, "$with_module",[The module name for the tips])dnl
     ,
-    withval="hpc_tips"
+    withval="HPC_Tips"
     AC_MSG_RESULT([TIPS_MODULE_NAME=$withval])
     TIPS_MODULE_NAME="$withval"
     AC_DEFINE_UNQUOTED(TIPS_MODULE_NAME, "$withval",[The module name for the tips]))dnl
@@ -125,4 +125,6 @@ AC_CHECK_HEADER(mysql/mysql.h,
                    [Define to 1 if you have <mysql/mysql.h>.])],
                 [AC_MSG_ERROR([Unable to build HPC_Tips without mysql/mysql.h])])
                 
-AC_OUTPUT(makefile:Makefile.in src/__build__/config.h:src/config.h.in)
+AC_OUTPUT(makefile:Makefile.in src/__build__/config.h:src/config.h.in src/makefile:src/Makefile.in)
+
+AX_SUMMARIZE_CONFIG

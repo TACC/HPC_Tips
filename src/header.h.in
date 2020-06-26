@@ -73,4 +73,4 @@
 #undef TIPS_PASS
 
 /* The username for the tips database reader */
-#undef TIPS_USER
+#undef TIPS_READER
