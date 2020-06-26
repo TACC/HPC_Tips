@@ -105,7 +105,7 @@ it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
 5) Check that you can access the database from the login nodes:
 
-     $ mysql -u readerOfTips -h alice -p HPC_Tips 
+     % mysql -u readerOfTips -h alice -p HPC_Tips 
      Enter password: 
      mysql> select * from tips limit 1;
 
@@ -114,14 +114,14 @@ allow the mysql ports access the "alice" server.
 
 6) Build the **showTips** program:
 
-      $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
-      $ make install
+      % ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
+      % make install
 
 7) Test **showTips** program to see if works:
 
-      $ /path/to/HPCTips/bin/showTips -n 1
-      $ /path/to/HPCTips/bin/showTips -w
-      $ /path/to/HPCTips/bin/showTips -a
+      % /path/to/HPCTips/bin/showTips -n 1
+      % /path/to/HPCTips/bin/showTips -w
+      % /path/to/HPCTips/bin/showTips -a
 
 8) Install **showTips** program and the HPC_Tips modulefile on your system
 
