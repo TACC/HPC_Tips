@@ -132,7 +132,7 @@ You can test the various options to the **showTips** binary:
       $ /path/to/HPCTips/bin/showTips -w
       $ /path/to/HPCTips/bin/showTips -a
 
-Where -n # prints a particular tip, and -a prints all tips.
+Where -n # prints a particular tip, -w disables any warning and -a prints all tips.
 
 
 8) Install **showTips** program and the HPC_Tips modulefile on your system
