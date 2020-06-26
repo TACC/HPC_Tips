@@ -12,19 +12,19 @@ HPC_Tips is a database for short tips to help HPC users.  This tool consists sev
 (4) Tools to setup the configuration file and build and install the necessary programs.
 
 This works by installing a MySQL database on a server which is accessible from all your login nodes.  The source for this
-project can live anywhere.  One uses the "load_tips.py" script to install the tips in the database. You place the source on a
+project can live anywhere.  One uses the "**load_tips.py**" script to install the tips in the database. You place the source on a
 host where you have write access to the database.  If you only allow write access to the database on the server, then the
 source will have to live there.
 
-Note that the tips database is independent of the install of the showTips program used to display tips to users.  Tips can be
+Note that the tips database is independent of the install of the **showTips** program used to display tips to users.  Tips can be
 updated at anytime.
 
 Security Issues:
 ================
 
 In order for a user to access the MySQL database, they must have a MySQL account and passwd.  All users
-use the same account and password that is hardcoded into the showTips binary. A determined user might be
-able to decode the showTips binary to exact the MySQL account and password.  However this account and password
+use the same account and password that is hardcoded into the **showTips** binary. A determined user might be
+able to decode the **showTips** binary to exact the MySQL account and password.  However this account and password
 only have "select" privileges.  They cannot delete or modify the database in any way.
 
 The python script and MySQL username and password that can change the database need to be stored in a
@@ -33,7 +33,7 @@ location where users cannot access such as the server where the database is stor
 Runtime issues
 ==============
 
-Since this showTips program is part of the login procedure, it shouldn't hang if the database cannot be accessed.
+Since this **showTips** program is part of the login procedure, it shouldn't hang if the database cannot be accessed.
 The program has 0.4 second timeout if the database cannot be accessed and no warning is produced normally.
 
 To install:
@@ -65,7 +65,7 @@ Obviously, you can use any names and password you like, you just need to be cons
 
 2) Create database config file:
  
-The following program will create a database configuration file used by the load_tips.py program
+The following program will create a database configuration file used by the **load_tips.py** program
 
     $ ./conf_create.py
 
@@ -97,38 +97,37 @@ The following rules are used with the tips:
 
 4) load the database:
 
-    ./load_tips.py HPC_Tips_db.conf
+      ./load_tips.py HPC_Tips_db.conf
 
-Note that the load_tips.py program uses the first argument given as the name of the config file.  If no argument is given
+Note that the **load_tips.py** program uses the first argument given as the name of the config file.  If no argument is given
 it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
 
 5) Check that you can access the database from the login nodes:
 
-   $ mysql -u readerOfTips -h alice -p HPC_Tips 
-   Enter password: 
+     $ mysql -u readerOfTips -h alice -p HPC_Tips 
+     Enter password: 
 
-   mysql> select * from tips limit 1;
+     mysql> select * from tips limit 1;
 
 If this doesn't work then check to see that you can read the tips on the server and then check the firewall rules to
 allow the mysql ports access the "alice" server.
 
-6) Build the showTips program:
+6) Build the **showTips** program:
 
-   $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
+      $ ./configure --prefix=/path/to/HPCTips --with-host=alice --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips
+      $ make install
 
-   $ make install
+7) Test **showTips** program to see if works:
 
-7) Test showTips program to see if works:
+      $ /path/to/HPCTips/bin/showTips -n 1
+      $ /path/to/HPCTips/bin/showTips -w
+      $ /path/to/HPCTips/bin/showTips -a
 
-   $ /path/to/HPCTips/bin/showTips -n 1
-   $ /path/to/HPCTips/bin/showTips -w
-   $ /path/to/HPCTips/bin/showTips -a
+8) Install **showTips** program and the HPC_Tips modulefile on your system
 
-8) Install showTips program and the HPC_Tips modulefile on your system
-
-At TACC, we install the showTips program in /opt/apps/HPC_Tips/<version>/bin/showTip. Then in the /opt/apps/HPC_Tips directory
-we make a symbolic link between the version and HPC_Tips. This way we have a fixed location for the showTips binary. This makes
+At TACC, we install the **showTips** program in /opt/apps/HPC_Tips/<version>/bin/showTip. Then in the /opt/apps/HPC_Tips directory
+we make a symbolic link between the version and HPC_Tips. This way we have a fixed location for the **showTips** binary. This makes
 the next step easier.
 
 A copy of our module file can be found in modules/HPC_Tips.lua
@@ -136,4 +135,4 @@ A copy of our module file can be found in modules/HPC_Tips.lua
 
 9) Add the files init/z99_HPC_Tips.sh and init/z99_HPC_Tips.csh to your /etc/profile.d directory for all login nodes
 
-You will need to specify the location of the showTips binary in each file.
+You will need to specify the location of the **showTips** binary in each file.
