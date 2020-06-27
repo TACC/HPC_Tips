@@ -144,7 +144,7 @@ def main():
   else:
     A = [ "HPCTips_db.conf",  "HPC_Tips_db.conf" ]
     for i in A:
-      if (sys.path.exists(i)):
+      if (os.path.exists(i)):
         confFn = i
         break
       

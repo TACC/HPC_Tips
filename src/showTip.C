@@ -225,11 +225,13 @@ int main(int argc, char **argv)
 
   if (config)
     {
-      printf("showTip Version: %s\n\n",HPC_TIPS_VERSION);
+      printf("showTip configuration:\n\n");
+      printf("Version:     %s\n", HPC_TIPS_VERSION);
       printf("Host:        %s\n", host);
       printf("Reader:      %s\n", reader) ;
       printf("Database:    %s\n", db);
       printf("Module Name: %s\n", moduleNm);
+      printf("\n");
       return 0;
     }
   if (help)
