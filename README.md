@@ -3,7 +3,7 @@ HPC_Tips:
 
 HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
 
-(1) A program, **showTips**, is installed on login nodes which asks for one or more tips from the HPC_Tips database.
+(1) A program, **showTips**, is installed on login nodes which typically prints a random tips from the HPC_Tips database.
 
 (2) A couple of files containing short tips each being 1 to 5 lines long.
 
@@ -62,9 +62,11 @@ pw: tipReader123) is needed to read the tips. You need to login to the mysql pro
 
 Obviously, you can use any names and password you like, you just need to be consistent throughout this process.
 
+You may have to edit the mysql.cnf file to allow access.  Check here for more details: https://linuxize.com/post/mysql-remote-access/
+
 
 2) Create database config file:
- 
+ p
 The following program will create a database configuration file used by the **load_tips.py** program
 
     $ ./conf_create.py
@@ -129,6 +131,9 @@ You can test the various options to the **showTips** binary:
       $ /path/to/HPCTips/bin/showTips -n 1
       $ /path/to/HPCTips/bin/showTips -w
       $ /path/to/HPCTips/bin/showTips -a
+
+Where -n # prints a particular tip, -w disables any warning and -a prints all tips.
+
 
 8) Install **showTips** program and the HPC_Tips modulefile on your system
 

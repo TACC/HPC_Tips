@@ -67,26 +67,38 @@ echo SYSHOST: $SYSHOST
 case $SYSHOST in
   mijo)
     echo "Building on $SYSHOST using mijo rules"
-    SUDO="sudo"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-user=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
+    CONF_OPTS="--with-host=jedrik --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips"
+    CPPFLAGS="CPPFLAGS=-I/usr/local/include"
+    MAKE_OPTS="LDFLAGS=-L/usr/local/lib"
+    ;;
+
+  jedrik)
+    echo "Building on $SYSHOST using jedrik rules"
+    base="$HOME/l/pkg/HPC_Tips"
+    CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips"
+    ;;
+
+   rios)
+    echo "Building on $SYSHOST"
+    SUDO="sudo"
+    base="/opt/apps/HPC_Tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
     ;;
 
    *)
     echo "Building on $SYSHOST"
-    SUDO="sudo"
-    base="/opt/apps"
-    CONF_OPTS="--with-etcDir=/opt/moduleData --with-syshostConfig=nth_name:2 --with-config=Config/rtm_config.py \
-       --prefix=/opt/apps/xalt/$PKG_VERSION --with-siteControlledPrefix=yes"
+    base="$HOME/l/pkg/HPC_Tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
     ;;
 
 esac
 BASE_DIR=$base
 
-pkgName=
+pkgName=HPC_Tips
 PKG=$BASE_DIR
 
-$SUDO rm -rf $PKG/xalt/$PKG_VERSION
+$SUDO rm -rf $PKG/$PKG_VERSION
 
 MAKE=make
 command -v remake 2>&1 > /dev/null
@@ -94,25 +106,10 @@ if [ "$?" = 0 ]; then
   MAKE=remake
 fi
 
-unset LD_PRELOAD
-
-unload_xalt ()
-{
-   type module > /dev/null 2>&1
-   if [ "$?" = 0 ]; then
-      echo "module unload xalt"
-      module unload xalt
-   fi
-}
-
-cmdA=("unload_xalt"
-      "-$MAKE distclean"
-      "-rm -rf $PKG/xalt/$PKG_VERSION"
-      "-rm -f src/*.o src/*.d libuuid/src/*.o"
-      "$SETUP_CMD"
-      "./configure --prefix=$PKG $CONF_OPTS"
-      "$SUDO $MAKE $MAKE_OPTS install"
-      "$SUDO $MAKE $MAKE_OPTS Inst_TACC"
+cmdA=("-$MAKE clobber"
+      "-rm -rf $PKG/$PKG_VERSION"
+      "$CPPFLAGS ./configure --prefix=$PKG/$PKG_VERSION $CONF_OPTS"
+      "$SUDO $MAKE $CPPFLAGS $MAKE_OPTS install"
       "rm -f config.log"
       )
 
