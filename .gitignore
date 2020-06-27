@@ -10,3 +10,4 @@ config.status
 make.log
 makefile
 *.conf
+README.log
