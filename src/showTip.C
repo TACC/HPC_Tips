@@ -120,6 +120,7 @@ void printUsage(const char* cmd)
 	 "Options:\n"
 	 " -h -?            : Print usage\n"
 	 " -v               : Print version\n"
+	 " -c               : Print configuration\n"
 	 " -a               : print all tips\n"
 	 " -w               : do not print warnings\n"
 	 " -n num           : print tip num\n",
@@ -173,6 +174,7 @@ int main(int argc, char **argv)
   int            numE     = 0;
   int            idx      = -1;
   int            help     = 0;
+  int            config   = 0;
   int            ver      = 0;
   int            factor   = 1;
   int            all      = 0;
@@ -186,12 +188,15 @@ int main(int argc, char **argv)
 
   struct itimerval timer;
   
-  while ( (opt = getopt(argc, argv, "avn:wWh?")) != -1)
+  while ( (opt = getopt(argc, argv, "acvn:wWh?")) != -1)
     {
       switch (opt)
 	{
 	case 'a':
 	  all = 1;
+	  break;
+	case 'c':
+	  config = 1;
 	  break;
 	case 'v':
 	  ver = 1;
@@ -218,7 +223,15 @@ int main(int argc, char **argv)
       return 0;
     }
 
-
+  if (config)
+    {
+      printf("showTip Version: %s\n\n",HPC_TIPS_VERSION);
+      printf("Host:        %s\n", host);
+      printf("Reader:      %s\n", reader) ;
+      printf("Database:    %s\n", db);
+      printf("Module Name: %s\n", moduleNm);
+      return 0;
+    }
   if (help)
     {
       printUsage(argv[0]);
