@@ -139,6 +139,7 @@ def files_in_tree(path, pattern):
 
 def main():
 
+  confFn = None
   if (len(sys.argv) > 1):
     confFn = sys.argv[1]
   else:
@@ -148,6 +149,10 @@ def main():
         confFn = i
         break
       
+  if (not confFn):
+    print("No database config file found -> exiting!");
+    sys.exit(1)
+
   tips   = LD_TIPS(confFn)
 
   tips.db_connect()
