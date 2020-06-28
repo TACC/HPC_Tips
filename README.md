@@ -70,7 +70,6 @@ You may have to edit the mysql.cnf file to allow access.  Check here for more de
 The following program will create a database configuration file used by the **load_tips.py** program
 
     $ ./conf_create.py
-
     Database host: alice
     Database user: tipBuilder
     Database pass: test623
