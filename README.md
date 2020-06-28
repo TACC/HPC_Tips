@@ -93,7 +93,9 @@ The following rules are used with the tips:
      ##----
 
   b) Long lines are filled to fit the line width on the terminal.
+
   c) Newlines are honored when formatting the tip for the terminal.
+
   d) leading blanks are honored when formatting the tip for the terminal.
 
 4) load the database:
