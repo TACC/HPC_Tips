@@ -105,10 +105,12 @@ The following rules are used with the tips:
 
 4) Load the database:
 
-Note that the **load_tips.py** program uses the first argument given as the name of the config file.  If no argument is given
-it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
+The **load_tips.py** program reads the tips/*.tips into the database.
 
       ./load_tips.py HPC_Tips_db.conf
+
+Note that the **load_tips.py** program uses the first argument given as the name of the config file.  If no argument is given
+it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
 5) Check that you can access the database:
 
