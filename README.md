@@ -1,9 +1,9 @@
 HPC_Tips:
 =========
 
-HPC_Tips is a database for short tips to help HPC users.  This tool consists several parts:
+HPC_Tips is a database for short tips to help HPC users.  This tool consists of several parts:
 
-(1) A program, **showTips**, is installed on login nodes which typically prints a random tips from the HPC_Tips database.
+(1) A program, **showTips**, is installed on login nodes which typically prints a random tip from the HPC_Tips database.
 
 (2) A couple of files containing short tips each being 1 to 5 lines long.
 
@@ -22,7 +22,7 @@ updated at anytime.
 Security Issues:
 ================
 
-In order for a user to access the MySQL database, they must have a MySQL account and passwd.  All users
+In order for a user to access the MySQL database, they must have a MySQL account and password.  All users
 use the same account and password that is hardcoded into the **showTips** binary. A determined user might be
 able to decode the **showTips** binary to exact the MySQL account and password.  However this account and password
 only have "select" privileges.  They cannot delete or modify the database in any way.
@@ -45,8 +45,8 @@ Have a server which can be seen on the network from your login nodes.  On that s
 your login nodes access to the the mysql ports on this server. This might require opening ports in various firewalls.  For the
 purposes of this discussion, lets assume that this server is called "alice".
 
-Once this mysql database server is running you'll need to create two accounts to access this database. Using "tipBuilder" as
-the account name that has write access to the database and setting "test623" as the password.  A second account (account: readerOfTips,
+Once this mysql database server is running you'll need to create two accounts to access this database. Here we use "tipBuilder" as
+the account name that has write access to the database and set "test623" as the password.  A second account (account: readerOfTips,
 pw: tipReader123) is needed to read the tips. You need to login to the mysql program and do:
 
     mysql> create database HPC_Tips;
@@ -75,14 +75,19 @@ The following program will create a database configuration file used by the **lo
     Database pass: test623
     Database name: HPC_Tips
     
-If you want to just load the database from the server then replace "alice" with "localhost".  This program will use the database
-name you used to create a file.  In this case it will use "HPC_Tips_db.conf".
+If you want to just load the database from the server then replace
+"alice" with "localhost".  This program will use the database name you
+used to create a file.  In this case it will use "HPC_Tips_db.conf".
 
 3) Edit tips
 
-The tips text files are broken into two files at are used at TACC.  There is a general.tips file which contains general tips that
-should be useful at all sites.  The second file is the tacc.tips file.  This contains tips that may need to be modified for other
-sites.  This file could be moved out of this directory and edited at a later date.
+The **tips** directory contains text files are broken into two files.
+The first is a file called **general.tips** which contains general
+tips that should be useful at all sites.  The second file called
+**tacc.tips**.  This file contains tips that probably only make sense
+at TACC.  Many of these can probably be reworded to work for your
+site. Consider either editting this file immediately or move it out of
+the way until it contains tips that work for your site.
 
 The following rules are used with the tips:
 
@@ -96,9 +101,9 @@ The following rules are used with the tips:
 
   c) Newlines are honored when formatting the tip for the terminal.
 
-  d) leading blanks are honored when formatting the tip for the terminal.
+  d) Leading blanks are honored when formatting the tip for the terminal.
 
-4) load the database:
+4) Load the database:
 
 Note that the **load_tips.py** program uses the first argument given as the name of the config file.  If no argument is given
 it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
@@ -113,8 +118,9 @@ Please try to access the mysql database from the login nodes where "alice" is th
      Enter password: 
      mysql> select * from tips limit 1;
 
-If this doesn't work then check to see that you can read the tips on the server and then check the firewall rules to
-allow the mysql ports access the "alice" server.
+If this doesn't work then check to see that you can read the tips on
+the server by using the mysql command.  Then check the firewall
+rules to allow the mysql ports access to the "alice" server.
 
 6) Build the **showTips** program:
 
