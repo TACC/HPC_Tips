@@ -34,7 +34,7 @@ Runtime issues
 ==============
 
 Since this **showTips** program is part of the login procedure, it shouldn't hang if the database cannot be accessed.
-The program has 0.4 second timeout if the database cannot be accessed and no warning is produced normally.
+The program has 0.4 second timeout if the database cannot be accessed and no warnings are produced unless requested.
 
 To install:
 ===========
@@ -66,7 +66,7 @@ You may have to edit the mysql.cnf file to allow access.  Check here for more de
 
 
 2) Create database config file:
- p
+
 The following program will create a database configuration file used by the **load_tips.py** program
 
     $ ./conf_create.py
@@ -104,8 +104,6 @@ it tries either "HPC_Tips_db.conf" or "HPCTips_db.conf"
 
       ./load_tips.py HPC_Tips_db.conf
 
-
-
 5) Check that you can access the database:
 
 Please try to access the mysql database from the login nodes where "alice" is the name of the database server.
@@ -131,8 +129,10 @@ You can test the various options to the **showTips** binary:
       $ /path/to/HPCTips/bin/showTips -n 1
       $ /path/to/HPCTips/bin/showTips -w
       $ /path/to/HPCTips/bin/showTips -a
+      $ /path/to/HPCTips/bin/showTips -c
+      $ /path/to/HPCTips/bin/showTips -h
 
-Where -n # prints a particular tip, -w disables any warning and -a prints all tips.
+Where -n # prints a particular tip, -w disables any warning, -a prints all tips, -c reports the configuration and -h prints the help message.
 
 
 8) Install **showTips** program and the HPC_Tips modulefile on your system
