@@ -5,3 +5,5 @@ HPC_Tips 1.0+
 	    * Updated README.md for better instructions on how to install.
      (1.1)  * Tweaks to README.md to improve readability.
             * Add -c option to showTip.C to report configuration.
+     (1.2)  * base64 encode reader password in showTip binary.
+     

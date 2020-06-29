@@ -72,5 +72,8 @@
 /* The password for the tips database reader */
 #undef TIPS_PASS
 
+/* base64 encoded reader password */
+#undef TIPS_PASS64
+
 /* The username for the tips database reader */
 #undef TIPS_READER

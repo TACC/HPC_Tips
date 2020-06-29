@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <sys/time.h>
+#include <base64.h>
 
 #include "header.h"
 #include "version.h"
@@ -182,7 +183,7 @@ int main(int argc, char **argv)
   int            bypass   = 0;
   const char*    host     = TIPS_HOST;
   const char*    reader   = TIPS_READER;
-  const char*    pass     = TIPS_PASS;
+  const char*    pass64   = TIPS_PASS64;
   const char*    db       = TIPS_DB;
   const char*    moduleNm = TIPS_MODULE_NAME;
   const char*    hlp      = "(See \"module help %s\" for features or how to disable)";
@@ -217,6 +218,11 @@ int main(int argc, char **argv)
 	  break;
 	}
     }
+
+  int            len_pass;
+  unsigned char* pass      = base64_decode(pass64, strlen(pass64), &len_pass);
+  len_pass                 = strcspn((char *) pass,"\n ");
+  pass[len_pass]           = '\0';    // remove trailing return
 
   if (ver)
     {
@@ -265,7 +271,7 @@ int main(int argc, char **argv)
   
   /* (1) Open DB */
 
-  if (mysql_real_connect(con, host, reader, pass, db, 3306, NULL, 0) == NULL) 
+  if (mysql_real_connect(con, host, reader, (char* ) pass, db, 3306, NULL, 0) == NULL) 
     finish_with_error(con);
   
   /* (2) Find number of tips */

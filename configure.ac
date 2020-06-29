@@ -91,6 +91,11 @@ if test "$TIPS_PASS" = "<unknown>"; then
    exit 1
 fi
 
+
+AC_SUBST(TIPS_PASS64)
+TIPS_PASS64=`echo $TIPS_PASS | base64 -`
+AC_DEFINE_UNQUOTED(TIPS_PASS64, "$TIPS_PASS64",[base64 encoded reader password])
+
 AC_PATH_PROGS(PATH_TO_PYTHON, [python3] [python2] [python], [])
 if test "x$PATH_TO_PYTHON" = "x"; then
    echo

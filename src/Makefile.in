@@ -4,17 +4,20 @@ VPATH = .:$(THIS_DIR)
 
 export CPATH=/usr/include/mysql
 export LIBRARY_PATH=/usr/lib64/mysql
-CXXFLAGS := -g -O2 -I __build__ -Wno-unused-result
+CXXFLAGS := -g -O2 -I. -I __build__ -Wno-unused-result
+CFLAGS   := -g -O2 -I. -Wno-unused-result
 
 CXX := g++
+CC  := gcc
 
 install: showTip
 	[ -n "$(DIR)" ] && mkdir -p $(DIR) && cp $^ $(DIR) || true
 
-showTip: showTip.o
+showTip: showTip.o base64.o base64.h
 	$(LINK.C) -o $@ $^ -lmysqlclient
 
 showTip.o: showTip.C version.h
+base64.o: base64.c base64.h
 
 neat:  neat_only
 
