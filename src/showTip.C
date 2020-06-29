@@ -123,6 +123,7 @@ void printUsage(const char* cmd)
 	 " -c               : Print configuration\n"
 	 " -a               : print all tips\n"
 	 " -w               : do not print warnings\n"
+	 " -T               : disable time out\n"
 	 " -n num           : print tip num\n",
 	 cmd);
 }
@@ -188,7 +189,7 @@ int main(int argc, char **argv)
 
   struct itimerval timer;
   
-  while ( (opt = getopt(argc, argv, "acvn:wWh?")) != -1)
+  while ( (opt = getopt(argc, argv, "acvn:wTh?")) != -1)
     {
       switch (opt)
 	{
@@ -207,7 +208,7 @@ int main(int argc, char **argv)
 	case 'w':
 	  issueWarning = 0;
 	  break;
-	case 'W':
+	case 'T':
 	  bypass = 1;
 	  break;
 	case 'h':
