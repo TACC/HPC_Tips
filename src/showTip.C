@@ -255,8 +255,6 @@ int main(int argc, char **argv)
       signal(SIGALRM,timer_handler);
     }
 
-
-
   MYSQL *con = mysql_init(NULL);
   
   if (con == NULL)
