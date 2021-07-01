@@ -426,7 +426,10 @@ A very portable way to find what shell you running is to do:
 If you really want to know what shell you are currently running on a Linux system do:
    $ readlink -f /proc/$$/exe
 
-Even fancier (in zsh) you can do :
+If you want just the name of the shell w/o the full path then do:
+   $ SHELL_NAME=$(readlink -f /proc/$$/exe); echo ${SHELL_NAME##*/}
+
+Even fancier (in zsh) you can combine the above in one command:
    $ echo ${$(readlink -f /proc/$$/exe)##*/}
 ##----
 It is possible to have an alias the same as the name of the command.  For example, you can redefine the tail command to always print a screen worth of text by doing:
