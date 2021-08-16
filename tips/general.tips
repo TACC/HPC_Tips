@@ -570,3 +570,8 @@ Python 2 reached end-of-life on January 1, 2020.  You can place the following at
 ##----
 Emacs allows users to enter UTF-8 character with the sequence C-x 8 ... For example, C-x 8 ~ n produces ñ. C-x 8 RET followed by either the code point in hex or the name of the official Unicode name of the character.
 ##----
+To print the first 7 lines of a file do:
+    $ sed -7q file.txt
+or
+    $ head -n 7 file.txt
+##----
