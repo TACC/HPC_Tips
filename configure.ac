@@ -22,6 +22,20 @@ AC_ARG_WITH(host,
     TIPS_HOST="$withval"
     AC_DEFINE_UNQUOTED(TIPS_HOST, "$withval",[The hostname for where the database resides]))dnl
 
+AC_SUBST(MYSQLDB)
+AC_ARG_WITH(MySQL,
+    AC_HELP_STRING([--with-MySQL=ans],[Require the mysqlclient/MySQL-python module [[yes]]]),
+    MYSQLDB="$withval"
+    MYSQLDB=`echo $MYSQLDB | tr '@<:@:upper:@:>@' '@<:@:lower:@:>@'`
+    VALID_YN $MYSQLDB "--with-MySQL=ans: ans must be yes or no"
+    AC_MSG_RESULT([MYSQLDB=$with_MySQL])
+    AC_DEFINE_UNQUOTED(MYSQLDB, "$with_MySQL",[Require the mysqlclient/MySQL-python module])dnl
+    ,
+    withval="yes"
+    AC_MSG_RESULT([MYSQLDB=$withval])
+    MYSQLDB="$withval"
+    AC_DEFINE_UNQUOTED(MYSQLDB, "$withval",[Require the mysqlclient/MySQL-python module]))dnl
+
 AC_SUBST(TIPS_READER)
 AC_ARG_WITH(reader,
     AC_HELP_STRING([--with-reader=ans],[The username for the tips database reader[[readerOfTips]]]),
@@ -96,29 +110,35 @@ AC_SUBST(TIPS_PASS64)
 TIPS_PASS64=`echo $TIPS_PASS | base64 -`
 AC_DEFINE_UNQUOTED(TIPS_PASS64, "$TIPS_PASS64",[base64 encoded reader password])
 
-AC_PATH_PROGS(PATH_TO_PYTHON, [python3] [python2] [python], [])
-if test "x$PATH_TO_PYTHON" = "x"; then
-   echo
-   echo "======================================================="
-   echo "HPC_Tips requires python3, python2 or python to run."
-   echo "======================================================="
-   echo
-   rm -f makefile
-   exit 1
-fi
-
 AC_SUBST(HAVE_PYMOD_MYSQLDB)
 AX_PYTHON_MODULE([$PATH_TO_PYTHON],[MySQLdb])
 
-if test "$HAVE_PYMOD_MYSQLDB" = no; then
-   echo
-   echo "==============================================================="
-   echo "Unable to install HPC_Tips without the python module: MySQLdb"
-   echo "To install for python3 do: pip3 install mysqlclient"
-   echo "To install for python2 do: pip  install MySQL-python"
-   echo "==============================================================="
-   rm -f makefile
-   exit 1
+if test "$MYSQLDB" = yes; then
+   AC_PATH_PROGS(PATH_TO_PYTHON, [python3] [python2] [python], [])
+   if test "x$PATH_TO_PYTHON" = "x"; then
+      echo
+      echo "======================================================="
+      echo "HPC_Tips requires python3, python2 or python to run."
+      echo "======================================================="
+      echo
+      rm -f makefile
+      exit 1
+   fi 
+
+   if test "$HAVE_PYMOD_MYSQLDB" = no; then
+      echo
+      echo "======================================================="
+      echo "Unable to install XALT without the python module: MySQLdb"
+      echo "To install for python3 do: pip3 install mysqlclient"
+      echo "To install for python2 do: pip  install MySQL-python"
+      echo
+      echo "MySQLdb is only required to be install on computer which"
+      echo "will update the database.  It is not required anywhere"
+      echo "else."
+      echo "======================================================="
+      rm -f makefile
+      exit 1
+   fi
 fi
 
 AC_CHECK_HEADER(mysql/my_global.h,

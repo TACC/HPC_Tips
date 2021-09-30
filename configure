@@ -625,13 +625,14 @@ LIBOBJS
 EGREP
 GREP
 CPP
-HAVE_PYMOD_MYSQLDB
 PATH_TO_PYTHON
+HAVE_PYMOD_MYSQLDB
 TIPS_PASS64
 TIPS_MODULE_NAME
 TIPS_DB
 TIPS_PASS
 TIPS_READER
+MYSQLDB
 TIPS_HOST
 OBJEXT
 EXEEXT
@@ -683,6 +684,7 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 with_host
+with_MySQL
 with_reader
 with_pass
 with_db
@@ -1315,6 +1317,7 @@ Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-host=ans         The hostname for where the database resides
+  --with-MySQL=ans        Require the mysqlclient/MySQL-python module [[yes]]
   --with-reader=ans       The username for the tips database
                           reader[[readerOfTips]]
   --with-pass=ans         The password for the tips database reader
@@ -2818,6 +2821,32 @@ fi
 
 
 
+# Check whether --with-MySQL was given.
+if test "${with_MySQL+set}" = set; then :
+  withval=$with_MySQL; MYSQLDB="$withval"
+    MYSQLDB=`echo $MYSQLDB | tr '[:upper:]' '[:lower:]'`
+    VALID_YN $MYSQLDB "--with-MySQL=ans: ans must be yes or no"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: MYSQLDB=$with_MySQL" >&5
+$as_echo "MYSQLDB=$with_MySQL" >&6; }
+
+cat >>confdefs.h <<_ACEOF
+#define MYSQLDB "$with_MySQL"
+_ACEOF
+
+else
+  withval="yes"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: MYSQLDB=$withval" >&5
+$as_echo "MYSQLDB=$withval" >&6; }
+    MYSQLDB="$withval"
+
+cat >>confdefs.h <<_ACEOF
+#define MYSQLDB "$withval"
+_ACEOF
+
+fi
+
+
+
 # Check whether --with-reader was given.
 if test "${with_reader+set}" = set; then :
   withval=$with_reader; TIPS_READER="$withval"
@@ -2942,7 +2971,31 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 
-for ac_prog in python3 python2 python
+
+
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking python module: MySQLdb" >&5
+$as_echo_n "checking python module: MySQLdb... " >&6; }
+	$PATH_TO_PYTHON -c "import MySQLdb" > /dev/null 2>&1
+	if test $? -eq 0;
+	then
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+		eval HAVE_PYMOD_MYSQLDB=yes
+	else
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+		eval HAVE_PYMOD_MYSQLDB=no
+		#
+		if test -n ""
+		then
+			as_fn_error $? "failed to find required module MySQLdb" "$LINENO" 5
+			exit 1
+		fi
+	fi
+
+
+if test "$MYSQLDB" = yes; then
+   for ac_prog in python3 python2 python
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -2987,48 +3040,30 @@ fi
   test -n "$PATH_TO_PYTHON" && break
 done
 
-if test "x$PATH_TO_PYTHON" = "x"; then
-   echo
-   echo "======================================================="
-   echo "HPC_Tips requires python3, python2 or python to run."
-   echo "======================================================="
-   echo
-   rm -f makefile
-   exit 1
-fi
+   if test "x$PATH_TO_PYTHON" = "x"; then
+      echo
+      echo "======================================================="
+      echo "HPC_Tips requires python3, python2 or python to run."
+      echo "======================================================="
+      echo
+      rm -f makefile
+      exit 1
+   fi
 
-
-
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking python module: MySQLdb" >&5
-$as_echo_n "checking python module: MySQLdb... " >&6; }
-	$PATH_TO_PYTHON -c "import MySQLdb" > /dev/null 2>&1
-	if test $? -eq 0;
-	then
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-		eval HAVE_PYMOD_MYSQLDB=yes
-	else
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-		eval HAVE_PYMOD_MYSQLDB=no
-		#
-		if test -n ""
-		then
-			as_fn_error $? "failed to find required module MySQLdb" "$LINENO" 5
-			exit 1
-		fi
-	fi
-
-
-if test "$HAVE_PYMOD_MYSQLDB" = no; then
-   echo
-   echo "==============================================================="
-   echo "Unable to install HPC_Tips without the python module: MySQLdb"
-   echo "To install for python3 do: pip3 install mysqlclient"
-   echo "To install for python2 do: pip  install MySQL-python"
-   echo "==============================================================="
-   rm -f makefile
-   exit 1
+   if test "$HAVE_PYMOD_MYSQLDB" = no; then
+      echo
+      echo "======================================================="
+      echo "Unable to install XALT without the python module: MySQLdb"
+      echo "To install for python3 do: pip3 install mysqlclient"
+      echo "To install for python2 do: pip  install MySQL-python"
+      echo
+      echo "MySQLdb is only required to be install on computer which"
+      echo "will update the database.  It is not required anywhere"
+      echo "else."
+      echo "======================================================="
+      rm -f makefile
+      exit 1
+   fi
 fi
 
 
