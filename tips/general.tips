@@ -577,6 +577,11 @@ To print the first 7 lines of a file do:
 or
     $ head -n 7 file.txt
 ##----
-Suppose you would like to make a tar file of the files in a directory that contain your name (or any other string):
-    $ tar cf my_files.tar $(grep -l jones *)
+Sometimes you need a list of names of files containing a string. In that case use the "-l" option to grep which prints only the names of matching files, not the matching line:
+    $ grep -l malloc *.c
+
+This can be embedded in other other commands:
+    $ tar fc mallocfiles.tar $( grep -l malloc *.c )
+or
+    $ emacs $(grep -l malloc *)
 ##----
