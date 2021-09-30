@@ -577,4 +577,6 @@ To print the first 7 lines of a file do:
 or
     $ head -n 7 file.txt
 ##----
-
+Suppose you would like to make a tar file of the files in a directory that contain your name (or any other string):
+    $ tar cf my_files.tar $(grep -l jones *)
+##----
