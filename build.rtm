@@ -79,14 +79,14 @@ case $SYSHOST in
     CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips"
     ;;
 
-   rios)
+  rios)
     echo "Building on $SYSHOST"
     SUDO="sudo"
     base="/opt/apps/HPC_Tips"
     CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
     ;;
 
-   *)
+  *)
     echo "Building on $SYSHOST"
     base="$HOME/l/pkg/HPC_Tips"
     CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"

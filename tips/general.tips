@@ -585,3 +585,17 @@ This can be embedded in other other commands:
 or
     $ emacs $(grep -l malloc *)
 ##----
+When writing bash shell script, it can be handy to set the exit on error flag at the top of your script:
+
+    #!/bin/bash
+    set -e
+
+This way your script will abort at the first error, rather than having the script continue.
+##----
+When writing bash shell script, it can be handy to set the exit on unknown variable at the top of your script:
+
+    #!/bin/bash
+    set -u
+
+This way your script will abort when it finds an unknown variable, that you have probably misspelled.
+##----
