@@ -599,3 +599,10 @@ When writing bash shell script, it can be handy to set the exit on unknown varia
 
 This way your script will abort when it finds an unknown variable, that you have probably misspelled.
 ##----
+To show what lines are duplicated in a sorted file do:
+   $ uniq -d file.txt
+##----
+To show what lines are duplicated in an unsorted file do:
+   $ awk 'a[$0]++' file.txt
+##----
+   
