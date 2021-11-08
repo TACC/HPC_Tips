@@ -5,7 +5,7 @@ If you find it difficult to mentally parse through a colon separated list like P
 
 By default it pretty prints $PATH or whatever the first argument is.
 ##----
-Run "dos2unix" command to convert files from Windows/DOS format to Unix format when you transfer them to TACC resources. 
+Run "dos2unix" command to convert files from Windows/DOS format to Unix format when you transfer them to TACC resources.
 ##----
 Use the command "du -sh" to see total disk usage for the current directory.
 ##----
@@ -100,7 +100,7 @@ To get instant hyperlinks, compile your LaTeX files with "pdflatex" and put the 
 
   \\usepackage[pdftex,colorlinks]{hyperref}
 ##----
-$OLDPWD is the name of the previous directory in bash and zsh.  This can be abbreviated by "~-". 
+$OLDPWD is the name of the previous directory in bash and zsh.  This can be abbreviated by "~-".
     $ ls ~-
 or with the cd command
     $ cd -
@@ -159,8 +159,8 @@ You can remove parts of strings directly in Bash and Zsh:
 ##----
 String removal from front of string in Bash/Zsh:
   $ x=abcABC123ABCxyz
-  $ # |----|.......#   shortest match 
-  $ # |----------|.#   longest  match 
+  $ # |----|.......#   shortest match
+  $ # |----------|.#   longest  match
   $ echo ${x#a*C}  # -> 123ABCxyz
   $ echo ${x##a*C} # -> xyz
 ##----
@@ -185,9 +185,9 @@ With the mv and cp commands, you can copy or move a group of files into a direct
 ##----
 When you need to match all ".*" files except for the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
 ##----
-To list all hidden files without matching the current or parent directory, you can execute "ls .[^.]*".  This will match .a where as ".??*" will not. 
+To list all hidden files without matching the current or parent directory, you can execute "ls .[^.]*".  This will match .a where as ".??*" will not.
 ##----
-Have you every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or "man 3 <name>" for example "man 2 time". 
+Have you every tried to find the man-page for a function that has the same name as the command?  Try "man 2 <name>" or "man 3 <name>" for example "man 2 time".
 ##----
 The man-pages are divided into sections: section (1) are commands; section (2) are system functions, section (3) are library functions. (e.g. man 2 time; man 3 strlen)
 ##----
@@ -225,7 +225,7 @@ Aliases can be very helpful.  For example, these commands in your ~/.bashrc will
   alias cd3="cd ../../.."
 ##----
 Would you combine mkdir and cd with a single command? You can use the following function in bash or zsh:
-  function mkdircd () { mkdir -p "$1" && eval cd "$1"; } 
+  function mkdircd () { mkdir -p "$1" && eval cd "$1"; }
 ##----
 You are writing too fast and misspelled the path of your directory while working in an interactive bash session?
 Try the following command "shopt -s cdspell" and bash  will try several minor spelling corrections to see if it can find the actual directory.
@@ -240,10 +240,10 @@ If you want to know detailed information about a file do: "stat your_file_or_dir
 Want to compare 2 files? You can use diff.
   $ diff [options] file1 file2
 
-Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison. 
+Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison.
 ##----
 If you want to display the current time in the prompt? You can use the following command: export PS1="\\u@\\h [\\$(date +%k:%m:%S)]$ "
-   doe@login1 [14:04:43]$ 
+   doe@login1 [14:04:43]$
 ##----
 There are several visual diff tools: meld, kdiff3, fldiff.  meld and kdiff3 are pretty.   fldiff will handle a files with huge number of diffs quickly.
 ##----
@@ -267,7 +267,7 @@ In bash, the ~/.bash_profile or ~/.profile file is sourced on login shells and ~
 ##----
 Many times you'll want the last word on the previous command: "mkdir abc; cd abc".  Instead of retyping the last word over, you can use Meta-period  (M-.).  This keystroke will cycle through the last word on previous commands.  Note that on many keyboard Meta is the "Alt" key and on a Mac it may be the "command" key.
 ##----
-Bash scripts can do simple arithmetic ($k is 21):  i=1; j=2; ((k=j*10+i)); echo $k; 
+Bash scripts can do simple arithmetic ($k is 21):  i=1; j=2; ((k=j*10+i)); echo $k;
 ##----
 A common error in a bash script is to put spaces around "=".  Right: A=10, Wrong: A = 10
 ##----
@@ -302,7 +302,7 @@ To end an ssh connection do: "<enter>~."
 ##----
 To print a file with line numbers do:
   $ nl <file>
-or 
+or
   $ cat -n <file>
 ##----
 A complex if then else block in a shell script can be written  on one line as:
@@ -317,7 +317,7 @@ To diff two variables do: "diff <(echo $a) <(echo $b)"
 ##----
 The web site www.commandlinefu.com has command line gems.  Click on "All-Time greats" for the most popular tips.
 ##----
-A Bash user should consider using `type' instead of `which'. In particular `type -a' find out all the path locations, functions and alias of the `ls' command by doing: 
+A Bash user should consider using `type' instead of `which'. In particular `type -a' find out all the path locations, functions and alias of the `ls' command by doing:
    $ type -a ls
 ##----
 To print a random number between 1 and X do:
@@ -332,7 +332,7 @@ When running a for loop in multiple directories, it may be helpful to use parent
    $ for d in d1 d2 d3 ; do  ( cd $d; do_some_command_here; ); done
 ##----
 To reset a "borked" terminal try either:
-   $ reset 
+   $ reset
 or
    $ ctrl+j stty sane ctrl+j
 or
@@ -344,7 +344,7 @@ To learn the vi editor, do:
 To learn emacs do
    $ emacs
 Then inside emacs do:
-      Ctrl+H t         to run the tutorial    
+      Ctrl+H t         to run the tutorial
       Ctrl+X Ctrl+C    to exit emacs
 ##----
 If you want to know what MACROS are predefined by the GCC and Intel C compilers?  Do
@@ -376,7 +376,7 @@ You can put a # at the beginning of a line to save it in the history.  This is h
 ##----
 To clear the screen type Ctrl+L or the command clear.
 ##----
-All users can use the following to find the location of a command:  
+All users can use the following to find the location of a command:
    $ whereis ls
 ##----
 This up shell function can change directory quickly up the directory tree: "up 2" is the same as "cd ../..". Extra bonus points if you understand how the printf trick works.
@@ -387,7 +387,7 @@ To delete a file named -foo you can do either rm ./-foo or rm -- -foo but not rm
 If you make changes to your ~/.bashrc, you can test it immediately by:
     $ source ~/.bashrc
 ##----
-You should never name a program "test".  All shells have "test" as a built-in which means the shell will find the built-in before your command.  
+You should never name a program "test".  All shells have "test" as a built-in which means the shell will find the built-in before your command.
 ##----
 If you really must name a program "test", then it can be run with ./test, assuming that program "test" is in the current directory.
 ##----
@@ -412,7 +412,7 @@ For those of you who use vi you might consider creating this alias to close a te
     $ alias ':q'=exit
 ##----
 To place the NUM-th argument from the most recent command do  <Alt>+<NUM>+<.>:
-   $ echo a b c 
+   $ echo a b c
    $ cat <Alt>+2+<.>
 Becomes:
    $ cat b
@@ -436,7 +436,7 @@ It is possible to have an alias the same as the name of the command.  For exampl
 
    tail() { command tail -n $(($LINES - 2)) "$@"; }
 
-The "command" command tells bash (and zsh) to ignore any aliases or shell functions when trying to resolve "tail".  Bonus points for knowing what "$(($LINES - 2)) does! 
+The "command" command tells bash (and zsh) to ignore any aliases or shell functions when trying to resolve "tail".  Bonus points for knowing what "$(($LINES - 2)) does!
 ##----
 It is possible to redefine a shell builtin function by using the "builtin" command.  For example you can redefine the cd command to handle pasting in the path to a file when you want to "cd" to the directory containing the file:
 
@@ -450,7 +450,7 @@ This function strips the file part from the directory when the argument is a fil
 If you have added a command to your path but can't find it, try:
 
    $ hash -r
-   
+
 to re-build bash's internal memory of where commands are.
 ##----
 To run the previous command repeatly until it exits successfully do:
@@ -458,7 +458,7 @@ To run the previous command repeatly until it exits successfully do:
 ##----
 If you set "shopt -s autocd" in the bash shell, then you'll be able to change directories by just typing the name of the directory.
 ##----
-A nice way to debug shell scripts is to define the bash shell function "shdebug" shown below.  
+A nice way to debug shell scripts is to define the bash shell function "shdebug" shown below.
 
    shdebug() { env PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]}) ' sh -x $1; }
 
@@ -524,13 +524,13 @@ You can have ls list all files except . and ..
    $ ls -A
 ##----
 Did you know that you can run command from inside vi without exiting?
-  :! ls -l 
+  :! ls -l
 results in listing the files in the current directory. pressing "enter" will get you back into vi.
 ##----
 Python 2 reaches end-of-life on January 1, 2020.  Please consider converting all your python2 scripts into python3.
 ##----
 A bash user can find all the commands available to them by doing:
-  $ compgen -c 
+  $ compgen -c
 A user might like to know all the commands that have "_info" as part of the its name:
   $ compgen -c | grep _info
 ##----
@@ -553,8 +553,8 @@ The find command locates all the *.c and *.h files in the current directory and 
 ##----
 Python 2 reached end-of-life on January 1, 2020.  You can place the following at the top of all your python3 scripts to have them run under either python3 or python2. (See https://stackoverflow.com/a/47886254)
     #!/bin/sh
-    # This file is python 2/3 bilingual. 
-    # The line """:" starts a comment in python and is a no-op in shell. 
+    # This file is python 2/3 bilingual.
+    # The line """:" starts a comment in python and is a no-op in shell.
     """:"
     # Shell code to find and run a suitable python on this file.
     for cmd in python3 python python2; do
@@ -604,5 +604,7 @@ To show what lines are duplicated in a sorted file do:
 ##----
 To show what lines are duplicated in an unsorted file do:
    $ awk 'a[$0]++' file.txt
+or
+   $ sort file.txt | uniq -d
 ##----
-   
+
