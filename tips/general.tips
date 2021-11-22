@@ -74,6 +74,10 @@ If you want to see just the available default modules execute:
 
    $ module -d avail
 ##----
+If you want to see just the list of modules but not the versions do:
+
+   $ module overview
+##----
 If you want to see all the currently loadable modules that contain the string "abc" execute:
 
    $ module avail abc
@@ -607,4 +611,9 @@ To show what lines are duplicated in an unsorted file do:
 or
    $ sort file.txt | uniq -d
 ##----
+Did you know that you can use the TAB key to finish an environment variable?
 
+   $ cd $SCR<tab> will complete to cd $SCRATCH
+
+assuming that $SCRATCH is defined and there are no other variables that start with SCR
+##----
