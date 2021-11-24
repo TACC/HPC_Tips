@@ -615,5 +615,5 @@ Did you know that you can use the TAB key to finish an environment variable?
 
    $ cd $SCR<tab> will complete to cd $SCRATCH
 
-assuming that $SCRATCH is defined and there are no other variables that start with SCR
+assuming that $SCRATCH is defined and there are no other variables that start with SCR.  If is more than one, hitting <TAB> twice will list all choices.
 ##----
