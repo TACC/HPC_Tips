@@ -361,9 +361,6 @@ To list just the sub-directories in the current directory do:
 The command below will report the number of lines in the file foo.txt
    $ wc -l foo.txt
 ##----
-The command below will report the longest line in the file foo.txt
-   $ wc -L foo.txt
-##----
 Use the "lscpu" command to report information about the CPU under linux.
 ##----
 You can use "module try-load foo" when you wish to load "foo" if available.  No error is reported if "foo" doesn't exist.
