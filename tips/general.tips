@@ -361,6 +361,9 @@ To list just the sub-directories in the current directory do:
 The command below will report the number of lines in the file foo.txt
    $ wc -l foo.txt
 ##----
+The command below will report the longest line in the file foo.txt
+   $ wc -L foo.txt
+##----
 Use the "lscpu" command to report information about the CPU under linux.
 ##----
 You can use "module try-load foo" when you wish to load "foo" if available.  No error is reported if "foo" doesn't exist.
@@ -616,4 +619,7 @@ Did you know that you can use the TAB key to finish an environment variable?
    $ cd $SCR<tab> will complete to cd $SCRATCH
 
 assuming that $SCRATCH is defined and there are no other variables that start with SCR.  If is more than one, hitting <TAB> twice will list all choices.
+##----
+Emacs: Move forward and backwards by paragraph:
+   Alt-} and Alt-{
 ##----
