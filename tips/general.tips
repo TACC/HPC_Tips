@@ -361,6 +361,9 @@ To list just the sub-directories in the current directory do:
 The command below will report the number of lines in the file foo.txt
    $ wc -l foo.txt
 ##----
+You easily find the longest line in a file by executing:
+    $ wc -L <file>
+##----
 Use the "lscpu" command to report information about the CPU under linux.
 ##----
 You can use "module try-load foo" when you wish to load "foo" if available.  No error is reported if "foo" doesn't exist.
@@ -396,9 +399,6 @@ You should never name a program "test".  All shells have "test" as a built-in wh
 If you really must name a program "test", then it can be run with ./test, assuming that program "test" is in the current directory.
 ##----
 Are you having trouble figuring out why your link went bad?  Try adding -Wl,--trace to your link line and capture the output.
-##----
-You easily find the longest line in a file by executing:
-    $ wc -L <file>
 ##----
 Create a nifty overview of the hardware on your system and open the "hardware.html" in a browser:
     $ lshw -html > hardware.html
@@ -619,4 +619,6 @@ assuming that $SCRATCH is defined and there are no other variables that start wi
 ##----
 Emacs: Move forward and backwards by paragraph:
    Alt-} and Alt-{
+##----
+You can use cat -E to show line endings.
 ##----
