@@ -622,3 +622,7 @@ Emacs: Move forward and backwards by paragraph:
 ##----
 You can use cat -E to show line endings.
 ##----
+Tilde expansion of the user's home directory only works at the beginning of a word.  So export FOO=~/bar is wrong.  Instead do either
+    FOO=~/bar; export FOO # Right!
+    export FOO=$HOME/bar  # Right!
+##----
