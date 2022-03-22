@@ -130,7 +130,7 @@ Here's a trick to execute the last three commands repeatedly.  Press the up-arro
 ##----
 Try "history | more" to browse your recent commands together with their command numbers. To repeat a command, type !n (where "n" is the displayed command number).
 ##----
-You can use "tail -F file_name" to follow the output to a file.
+You can use "tail -F file_name" to follow the output to a file until you type Ctrl-C.
 ##----
 You can create a hierarchy of directories at one time with "mkdir -p a/b/c".
 ##----
@@ -616,4 +616,30 @@ Did you know that you can use the TAB key to finish an environment variable?
    $ cd $SCR<tab> will complete to cd $SCRATCH
 
 assuming that $SCRATCH is defined and there are no other variables that start with SCR.  If is more than one, hitting <TAB> twice will list all choices.
+##----
+Git is a way to manage your source code.  Here is a blog describing how to undo mistakes with git:
+   https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/
+##----
+When using regular expressions many characters are special.  However in a character class they are not special.
+For example [.?] matches a dot or a question mark.
+##----
+Learn vim in a browser:  openvim.com
+##----
+When using the command find, you can search for case-sensitive files with -name and case-insensitive with -iname
+##----
+To search for directories with find, specify -type d. To search for files, specify -type f.
+##----
+To show C preprocessor paths do:
+   $ gcc -E -v ...
+##----
+To learn more about the unix you are running try typing:
+   $ uname -a
+##----
+A list of common mistakes made by bash users can be found at:
+   http://mywiki.wooledge.org/BashPitfalls
+##----
+How one might manage errors in a bash script:
+   https://www.jtrocinski.com/posts/Bash-Error_handling_in_scripts.html
+##----
+The command sdiff shows diff side by side
 ##----
