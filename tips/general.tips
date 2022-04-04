@@ -626,3 +626,10 @@ Tilde expansion of the user's home directory only works at the beginning of a wo
     FOO=~/bar; export FOO # Right!
     export FOO=$HOME/bar  # Right!
 ##----
+You can use cp -u to copy files that do not exist in the new directory or are newer than there existing counterparts.
+##----
+The command mv -i will move files and ask for confirmation before overwriting an existing file.
+##----
+To get hex dump of a file named foo do:
+   $ od -x foo
+##----
