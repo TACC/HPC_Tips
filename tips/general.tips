@@ -659,3 +659,6 @@ The command mv -i will move files and ask for confirmation before overwriting an
 To get hex dump of a file named foo do:
    $ od -x foo
 ##----
+You can get the UTC time with:
+   $ date -u
+##----
