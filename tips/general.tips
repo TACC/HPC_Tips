@@ -662,3 +662,5 @@ To get hex dump of a file named foo do:
 You can get the UTC time with:
    $ date -u
 ##----
+You can change the size of the font in Emacs: C-x C-+ to increase, C-x C-- to decrease.
+##----
