@@ -664,5 +664,5 @@ You can get the UTC time with:
 ##----
 You can change the size of the font in Emacs: C-x C-+ to increase, C-x C-- to decrease.
 ##----
-Regular expression tip: [a-z] matches all lower case letters, [-az] only matches '-','a','z'.
+Regular expression tip: [a-z] matches all lower case letters, [-az] only matches '-','a', or'z'.
 ##----
