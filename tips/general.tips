@@ -673,3 +673,6 @@ Bash users can get a time stamp for their history of commands:
 Zsh users can get a time stamp for their history of commands:
   % history -i
 ##----
+Show tabs in a filw with:
+   $ cat -T foo.txt
+##----
