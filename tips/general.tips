@@ -676,3 +676,9 @@ Zsh users can get a time stamp for their history of commands:
 Show tabs in a filw with:
    $ cat -T foo.txt
 ##----
+The sed program is very useful tool to remove trailing spaces or perform string substitutions.
+    sed 's/night/day/'  < old > new
+
+To learn how to use this tool, please see:
+    https://www.grymoire.com/Unix/Sed.html
+##----
