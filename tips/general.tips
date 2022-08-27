@@ -682,3 +682,7 @@ The sed program is very useful tool to remove trailing spaces or perform string 
 To learn how to use this tool, please see:
     https://www.grymoire.com/Unix/Sed.html
 ##----
+The sed program can be used to remove leading and trailing blanks and tabs from "somefile":
+   % sed -i -e 's/^[ \t]*//;s/[ \t]*$//' somefile
+the -i option cause the change to happen in-place, directly to "somefile"
+##----
