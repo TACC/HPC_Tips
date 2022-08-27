@@ -120,3 +120,5 @@ We add information about executables built at TACC. If you want to know about ho
    Build_date               Thu Apr 16 12:16:23 2020
    Build_compiler           icc
 ##----
+On TACC systems 'qlimits' prints scheduler queue information.
+##----
