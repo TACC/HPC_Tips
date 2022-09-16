@@ -677,7 +677,7 @@ Show tabs in a filw with:
    $ cat -T foo.txt
 ##----
 The sed program is very useful tool to remove trailing spaces or perform string substitutions. Like changing night for day from an "old" file to a "new" file
-    sed 's/night/day/'  < old > new
+    sed 's/night/day/g'  < old > new
 
 To learn how to use this tool, please see:
     https://www.grymoire.com/Unix/Sed.html
@@ -686,3 +686,19 @@ The sed program can be used to remove leading and trailing blanks and tabs from 
    % sed -i -e 's/^[ \t]*//;s/[ \t]*$//' somefile
 the -i option cause the change to happen in-place, directly to "somefile"
 ##----
+The program "wc" does more than  word counts. It also provides he number of characters and lines.
+##----
+The gnu "ls -X" command will group files by extenstion.
+##----
+If you would like to report the measured time in a shell script, you can do this in a bash script:
+
+   t1=$(date +%s)                     # epoch start time in seconds
+
+   # process you wish to time.
+
+   t2=$(date +%s)                     # epoch end time in seconds
+   numSec=$(echo $t2 - $t1 | bc -q )  # the number of seconds the process took.
+   runTime=$(date -ud @$numSec +%T)   # Convert the seconds into Hours:Mins:Sec
+   echo "Time to build: $runTime ($numSec seconds)"
+##----
+
