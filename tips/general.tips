@@ -701,4 +701,10 @@ If you would like to report the measured time in a shell script, you can do this
    runTime=$(date -ud @$numSec +%T)   # Convert the seconds into Hours:Mins:Sec
    echo "Time to build: $runTime ($numSec seconds)"
 ##----
+The day of the year can be reported with:
+   % date +%j
+##----
+You can the GNU date program to do things like:
+   % date -d 'today + 90 days'
+##----
 
