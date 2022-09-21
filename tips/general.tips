@@ -707,3 +707,5 @@ The day of the year can be reported with:
 You can the Linux date program to do things like:
    % date -d 'today + 90 days'
 ##----
+You can generate your bash prompt (PS1) with a drag and drop interface:  https://bashrcgenerator.com
+##----
