@@ -709,3 +709,16 @@ You can the Linux date program to do things like:
 ##----
 You can generate your bash prompt (PS1) with a drag and drop interface:  https://bashrcgenerator.com
 ##----
+A neat trick is to make your bash prompt be RED when the last command has an error:
+if [ -n "$PS1" ]; then
+   __COLORIZE_EXIT_STATUS()
+   {
+      [[ 0 == "$1" || 130 == "$1" ]] && printf -- "$CYAN" || printf -- "$RED"
+   }
+   CYAN=$'\033[1;36m'
+   RED=$'\033[1;31m'
+   NONE=$'\033[0m'
+   
+   PS1='\u@\[$(__COLORIZE_EXIT_STATUS $?)\h\[${NONE}\]\$ '
+fi
+##----
