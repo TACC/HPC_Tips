@@ -719,6 +719,6 @@ if [ -n "$PS1" ]; then
    RED=$'\033[1;31m'
    NONE=$'\033[0m'
    
-   PS1='\u@\[$(__COLORIZE_EXIT_STATUS $?)\h\[${NONE}\]\$ '
+   PS1='\u@\[$(__COLORIZE_EXIT_STATUS $?)\]\h\[${NONE}\]\$ '
 fi
 ##----
