@@ -688,6 +688,8 @@ the -i option cause the change to happen in-place, directly to "somefile"
 ##----
 The program "wc" does more than  word counts. It also provides he number of characters and lines.
 ##----
+If you just need a line count "wc -l" is much faster than "wc" which returns the number of characters, words and lines.
+##----
 The gnu "ls -X" command will group files by extenstion.
 ##----
 If you would like to report the measured time in a shell script, you can do this in a bash script:
