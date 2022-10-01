@@ -723,15 +723,16 @@ if [ -n "$PS1" ]; then
 fi
 ##----
 If you are tired of using git stash when switching between git branches, use "git worktree ..." to manages git branches instead.
-With worktrees, you don't have to commit or stash changes when switching between branches.
+With worktrees, you don't have to commit or stash changes when switching between branches. You switch between branches by changing directories.
 
 In the top of a git repo do:
    $ git worktree add .worktree/testing   # This open or creates the "testing" branch
    $ cd .worktree/testing
    # make changes in the testing branch
    $ git add .; git commit -m 'new features from testing branch'; git push
-   $ cd ../..
+   $ cd ../..  # back to the main branch
    $ git worktree remove testing  # remove the testing branch from your source tree
 
 Remember to add .worktree to your .gitignore file.  Youtube has several tutorial videos on how this works.
+Also see: https://opensource.com/article/21/4/git-worktree
 ##----
