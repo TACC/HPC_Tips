@@ -733,5 +733,5 @@ In the top of a git repo do:
    $ cd ../..
    $ git worktree remove testing  # remove the testing branch from your source tree
 
-Remember to add .worktree to your .gitignore file.
+Remember to add .worktree to your .gitignore file.  Youtube has several tutorial videos on how this works.
 ##----
