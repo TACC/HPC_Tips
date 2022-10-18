@@ -736,3 +736,5 @@ There are many ways to use worktrees.  Here is on example. In the top of a git r
 Remember to add .worktree to your .gitignore file.  Youtube has several tutorial videos on how this works.
 Also see: https://opensource.com/article/21/4/git-worktree
 ##----
+A nice short tutorial for better bash scripting can be found here: http://robertmuth.blogspot.com/2012/08/better-bash-scripting-in-15-minutes.html
+##----
