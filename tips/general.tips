@@ -635,8 +635,10 @@ To show C preprocessor paths do:
 To learn more about the unix you are running try typing:
    $ uname -a
 ##----
-A list of common mistakes made by bash users can be found at:
+A list of common mistakes made in bash scripts can be found at:
    http://mywiki.wooledge.org/BashPitfalls
+For example, what should you do instead of:
+   if [[ $foo > 7 ]]; then ... fi
 ##----
 How one might manage errors in a bash script:
    https://www.jtrocinski.com/posts/Bash-Error_handling_in_scripts.html
