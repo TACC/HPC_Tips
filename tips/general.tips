@@ -635,8 +635,10 @@ To show C preprocessor paths do:
 To learn more about the unix you are running try typing:
    $ uname -a
 ##----
-A list of common mistakes made by bash users can be found at:
+A list of common mistakes made in bash scripts can be found at:
    http://mywiki.wooledge.org/BashPitfalls
+For example, what should you do instead of:
+   if [[ $foo > 7 ]]; then ... fi
 ##----
 How one might manage errors in a bash script:
    https://www.jtrocinski.com/posts/Bash-Error_handling_in_scripts.html
@@ -737,6 +739,8 @@ Remember to add .worktree to your .gitignore file.  Youtube has several tutorial
 Also see: https://opensource.com/article/21/4/git-worktree
 ##----
 A nice short tutorial for better bash scripting can be found here: http://robertmuth.blogspot.com/2012/08/better-bash-scripting-in-15-minutes.html
+##----
+"The enjoyment of one's tools is an essential ingredient of successful work." -- Donald E. Knuth
 ##----
 A one-liner to report lines that contain non-ASCII text, with line numbers using awk for the file myfile.txt
    $ cat myfile.txt | awk '/[^\x00-\x7f]/ {print NR, $0}'
