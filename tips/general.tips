@@ -743,5 +743,5 @@ A nice short tutorial for better bash scripting can be found here: http://robert
 "The enjoyment of one's tools is an essential ingredient of successful work." -- Donald E. Knuth
 ##----
 A one-liner to report lines that contain non-ASCII text, with line numbers using awk for the file myfile.txt
-   $ cat myfile.txt | awk '/[^\x00-\x7f]/ {print NR, $0}'
+   $ cat myfile.txt | awk '/[^\\x00-\\x7f]/ {print NR, $0}'
 ##----
