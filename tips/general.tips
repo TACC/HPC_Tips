@@ -748,3 +748,7 @@ https://rosshemsley.co.uk/posts/linking/
 A one-liner to report lines that contain non-ASCII text, with line numbers using awk for the file myfile.txt
    $ cat myfile.txt | awk '/[^\\x00-\\x7f]/ {print NR, $0}'
 ##----
+The sed command can be used to delete lines:
+    $ sed '/spam/d' < in.txt > out.txt    # Remove lines with "spam"
+    $ sed '/^ *$/d' < in2.txt > out2.txt  # Remove blank links
+##----
