@@ -752,3 +752,17 @@ The sed command can be used to delete lines:
     $ sed '/spam/d' < in.txt > out.txt    # Remove lines with "spam"
     $ sed '/^ *$/d' < in2.txt > out2.txt  # Remove blank links
 ##----
+The programming language AWK is great for one liners for example:
+     awk  -F":" '{print $2}' file.txt    # print the second column separated by colons
+
+To learn idiomatic AWK see:
+   https://backreference.org/2010/02/10/idiomatic-awk/index.html
+##----
+The programming language AWK is great for one liners for example:
+     awk  -F":" '{print $2}' file.txt    # print the second column separated by colons
+
+A collections of useful one liners can be found here:
+    http://tuxgraphics.org/~guido/scripts/awk-one-liner.html   
+##----
+Show the C preprocessor include paths:  cpp -v
+##----
