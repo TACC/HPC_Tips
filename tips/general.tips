@@ -766,3 +766,9 @@ A collections of useful one liners can be found here:
 ##----
 Show the C preprocessor include paths:  cpp -v
 ##----
+The Bash shell uses the readline library to support command line editting with either an emacs mode or a vi mode.
+
+A cheat sheet for the emacs mode can be found here: https://readline.kablamo.org/emacs.html
+
+A cheat sheet for the vi mode can be found here: https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf
+##----
