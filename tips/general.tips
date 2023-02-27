@@ -740,15 +740,42 @@ Also see: https://opensource.com/article/21/4/git-worktree
 ##----
 A nice short tutorial for better bash scripting can be found here: http://robertmuth.blogspot.com/2012/08/better-bash-scripting-in-15-minutes.html
 ##----
+<<<<<<< HEAD
 In bash and zsh "!$" is the last word on the previous command:
 
    $ echo a b c
    $ echo !$
    c
 ##----
-In bash and zsh "!^" is the 2nd word on the previous command:
+"The enjoyment of one's tools is an essential ingredient of successful work." -- Donald E. Knuth
+##----
+A good resource for dealing with linking issue for Linux or Mac OS can be found here:
+https://rosshemsley.co.uk/posts/linking/
+##----
+A one-liner to report lines that contain non-ASCII text, with line numbers using awk for the file myfile.txt
+   $ cat myfile.txt | awk '/[^\\x00-\\x7f]/ {print NR, $0}'
+##----
+The sed command can be used to delete lines:
+    $ sed '/spam/d' < in.txt > out.txt    # Remove lines with "spam"
+    $ sed '/^ *$/d' < in2.txt > out2.txt  # Remove blank links
+##----
+The programming language AWK is great for one liners for example:
+     awk  -F":" '{print $2}' file.txt    # print the second column separated by colons
 
-   $ echo a b c
-   $ echo !^
-   a
+To learn idiomatic AWK see:
+   https://backreference.org/2010/02/10/idiomatic-awk/index.html
+##----
+The programming language AWK is great for one liners for example:
+     awk  -F":" '{print $2}' file.txt    # print the second column separated by colons
+
+A collections of useful one liners can be found here:
+    http://tuxgraphics.org/~guido/scripts/awk-one-liner.html   
+##----
+Show the C preprocessor include paths:  cpp -v
+##----
+The Bash shell uses the readline library to support command line editting with either an emacs mode or a vi mode.
+
+A cheat sheet for the emacs mode can be found here: https://readline.kablamo.org/emacs.html
+
+A cheat sheet for the vi mode can be found here: https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf
 ##----
