@@ -779,3 +779,5 @@ A cheat sheet for the emacs mode can be found here: https://readline.kablamo.org
 
 A cheat sheet for the vi mode can be found here: https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf
 ##----
+If you need to debug the operation of the sed command, you can use a python tool to do this.  See https://aurelio.net/projects/sedsed for details
+##----
