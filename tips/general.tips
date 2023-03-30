@@ -137,7 +137,7 @@ You can create a hierarchy of directories at one time with "mkdir -p a/b/c".
 You can create a multiple directories at one time with "mkdir -p a/{d1,d2}/{src,inc}".
 This is the same as "mkdir -p a/d1/src a/d1/inc a/d2/src a/d2/inc".
 ##----
-You can sort the output of "ls" in various ways. The command "ls -ltr" will sort so that the most recently changed files appear first.
+You can sort the output of "ls" in various ways. The command "ls -ltr" will sort so that the most recently changed files appear at the end of the list.
 ##----
 You can list a directory sorted by file size using "ls -lShr". The "-h" option reports sizes in human-readable form (bytes, KiloBytes, MegaBytes, etc.).
 ##----
@@ -780,4 +780,6 @@ A cheat sheet for the emacs mode can be found here: https://readline.kablamo.org
 A cheat sheet for the vi mode can be found here: https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf
 ##----
 If you need to debug the operation of the sed command, you can use a python tool to do this.  See https://aurelio.net/projects/sedsed for details
+##----
+Thw awk FAQ can be found here: http://www.faqs.org/faqs/computer-lang/awk/faq/
 ##----
