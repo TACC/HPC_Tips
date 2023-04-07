@@ -783,3 +783,5 @@ If you need to debug the operation of the sed command, you can use a python tool
 ##----
 Thw awk FAQ can be found here: http://www.faqs.org/faqs/computer-lang/awk/faq/
 ##----
+The -w option for the program "diff" tells it to ignore spaces in one line even where the corresponding line has none.
+##----
