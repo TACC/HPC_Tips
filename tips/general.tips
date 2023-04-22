@@ -531,7 +531,7 @@ Did you know that you can run command from inside vi without exiting?
   :! ls -l
 results in listing the files in the current directory. pressing "enter" will get you back into vi.
 ##----
-Python 2 reaches end-of-life on January 1, 2020.  Please consider converting all your python2 scripts into python3.
+Python 2 reached end-of-life on January 1, 2020.  Please consider converting all your python2 scripts into python3.
 ##----
 A bash user can find all the commands available to them by doing:
   $ compgen -c
@@ -784,7 +784,7 @@ Thw awk FAQ can be found here: http://www.faqs.org/faqs/computer-lang/awk/faq/
 ##----
 The -w option for the program "diff" tells it to ignore spaces in one line even where the corresponding line has none.
 ##----
-The song: I own your process: kill -9: https://www.youtube.com/watch?v=Fow7iUaKrq4
+kill -9, the legend, the song: I own your process:  https://www.youtube.com/watch?v=Fow7iUaKrq4
 ##----
 The sed program is very powerful tool to substitute one text for another in a file. A good tutorial on how to use sed with all its tricks can be found here:
 https://www.grymoire.com/Unix/Sed.html
