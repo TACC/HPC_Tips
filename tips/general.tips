@@ -793,3 +793,5 @@ Linux Commands - A practical reference: http://www.pixelbeat.org/cmdline.html
 ##----
 A guide to Emacs resources can be found here: https://batsov.com/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/
 ##----
+The awk variable NF contains the number of fields in the current record.
+##----
