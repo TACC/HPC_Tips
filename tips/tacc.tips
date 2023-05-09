@@ -52,9 +52,9 @@ Do you know what is cool about cdh?
 
 "cd vtune" tries to cd to the vtune subdirectory in the present directory where as "cdh vtune"  will take you to $HOME/vtune,  similar to the behavior for an argument with cds, cdw. You cannot do that with cd (as it should be),   It is quite handy.  (note that cd ~/vtune does the same thing).
 ##----
-In the commands "srun -n X ..." or "idev -n X" or "#SBATCH -n X", X correspond to the number of MPI tasks that you want to use, not the number of cores.
+In the commands "srun -n X ..." or "idev -N 1 -n X" or "#SBATCH -n X", X correspond to the number of MPI tasks that you want to use, not the number of cores.
 
-For example, if you want to use 1 node with 4 MPI tasks and 4 OpenMP threads, please use "srun -n 4..." or "idev -n 4" or "#SBATCH -n 4"
+For example, if you want to use 1 node with 4 MPI tasks and 4 OpenMP threads, please use "srun -n 4..." or "idev -N 1 -n 4" or "#SBATCH -n 4"
 ##----
 By default, idev provides you a full node and ibrun will use all cores as MPI tasks. For example, If you want to use 1 node on with 4 MPI tasks and 4 OpenMP threads, please use "idev -n 4"
 ##----
