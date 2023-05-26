@@ -787,11 +787,17 @@ The -w option for the program "diff" tells it to ignore spaces in one line even 
 kill -9, the legend, the song: I own your process:  https://www.youtube.com/watch?v=Fow7iUaKrq4
 ##----
 The sed program is very powerful tool to substitute one text for another in a file. A good tutorial on how to use sed with all its tricks can be found here:
-https://www.grymoire.com/Unix/Sed.html
+   https://www.grymoire.com/Unix/Sed.html
+And an FAQ can be found here:
+   https://www.pement.org/sed/sedfaq.html
 ##----
 Linux Commands - A practical reference: http://www.pixelbeat.org/cmdline.html
 ##----
 A guide to Emacs resources can be found here: https://batsov.com/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/
 ##----
 The awk variable NF contains the number of fields in the current record.
+##----
+You can output a file and show the non-printing characters: $ cat -v 
+##----
+You can use -i with the diff command to do case-insensitive comparisons: diff -i file1.txt file2.txt
 ##----
