@@ -801,3 +801,5 @@ You can output a file and show the non-printing characters: $ cat -v
 ##----
 You can use -i with the diff command to do case-insensitive comparisons: diff -i file1.txt file2.txt
 ##----
+To find all the lines that do not match a pattern use: grep -v
+##----
