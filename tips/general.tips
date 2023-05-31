@@ -188,6 +188,8 @@ In vi, typing "." will repeat the last edit.
 With the mv and cp commands, you can copy or move a group of files into a directory:  "mv file.A file.B  file.C dir"  or "cp sam.* dir"
 ##----
 When you need to match all ".*" files except for the current directory "." or the parent directory "..", use the ".??*" file globbing pattern.  For example:  "cp .??* dot.orig" copies all the dot files in a directory named "dot.orig".
+
+If you need to copy that have a single letter like .a or .b then you can use use "cp .[^.]* dot.orig to copy all files except "." and ".."
 ##----
 To list all hidden files without matching the current or parent directory, you can execute "ls .[^.]*".  This will match .a where as ".??*" will not.
 ##----
