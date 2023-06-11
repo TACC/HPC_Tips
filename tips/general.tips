@@ -809,7 +809,7 @@ To print all the lines of a file (file.txt) that are longer that 65 characters: 
 ##----
 To count the number of lines matching a pattern in each file use: grep -c
 ##----
-The linux (gnu) version of sed will edit files in-place. For example this command will remove all trailing blanks in file.txt directly:
+The linux (gnu) version of sed will edit files in-place. For example this command will remove all trailing spaces in file.txt directly:
 
    $ sed -i -e 's/ \\+$//' file.txt
 
