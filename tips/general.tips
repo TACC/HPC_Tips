@@ -817,3 +817,10 @@ The linux (gnu) version of sed will edit files in-place. For example this comman
 
 The default sed in MacOS does not support -i
 ##----
+In a bash shell script you can check the current directory only for any files having the extension *.txt do:
+
+   if [ -n "$(find . -maxdepth 1 -name '*.txt')" ]; then echo "found"; fi
+
+The -maxdepth option to find tells it to search the current directory only, not any subdirectories.
+##----
+
