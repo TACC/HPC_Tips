@@ -784,6 +784,8 @@ If you need to debug the operation of the sed command, you can use a python tool
 ##----
 Thw awk FAQ can be found here: http://www.faqs.org/faqs/computer-lang/awk/faq/
 ##----
+The AWK language is an easy powerful tool to parse files:  See Steve's Awk Academy at http://www.troubleshooters.com/codecorn/awk/index.htm to learn more.
+##----
 The -w option for the program "diff" tells it to ignore spaces in one line even where the corresponding line has none.
 ##----
 kill -9, the legend, the song: I own your process:  https://www.youtube.com/watch?v=Fow7iUaKrq4
