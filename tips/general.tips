@@ -825,3 +825,6 @@ In a bash shell script you can check the current directory only for any files ha
 
 The -maxdepth option to find tells it to search the current directory only, not any subdirectories.
 ##----
+An easy way to remove blank lines in a file can be found by using awk:
+   $ awk NF < orig.txt > new.txt
+##----
