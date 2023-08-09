@@ -159,14 +159,16 @@ def main():
 
   fileA  = files_in_tree("./tips", "*.tips")
 
+  rowT = {}
   for fn in fileA:
     f      = open (fn,"r")
     lines  = f.readlines()
     f.close()
 
-    idx    = 0
-    txt    = ""
-    sA     = []
+    idx      = 0
+    txt      = ""
+    sA       = []
+    rowT[fn] = 0
     for s in lines:
       s = s.rstrip()
       m = dividerPat.search(s)
@@ -174,11 +176,15 @@ def main():
         txt = "\n".join(sA)
         idx = idx + 1
 
+        rowT[fn] = rowT[fn] + 1
         tips.insertTip(txt)
         sA  = []
       elif (not m):
         sA.append(s)
   
+
+  for fn in rowT:
+    print(fn+":", rowT[fn])
 
   tips.nrows()
   #print("number of rows: ",
