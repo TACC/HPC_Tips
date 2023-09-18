@@ -19,7 +19,7 @@ Add the following include statements in your Makefile to compile PETSc code:
   include ${PETSC_DIR}/lib/petsc/conf/variables
   include ${PETSC_DIR}/lib/petsc/conf/rules
 ##----
-Are you a Windows user looking for a robust approach to accessing Linux resources? Try running a Linux virtual machine inside a host app (hypervisor) like VirtualBox or VMWare Player running on your desktop.
+Are you a Windows user looking for a robust approach to accessing Linux resources? Try the Windows Subsystem for Linux (WSL) which can be installed from your Windows terminal with "wsl --install".
 ##----
 If you want to mount your supercomputer directories on your desktop? Try the sshfs utility.
 ##----
