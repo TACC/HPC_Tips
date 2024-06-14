@@ -36,8 +36,6 @@ We perform a full backup of your $HOME directory every few months, and an increm
 ##----
 To see MVAPICH2's process mapping, "export MV2_SHOW_CPU_BINDING=1" inside your script or before launching your job.
 ##----
-A code built with Intel MPI won't run with MVAPICH2 and vice versa. Your build environment must match your submit environment.
-##----
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
     $ lfs find <directory> -name '*.c'
 ##---- 
