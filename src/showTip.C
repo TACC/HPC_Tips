@@ -230,11 +230,18 @@ int main(int argc, char **argv)
       return 0;
     }
 
+  const char* my_host = getenv("HPC_TIPS_HOST");
+  if (my_host == NULL)
+    my_host = host;
+  
+
+
+
   if (config)
     {
       printf("showTip configuration:\n\n");
       printf("Version:     %s\n", HPC_TIPS_VERSION);
-      printf("Host:        %s\n", host);
+      printf("Host:        %s\n", my_host);
       printf("Reader:      %s\n", reader) ;
       printf("Database:    %s\n", db);
       printf("Module Name: %s\n", moduleNm);
@@ -271,7 +278,7 @@ int main(int argc, char **argv)
   
   /* (1) Open DB */
 
-  if (mysql_real_connect(con, host, reader, (char* ) pass, db, 3306, NULL, 0) == NULL) 
+  if (mysql_real_connect(con, my_host, reader, (char* ) pass, db, 3306, NULL, 0) == NULL) 
     finish_with_error(con);
   
   /* (2) Find number of tips */

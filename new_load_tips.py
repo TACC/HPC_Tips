@@ -15,18 +15,9 @@ exit 2
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
-import MySQLdb as mdb
+import mysql.connector
 import warnings
 import configparser
-
-try:
-  input = raw_input
-except:
-  pass
-
-warnings.filterwarnings("ignore", "Unknown table.*")
-
-dividerPat = re.compile(r'^##\-\-*$')
 
 class LD_TIPS(object):
   def __init__(self, confFn):
@@ -82,8 +73,13 @@ class LD_TIPS(object):
       self.__readFromUser()
 
     try: 
-      self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
-
+      self.__conn = mysql.connector.connect(
+        host     = self.__host,
+        user     = self.__user,
+        password = self.__passwd,
+        database = self.__db
+        )
+      #print (self.__conn)
       cursor = self.__conn.cursor()
       cursor.execute("DROP TABLE IF EXISTS tips")
       cursor.execute("""
@@ -137,7 +133,6 @@ def files_in_tree(path, pattern):
   return fileA  
 
 def main():
-
   confFn = None
   if (len(sys.argv) > 1):
     confFn = sys.argv[1]
@@ -153,12 +148,13 @@ def main():
     sys.exit(1)
 
   tips   = LD_TIPS(confFn)
-
   tips.db_connect()
+  
+  dividerPat = re.compile(r'^##\-\-*$')
 
   fileA  = files_in_tree("./tips", "*.tips")
-
   rowT = {}
+
   for fn in fileA:
     f      = open (fn,"r")
     lines  = f.readlines()
@@ -180,7 +176,6 @@ def main():
         sA  = []
       elif (not m):
         sA.append(s)
-  
 
   for fn in rowT:
     print(fn+":", rowT[fn])
@@ -189,7 +184,7 @@ def main():
   #print("number of rows: ",
 
   tips.db_disconnect()
-  
 
 
 if ( __name__ == '__main__'): main()
+      

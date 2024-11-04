@@ -1,7 +1,7 @@
 dnl AX_PYTHON_MODULE(path_to_python, modname [, fatal ])
 
 AC_DEFUN([AX_PYTHON_MODULE],[
-	AC_MSG_CHECKING(python module: $2)
+	AC_MSG_CHECKING($1 module: $2)
 	$1 -c "import $2" > /dev/null 2>&1
 	if test $? -eq 0;
 	then
@@ -13,7 +13,7 @@ AC_DEFUN([AX_PYTHON_MODULE],[
 		#
 		if test -n "$3"
 		then
-			AC_MSG_ERROR(failed to find required module $2)
+			AC_MSG_ERROR(failed to find required python module $2)
 			exit 1
 		fi
 	fi

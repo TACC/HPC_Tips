@@ -19,6 +19,15 @@ source will have to live there.
 Note that the tips database is independent of the install of the **showTips** program used to display tips to users.  Tips can be
 updated at anytime.
 
+PYTHON MODULE:
+==============
+
+The python program that installs the tips requires the
+mysql-connector-python package.  This only needs to be installed where
+the database is updated:
+
+  % pip3 install mysql-connnector-python
+
 Security Issues:
 ================
 
@@ -158,3 +167,5 @@ A copy of our module file can be found in modules/HPC_Tips.lua
 You will need to specify the location of the **showTips** binary in each of the /etc/profile.d/z99_HPC_Tips.\*
 files to make it work on your system.
 
+10) Note that the showTips program will use the environment variable
+HPC\_TIPS\_HOSTS as a replacement for the configured host.
