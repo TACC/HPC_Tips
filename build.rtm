@@ -63,12 +63,15 @@ if [ -z "$SYSHOST" ]; then
 fi
 
 echo SYSHOST: $SYSHOST
+readerPass="tipR3ader123@"
+
+
 
 case $SYSHOST in
   mijo)
     echo "Building on $SYSHOST using mijo rules"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=jedrik --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips"
+    CONF_OPTS="--with-host=jedrik --with-reader=readerOfTips --with-pass=$readerPass --with-db=HPC_Tips --with-module=HPC_Tips"
     CPPFLAGS="CPPFLAGS=-I/usr/local/include"
     MAKE_OPTS="LDFLAGS=-L/usr/local/lib"
     ;;
@@ -76,20 +79,20 @@ case $SYSHOST in
   jedrik)
     echo "Building on $SYSHOST using jedrik rules"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPC_Tips --with-module=HPC_Tips"
+    CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=$readerPass --with-db=HPC_Tips --with-module=HPC_Tips"
     ;;
 
   rios)
     echo "Building on $SYSHOST"
     SUDO="sudo"
     base="/opt/apps/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=HPCTips --with-module=tacc_tips"
     ;;
 
   *)
     echo "Building on $SYSHOST"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=tipReader123 --with-db=HPCTips --with-module=tacc_tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=HPCTips --with-module=tacc_tips"
     ;;
 
 esac
