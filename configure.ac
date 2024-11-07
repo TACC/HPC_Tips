@@ -138,10 +138,6 @@ if test "$MYSQLDB" = yes; then
    fi 
 fi
 
-AC_CHECK_HEADER(mysql/my_global.h,
-                [AC_DEFINE([HAVE_MYSQL_MY_GLOBAL_H], 1,
-                   [Define to 1 if you have <mysql/my_global.h>.])],
-                [])
 AC_CHECK_HEADER(mysql/mysql.h,
                 [AC_DEFINE([HAVE_MYSQL_MYSQL_H], 1,
                    [Define to 1 if you have <mysql/mysql.h>.])],

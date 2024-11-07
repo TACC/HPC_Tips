@@ -14,10 +14,6 @@
 #include "header.h"
 #include "version.h"
 
-//ifdef HAVE_MYSQL_MY_GLOBAL_H
-//  include "mysql/my_global.h"
-//endif
-
 #ifdef HAVE_MYSQL_MYSQL_H
 #  include "mysql/mysql.h"
 #endif

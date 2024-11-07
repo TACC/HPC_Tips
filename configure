@@ -3469,14 +3469,6 @@ then :
 printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
 
 fi
-ac_fn_c_check_header_compile "$LINENO" "mysql/my_global.h" "ac_cv_header_mysql_my_global_h" "$ac_includes_default"
-if test "x$ac_cv_header_mysql_my_global_h" = xyes
-then :
-
-printf "%s\n" "#define HAVE_MYSQL_MY_GLOBAL_H 1" >>confdefs.h
-
-fi
-
 ac_fn_c_check_header_compile "$LINENO" "mysql/mysql.h" "ac_cv_header_mysql_mysql_h" "$ac_includes_default"
 if test "x$ac_cv_header_mysql_mysql_h" = xyes
 then :

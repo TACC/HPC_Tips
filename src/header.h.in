@@ -12,9 +12,6 @@
 /* Define to 1 if you have <mysql/mysql.h>. */
 #undef HAVE_MYSQL_MYSQL_H
 
-/* Define to 1 if you have <mysql/my_global.h>. */
-#undef HAVE_MYSQL_MY_GLOBAL_H
-
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
 
