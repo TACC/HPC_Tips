@@ -7,6 +7,7 @@ HPC_Tips 1.0+
             * Add -c option to showTip.C to report configuration.
      (1.2)  * base64 encode reader password in showTip binary.
      (1.3)  * Only require python* and MySQLdb when configured with --with-MySQL=ye
-     (1.4)  * Switch to mysql.connector (with mysql-connector-python module
-     (1.5)  * typo repairs
+     (1.4)  * Switch to mysql.connector (with mysql-connector-python module)
+     (1.5)  * removal of mysql/my_global.h; added spec file.
+     
      
