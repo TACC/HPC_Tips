@@ -10,6 +10,7 @@ Source0:  %{name}-%{version}.tar.bz2
 Packager: mclay@tacc.utexas.edu
 
 %define debug_package %{nil}
+%define _build_id_links none
 %include rpm-dir.inc
 
 %define APPS /opt/apps
@@ -43,7 +44,7 @@ readerPass="tipR3ader123@"
 reader="readerOfTips"
 modName="tacc_tips"
 
-./configure --prefix=%{INSTALL_DIR} --with-host="$TACC_HOST" --with-reader="$reader" --with-pass="$readerPass" --with-db="$TipsDB" --with-module="$modName"
+./configure --prefix=%{INSTALL_DIR} --with-host="$TACC_HOST" --with-reader="$reader" --with-pass="$readerPass" --with-db="$TipsDB" --with-module="$modName" --with-MySQL=no
 make DESTDIR=$RPM_BUILD_ROOT install
 
 #-----------------
@@ -77,7 +78,7 @@ whatis("Name: Tacc Tips")
 whatis("Version: %{version}")
 whatis("Category: User training")
 whatis("Keywords: Training ")
-whatis("URL: http://tacc.utexas.edu")
+whatis("URL: http://github.com/TACC/HPC_Tips")
 whatis("Description: Tips generated at each login.")
 
 
