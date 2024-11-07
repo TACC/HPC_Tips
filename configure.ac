@@ -125,9 +125,8 @@ TIPS_PASS64=`echo $TIPS_PASS | base64 -`
 AC_DEFINE_UNQUOTED(TIPS_PASS64, "$TIPS_PASS64",[base64 encoded reader password])
 AC_PATH_PROGS(PATH_TO_PYTHON, [python3] [python2] [python], [])
 
-AX_PYTHON_MODULE([$PATH_TO_PYTHON],[mysql.connector],[fatal])
-
 if test "$MYSQLDB" = yes; then
+   AX_PYTHON_MODULE([$PATH_TO_PYTHON],[mysql.connector],[fatal])
    if test "x$PATH_TO_PYTHON" = "x"; then
       echo
       echo "======================================================="
@@ -137,19 +136,6 @@ if test "$MYSQLDB" = yes; then
       rm -f makefile
       exit 1
    fi 
-   #if test "$HAVE_PYMOD_MYSQL_CONNECTOR" = no; then
-   #   echo
-   #   echo "======================================================="
-   #   echo "Unable to install XALT without the python module: mysql-connector-python
-   #   echo "To install for python3 do: pip3 install mysql-connector-python"
-   #   echo
-   #   echo "mysql-connector-python is only required to be install on computer which"
-   #   echo "will update the database.  It is not required anywhere"
-   #   echo "else."
-   #   echo "======================================================="
-   #   rm -f makefile
-   #   exit 1
-   #fi
 fi
 
 AC_CHECK_HEADER(mysql/my_global.h,

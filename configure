@@ -3406,6 +3406,7 @@ fi
 done
 
 
+if test "$MYSQLDB" = yes; then
 
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking $PATH_TO_PYTHON module: mysql.connector" >&5
 printf %s "checking $PATH_TO_PYTHON module: mysql.connector... " >&6; }
@@ -3427,8 +3428,6 @@ printf "%s\n" "no" >&6; }
 		fi
 	fi
 
-
-if test "$MYSQLDB" = yes; then
    if test "x$PATH_TO_PYTHON" = "x"; then
       echo
       echo "======================================================="
@@ -3438,19 +3437,6 @@ if test "$MYSQLDB" = yes; then
       rm -f makefile
       exit 1
    fi
-   #if test "$HAVE_PYMOD_MYSQL_CONNECTOR" = no; then
-   #   echo
-   #   echo "======================================================="
-   #   echo "Unable to install XALT without the python module: mysql-connector-python
-   #   echo "To install for python3 do: pip3 install mysql-connector-python"
-   #   echo
-   #   echo "mysql-connector-python is only required to be install on computer which"
-   #   echo "will update the database.  It is not required anywhere"
-   #   echo "else."
-   #   echo "======================================================="
-   #   rm -f makefile
-   #   exit 1
-   #fi
 fi
 
 
