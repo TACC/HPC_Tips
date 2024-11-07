@@ -85,7 +85,7 @@ case $SYSHOST in
   rios)
     echo "Building on $SYSHOST"
     SUDO="sudo"
-    base="/opt/apps/HPC_Tips
+    base="/opt/apps/HPC_Tips"
     CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips"
     ;;
 
