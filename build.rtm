@@ -65,6 +65,7 @@ fi
 echo SYSHOST: $SYSHOST
 readerPass="tipR3ader123@"
 TipsDB=HPC_Tips
+TACC_HOST=xalt-02.tacc.utexas.edu
 
 
 case $SYSHOST in
@@ -86,13 +87,13 @@ case $SYSHOST in
     echo "Building on $SYSHOST"
     SUDO="sudo"
     base="/opt/apps/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips"
+    CONF_OPTS="--with-host=$TACC_HOST --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips"
     ;;
 
   *)
     echo "Building on $SYSHOST"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips --with-MySQL=no"
+    CONF_OPTS="--with-host=$TACC_HOST --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips --with-MySQL=no"
     ;;
 
 esac
