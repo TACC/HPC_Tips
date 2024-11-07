@@ -11,6 +11,20 @@ AH_TOP(
  */
 ])
 
+VALID_YN ()
+{
+  ANS=$1
+  MSG=$2
+  case $ANS in
+    yes|no)
+      ;;
+    *)
+      echo $MSG
+      exit 1
+      ;;
+  esac
+}
+
 AC_SUBST(TIPS_HOST)
 AC_ARG_WITH(host,
     AS_HELP_STRING([--with-host=ans],[The hostname for where the database resides]),
