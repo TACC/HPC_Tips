@@ -79,7 +79,7 @@ case $SYSHOST in
   jedrik)
     echo "Building on $SYSHOST using jedrik rules"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=HPC_Tips --with-MySQL=no"
+    CONF_OPTS="--with-host=localhost --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=HPC_Tips"
     ;;
 
   rios)
@@ -92,7 +92,7 @@ case $SYSHOST in
   *)
     echo "Building on $SYSHOST"
     base="$HOME/l/pkg/HPC_Tips"
-    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips"
+    CONF_OPTS="--with-host=xalt.tacc.utexas.edu --with-reader=readerOfTips --with-pass=$readerPass --with-db=$TipsDB --with-module=tacc_tips --with-MySQL=no"
     ;;
 
 esac
