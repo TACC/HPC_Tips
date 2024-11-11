@@ -45,7 +45,7 @@ Runtime issues
 Since this **showTips** program is part of the login procedure, it shouldn't hang if the database cannot be accessed.
 The program has 0.4 second timeout if the database cannot be accessed and no warnings are produced unless requested.
 
-To install:
+To install
 ===========
 
 1) Setup MySQL Database:
@@ -59,10 +59,10 @@ the account name that has write access to the database and set "test623" as the 
 pw: tipReader123) is needed to read the tips. You need to login to the mysql program and do:
 
     mysql> create database HPC_Tips;
-    mysql> create user 'tipBuilder'@'%'           identified by 'test623';
-    mysql> create user 'tipBuilder'@'localhost'   identified by 'test623';
-    mysql> create user 'readerOfTips'@'%'         identified by 'tipReader123';
-    mysql> create user 'readerOfTips'@'localhost' identified by 'tipReader123';
+    mysql> create user 'tipBuilder'@'%'           identified with mysql_native_password by 'test623';
+    mysql> create user 'tipBuilder'@'localhost'   identified with mysql_native_password by 'test623';
+    mysql> create user 'readerOfTips'@'%'         identified with mysql_native_password by 'tipReader123';
+    mysql> create user 'readerOfTips'@'localhost' identified with mysql_native_password by 'tipReader123';
     mysql> grant all privileges ON HPC_Tips.* TO 'tipBuilder'@'localhost';
     mysql> grant all privileges ON HPC_Tips.* TO 'tipBuilder'@'%';
     mysql> grant select ON HPC_Tips.* TO 'readerOfTips'@'localhost';
