@@ -15,9 +15,11 @@ exit 2
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
-import mysql.connector
 import warnings
 import configparser
+import mysql.connector
+
+
 
 class LD_TIPS(object):
   def __init__(self, confFn):
@@ -35,21 +37,6 @@ class LD_TIPS(object):
     self.__user   = input("Database user:")
     self.__passwd = getpass.getpass("Database pass:")
     self.__db     = input("Database name:")
-    self.__writeConfig()
-
-  def __writeConfig(self):
-    config=configparser.ConfigParser()
-    config.add_section("MYSQL")
-    config.set("MYSQL","HOST",self.__host)
-    config.set("MYSQL","USER",self.__user)
-    config.set("MYSQL","PASSWD",base64.b64encode(self.__passwd))
-    config.set("MYSQL","DB",self.__db)
-
-    fn = self.__db + "_db.conf"
-
-    f = open(fn,"w")
-    config.write(f)
-    f.close()
 
   def __readConfig(self):
     """ Read database access info from config file. (private)"""
@@ -64,9 +51,10 @@ class LD_TIPS(object):
     except configparser.NoOptionError as err:
       sys.stderr.write("\nCannot parse the config file\n")
       sys.stderr.write("Switch to user input mode...\n\n")
+      print(traceback.format_exc())
       self.__readFromUser()
 
-  def db_connect(self):
+  def connect(self, databaseName = None):
     if(os.path.exists(self.__confFn)):
       self.__readConfig()
     else:
@@ -79,7 +67,6 @@ class LD_TIPS(object):
         password = self.__passwd,
         database = self.__db
         )
-      #print (self.__conn)
       cursor = self.__conn.cursor()
       cursor.execute("DROP TABLE IF EXISTS tips")
       cursor.execute("""

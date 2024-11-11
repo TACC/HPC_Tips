@@ -232,6 +232,7 @@ int main(int argc, char **argv)
   
 
 
+  uid_t my_uid = getuid();
 
   if (config)
     {
@@ -241,6 +242,8 @@ int main(int argc, char **argv)
       printf("Reader:      %s\n", reader) ;
       printf("Database:    %s\n", db);
       printf("Module Name: %s\n", moduleNm);
+      if (my_uid == (uid_t) 0)
+	printf("Password:    %s\n", pass);
       printf("\n");
       return 0;
     }
