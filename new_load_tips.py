@@ -98,7 +98,7 @@ class LD_TIPS(object):
     Nrows   = resultA[0][0]
     print("number of rows: ",Nrows)
 
-  def db_disconnect(self):
+  def disconnect(self):
     self.__conn.close()
 
 def files_in_tree(path, pattern):
@@ -135,7 +135,7 @@ def main():
     sys.exit(1)
 
   tips   = LD_TIPS(confFn)
-  tips.db_connect()
+  tips.connect()
   
   dividerPat = re.compile(r'^##\-\-*$')
 
@@ -170,7 +170,7 @@ def main():
   tips.nrows()
   #print("number of rows: ",
 
-  tips.db_disconnect()
+  tips.disconnect()
 
 
 if ( __name__ == '__main__'): main()
