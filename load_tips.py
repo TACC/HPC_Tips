@@ -15,18 +15,11 @@ exit 2
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
-import mysql.connnector as mdb
 import warnings
 import configparser
+import mysql.connector
 
-try:
-  input = raw_input
-except:
-  pass
 
-warnings.filterwarnings("ignore", "Unknown table.*")
-
-dividerPat = re.compile(r'^##\-\-*$')
 
 class LD_TIPS(object):
   def __init__(self, confFn):
@@ -44,21 +37,6 @@ class LD_TIPS(object):
     self.__user   = input("Database user:")
     self.__passwd = getpass.getpass("Database pass:")
     self.__db     = input("Database name:")
-    self.__writeConfig()
-
-  def __writeConfig(self):
-    config=configparser.ConfigParser()
-    config.add_section("MYSQL")
-    config.set("MYSQL","HOST",self.__host)
-    config.set("MYSQL","USER",self.__user)
-    config.set("MYSQL","PASSWD",base64.b64encode(self.__passwd))
-    config.set("MYSQL","DB",self.__db)
-
-    fn = self.__db + "_db.conf"
-
-    f = open(fn,"w")
-    config.write(f)
-    f.close()
 
   def __readConfig(self):
     """ Read database access info from config file. (private)"""
@@ -73,24 +51,22 @@ class LD_TIPS(object):
     except configparser.NoOptionError as err:
       sys.stderr.write("\nCannot parse the config file\n")
       sys.stderr.write("Switch to user input mode...\n\n")
+      print(traceback.format_exc())
       self.__readFromUser()
 
-  def db_connect(self):
+  def connect(self, databaseName = None):
     if(os.path.exists(self.__confFn)):
       self.__readConfig()
     else:
       self.__readFromUser()
 
     try: 
-      self.__conn = mdb.connect(
-        host            = self.__host,
-        user            = self.__user,
-        password        = self.__passwd,
-        database        = self.__db,
-        charset         = "utf8",
-        connect_timeout = 120
-      )
-
+      self.__conn = mysql.connector.connect(
+        host     = self.__host,
+        user     = self.__user,
+        password = self.__passwd,
+        database = self.__db
+        )
       cursor = self.__conn.cursor()
       cursor.execute("DROP TABLE IF EXISTS tips")
       cursor.execute("""
@@ -122,7 +98,7 @@ class LD_TIPS(object):
     Nrows   = resultA[0][0]
     print("number of rows: ",Nrows)
 
-  def db_disconnect(self):
+  def disconnect(self):
     self.__conn.close()
 
 def files_in_tree(path, pattern):
@@ -144,7 +120,6 @@ def files_in_tree(path, pattern):
   return fileA  
 
 def main():
-
   confFn = None
   if (len(sys.argv) > 1):
     confFn = sys.argv[1]
@@ -160,12 +135,13 @@ def main():
     sys.exit(1)
 
   tips   = LD_TIPS(confFn)
-
-  tips.db_connect()
+  tips.connect()
+  
+  dividerPat = re.compile(r'^##\-\-*$')
 
   fileA  = files_in_tree("./tips", "*.tips")
-
   rowT = {}
+
   for fn in fileA:
     f      = open (fn,"r")
     lines  = f.readlines()
@@ -187,7 +163,6 @@ def main():
         sA  = []
       elif (not m):
         sA.append(s)
-  
 
   for fn in rowT:
     print(fn+":", rowT[fn])
@@ -195,8 +170,8 @@ def main():
   tips.nrows()
   #print("number of rows: ",
 
-  tips.db_disconnect()
-  
+  tips.disconnect()
 
 
 if ( __name__ == '__main__'): main()
+      
