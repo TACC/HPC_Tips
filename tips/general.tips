@@ -326,8 +326,11 @@ The web site www.commandlinefu.com has command line gems.  Click on "All-Time gr
 A Bash user should consider using `type' instead of `which'. In particular `type -a' find out all the path locations, functions and alias of the `ls' command by doing:
    $ type -a ls
 ##----
-To print a random number between 1 and X do:
-   $ echo $[RANDOM%X+1]
+To print a random number integer between 0 and X-1 do:
+   $ echo $[RANDOM%X]
+   $ echo $[RANDOM%X+1]   # adds 1 to get  range 1 to X
+
+$[RANDOM] range is  between 0 and 32767.
 ##----
 Use Ctrl+U to clear the current line.
 ##----
