@@ -15,7 +15,7 @@ exit 2
 from __future__ import print_function
 from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
-import MySQLdb as mdb
+import mysql.connnector as mdb
 import warnings
 import configparser
 
@@ -82,7 +82,14 @@ class LD_TIPS(object):
       self.__readFromUser()
 
     try: 
-      self.__conn = mdb.connect(self.__host, self.__user, self.__passwd, self.__db)
+      self.__conn = mdb.connect(
+        host            = self.__host,
+        user            = self.__user,
+        password        = self.__passwd,
+        database        = self.__db,
+        charset         = "utf8",
+        connect_timeout = 120
+      )
 
       cursor = self.__conn.cursor()
       cursor.execute("DROP TABLE IF EXISTS tips")
