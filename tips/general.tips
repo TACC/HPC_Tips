@@ -833,4 +833,6 @@ An easy way to remove blank lines in a file can be found by using awk:
 ##----
 Emacs's dired mode takes the same switches as ls: C-u C-x d will prompt for the switches then open dired mode.
 ##----
-
+To prepend to a path like variable that might be empty in Bash/Zsh do:
+    export LD_LIBRARY_PATH=/path/to/prepend${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}
+##----
