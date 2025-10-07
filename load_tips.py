@@ -17,7 +17,7 @@ from fnmatch    import fnmatch
 import os, sys, re, getpass, base64, argparse
 import warnings
 import configparser
-import mysql.connector
+import pymysql
 
 
 
@@ -61,7 +61,7 @@ class LD_TIPS(object):
       self.__readFromUser()
 
     try: 
-      self.__conn = mysql.connector.connect(
+      self.__conn = pymysql.connect(
         host     = self.__host,
         user     = self.__user,
         password = self.__passwd,
