@@ -1,36 +1,61 @@
+##-- GENERAL TACC STUFF
+Don't get be surprised by scheduled maintenance - subscribe to announcements at https://accounts.tacc.utexas.edu/user_updates
 ##----
-To restrict the memory that a JVM can use on a login node, try the following:
-   $ export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
+Did you know TACC offers training courses for HPC? https://tacc.utexas.edu/use-tacc/training/
 ##----
-Don't get be surprised by scheduled maintenance - subscribe to announcements at https://www.tacc.utexas.edu/news/subscribe.
+It usually takes 30 minutes or more for new passwords to propagate from the portal to the TACC systems.
+##----
+Not sure if TACC has a package you're looking for? See https://tacc.utexas.edu/use-tacc/software-list/
+##----
+Not sure which TACC machine you're logged into? Type "hostname -f".
+##---- 
+When in doubt, read the manual: https://portal.tacc.utexas.edu/user-guides
+##----
+If you need X11 to run a GUI-based app on a compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
+##----
+The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers or "make -j4" there.
+##---- QUEUE STUFF
+Are the queues down? Wait half an hour before submitting a ticket. Maybe the admins are doing emergency maintainance.
+##----
+Want to keep tabs on your job?
+   $ watch -n 10 squeue -u yourname
+##----
+The day before a Tuesday maintenance is a great time to submit short jobs. The scheduler drains the queues by holding up jobs that will not complete before the start of maintenance. Your short jobs will have the machine to themselves!
+##----
+By default, idev provides you a full node (exception: ls6 has the `vm-small' queue which lets you share a node) and ibrun will use all cores as MPI tasks. For example, If you want to use 1 node on with 4 MPI tasks and 4 OpenMP threads, please use "idev -n 4"
 ##----
 Are your MPI jobs suddenly failing with mpispawn errors? Your rsa keys may be corrupted: to regenerate, go to $HOME then execute "mv .ssh dot.ssh.old", logout, then log back in.
 ##----
 OMP_NUM_THREADS defaults to 1 on most TACC systems; be sure to export the desired value before running OpenMP jobs.
 ##----
-Did you know TACC offers training courses for HPC? http://www.tacc.utexas.edu/user-services/training
+On TACC systems 'qlimits' prints scheduler queue information.
+##---- MODULE STUFF
+Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB.  These variables will be defined after you load the module.
+##----
+It is probably safer to use "module reset" rather than "module purge" to get to a known good state.  At TACC, "module reset" means "module purge; module load TACC".
+##----
+The most portable way across TACC systems to load a particular compiler and MPI stack combination in a script is to unload the currently loaded compiler and MPI stack first using environment variables. Then you may load the specific compiler and MPI stack that you want. E.g.:
+   $ module unload $TACC_FAMILY_MPI $TACC_FAMILY_COMPILER
+   $ module load <compiler>/version <mpi>/version
+   $ module load <PKG1> <PKG2>
+##----
+At TACC, loading any intel or gcc compiler module will define TACC_FAMILY_COMPILER to be "intel" or "gcc". This can be useful in Makefiles to control which compiler flags to set.
+##----
+At TACC, loading any MPI module will define TACC_FAMILY_MPI to be the name of the MPI Stack name (e.g mvapich2, impi).
+##----
+Some apps, commands and libraries are available both with and without a module loaded, including python3, gcc, git, python, perl, java, and cmake. You'll almost always get newer versions if you load the module.
 ##----
 HPC Python? Yes! "module load python3".
 ##----
 Want to install your own python modules?  Do "module help python3".
 ##----
-It usually takes 30 minutes or more for new passwords to propagate across TACC systems.
-##----
 If you have trouble submitting jobs, make sure that your $HOME and $HOME/.ssh directories have the right permissions.  The following commands may remedy the situation:
   $ chmod go-w $HOME $HOME/.ssh
   $ chmod 600 $HOME/.ssh/authorized_keys
   $ chown `whoami` $HOME/.ssh/authorized_keys
-##----
-If you need X11 to run a GUI-based app on a compute node, login with "ssh -X", use idev rather than srun, and make sure you use the development queue.
-##----
-Linking to TACC packages? You don't have to remember their locations. Just use $TACC_THATPACKAGE_DIR, $TACC_THATPACKAGE_INC, and $TACC_THATPACKAGE_LIB.  These variables will be defined after you load the module.
-##----
-Want to keep tabs on your job?
-   $ watch -n 10 squeue -u yourname
-##----
-Not sure if TACC has a package you're looking for? See https://www.tacc.utexas.edu/system/software.
-##----
-Not sure which TACC machine you're logged into? Type "hostname -f".
+##---- MPI STUFF
+Does rank 0 need more memory than your other MPI tasks? Suppose you have 64 tasks and want to run 16 tasks per node. Allocate 5 nodes and launch with:
+  $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
 ##----
 We perform a full backup of your $HOME directory every few months, and an incremental backup of the latest changes every few days. To recover a file submit a ticket. Please provide the name of the file(s), the date of most useful version, and an estimate of the time you lost the file.
 ##----
@@ -38,14 +63,9 @@ To see MVAPICH2's process mapping, "export MV2_SHOW_CPU_BINDING=1" inside your s
 ##----
 On a Lustre file system like $WORK, and $SCRATCH, use "lfs find" instead of "find" to search for files.  It is much faster:
     $ lfs find <directory> -name '*.c'
-##---- 
-When in doubt, read the manual: https://portal.tacc.utexas.edu/user-guides
 ##----
-The login nodes are a shared resource, so please don't use mpirun or multiple tar's or multiple file transfers or "make -j4" there.
-##----
-Does rank 0 need more memory than your other MPI tasks? Suppose you have 64 tasks and want to run 16 tasks per node. Allocate 5 nodes and launch with:
-  $ ibrun -n 64 -o 15  # puts rank 0 on a node by itself.
-##----
+MPI jobs running out of memory? Spread your tasks across more nodes to increase the memory available to each task. Instead of "-N 4 -n 64" (64 tasks spread across 4 nodes, or 16 tasks per node), try "-N 16 -n 64" (4 tasks per node) or even "-N 64 -n 64" (1 task per node). Use the remora module to monitor your job's memory use.
+##---- OTHER STUFF
 Do you know what is cool about cdh?
 
 "cd vtune" tries to cd to the vtune subdirectory in the present directory where as "cdh vtune"  will take you to $HOME/vtune,  similar to the behavior for an argument with cds, cdw. You cannot do that with cd (as it should be),   It is quite handy.  (note that cd ~/vtune does the same thing).
@@ -53,8 +73,6 @@ Do you know what is cool about cdh?
 In the commands "srun -n X ..." or "idev -N 1 -n X" or "#SBATCH -n X", X correspond to the number of MPI tasks that you want to use, not the number of cores.
 
 For example, if you want to use 1 node with 4 MPI tasks and 4 OpenMP threads, please use "srun -n 4..." or "idev -N 1 -n 4" or "#SBATCH -n 4"
-##----
-By default, idev provides you a full node and ibrun will use all cores as MPI tasks. For example, If you want to use 1 node on with 4 MPI tasks and 4 OpenMP threads, please use "idev -n 4"
 ##----
 Do you want to use a hybrid code on 8 nodes using 2 MPI tasks and 8 OpenMP threads per node? Be sure  to use the "-N" option to specify the number of nodes that you want to use in addition to "-n".
 
@@ -69,22 +87,9 @@ Using lfs is faster and less stressful on Lustre than a recursive chmod. The cap
 You can transfer files to your work directory on another machine by putting a '\\' in front of $WORK:
    $ scp yourfile stampede2:\\$WORK
 ##----
-It is probably safer to use "module reset" rather than "module purge" to get to a known good state.  At TACC, "module reset" means "module purge; module load TACC".
-##----
-The most portable way across TACC systems to load a particular compiler and MPI stack combination in a script is to unload the currently loaded compiler and MPI stack first using environment variables. Then you may load the specific compiler and MPI stack that you want. E.g.:
-   $ module unload $TACC_FAMILY_MPI $TACC_FAMILY_COMPILER
-   $ module load <compiler>/version <mpi>/version
-   $ module load <PKG1> <PKG2>
-##----
-At TACC, loading any intel or gcc compiler module will define TACC_FAMILY_COMPILER to be "intel" or "gcc". This can be useful in Makefiles to control which compiler flags to set.
-##----
-At TACC, loading any MPI module will define TACC_FAMILY_MPI to be the name of the MPI Stack name (e.g mvapich2, impi).
-##----
-The day before a Tuesday maintenance is a great time to submit short jobs. The scheduler drains the queues by holding up jobs that will not complete before the start of maintenance. Your short jobs will have the machine to themselves!
-##----
 To perform basic diagnostics on your account settings, execute "module load sanitytool" and then run "sanitycheck -v".
 ##----
-If you don't need 48 hrs for your job, don't request that much: the job scheduler will have an easier time finding a slot for the 1 hour you really need.
+If you don't need 48 hrs for your job, don't request that much. Yes, you only get charged for the time you use, but the job scheduler will have an easier time finding a slot for the 1 hour you really need.
 ##----
 Would you like to know how much memory your code uses during execution? Try TACC's remora tool:
   $ module load remora
@@ -102,12 +107,6 @@ Did you know that job resource utilization reports are available via TACC's remo
   $ module load remora
   $ module help remora
 ##----
-MPI jobs running out of memory? Spread your tasks across more nodes to increase the memory available to each task. Instead of "-N 4 -n 64" (64 tasks spread across 4 nodes, or 16 tasks per node), try "-N 16 -n 64" (4 tasks per node) or even "-N 64 -n 64" (1 task per node). Use the remora module to monitor your job's memory use.
-##----
-Some apps, commands and libraries are available both with and without a module loaded, including python3, gcc, git, python, perl, java, and cmake. You'll almost always get newer versions if you load the module.
-##----
-Stampede2's KNL nodes have 272 hardware threads, but it may not be a good idea to use them all. Focus instead on the 68 cores: in most cases it's best to stay at or below 64-68 independent processes per node, and 1-2 threads per core.
-##----
 We add information about executables built at TACC. If you want to know about how an executable was built, try:
    $ xalt_extract_record ./hello
 
@@ -118,5 +117,6 @@ We add information about executables built at TACC. If you want to know about ho
    Build_date               Thu Apr 16 12:16:23 2020
    Build_compiler           icc
 ##----
-On TACC systems 'qlimits' prints scheduler queue information.
-##----
+To restrict the memory that a JVM can use on a login node, try the following:
+   $ export JAVA_TOOL_OPTIONS="-Xms2G -Xmx2G".
+You can also use this to expand the memory for the JVM, but do so only on a compute node!
