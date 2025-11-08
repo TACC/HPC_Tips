@@ -84,6 +84,12 @@ If you want to see all the currently loadable modules that contain the string "a
 
 This works for spider and list as well.
 ##----
+Many module commands have a `terse' mode:
+
+   $ module -t list
+
+gives a bare listing, without all the surrounding verbiage
+##----
 You can do simple regular expression searches:
 
    $ module -r spider '^p'
@@ -230,6 +236,12 @@ Aliases can be very helpful.  For example, these commands in your ~/.bashrc will
   alias cd2="cd ../.."
   alias cd3="cd ../../.."
 ##----
+Do you find yourself often switching between two directories? Explore `pushd' and `popd'.
+
+   $ cd dir1 ; pushd dir2
+
+and now `pushd' without arguments switches between the two. You can push even more than two directories, in which case `pushd +3' goes to number 3. Use `popd' to forget about the top directory.
+##----
 Would you combine mkdir and cd with a single command? You can use the following function in bash or zsh:
   function mkdircd () { mkdir -p "$1" && eval cd "$1"; }
 ##----
@@ -238,12 +250,14 @@ Try the following command "shopt -s cdspell" and bash  will try several minor sp
 ##----
 Want to know the date or time from your terminal? Use the command "date"
 ##----
-If you want to know more about a bash command ? try to use the "--help" command. For example with mkdir:
+If you want to know more about a bash command ? try to use the "--help" option. For example with mkdir:
+
   $ mkdir --help
 ##----
 If you want to know detailed information about a file do: "stat your_file_or_dir" to find out the create, access and modify times, permission etc.
 ##----
 Want to compare 2 files? You can use diff.
+
   $ diff [options] file1 file2
 
 Note: You can use the option -w in the diff command to ignore the white space while  performing the comparison.
@@ -317,7 +331,7 @@ A complex if then else block in a shell script can be written  on one line as:
 To find broken symlinks do:
    $ find . -type l -xtype l
 ##----
-To swap the two characters on the command line do: Ctrl+T
+To swap two characters on the command line do: `Ctrl+T'; to swap two words `ESC t' (let go of the escape before hitting the `t'!)
 ##----
 To diff two variables do: "diff <(echo $a) <(echo $b)"
 ##----
@@ -332,7 +346,7 @@ To print a random number integer between 0 and X-1 do:
 
 $[RANDOM] range is  between 0 and 32767.
 ##----
-Use Ctrl+U to clear the current line.
+Use `Ctrl-u' to clear the current line. Do Ctrl-y to paste it back if you change your mind.
 ##----
 To run a command in a different directory and jump back to the current directory, use parentheses to create a sub-shell:
    $ (cd ~/project; make)
